@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'django_quill',
     'chartjs',
     "pomodoro",
-    "revisão",
+    "revisao",
     "questoes",
 
 ]
