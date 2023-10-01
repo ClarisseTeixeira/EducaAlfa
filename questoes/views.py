@@ -10,7 +10,11 @@ def lista_questoes(request):
     user = request.user 
     disciplinas = Disciplina.objects.all()
     questoes = Questao.objects.all()
-    return render(request, 'questoes/pages/lista_questoes.html', {'disciplinas': disciplinas, 'questoes': questoes})
+    context = {
+        'disciplinas': disciplinas, 
+        'questoes': questoes,
+    }
+    return render(request, 'questoes/pages/lista_questoes.html', context)
 
 
 def filtro_questoes(request):
