@@ -1,10 +1,13 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Disciplina, Assunto, Questao, Alternativa
 from django.core.paginator import Paginator
+from django.contrib.auth.decorators import login_required
 
 
 
+@login_required
 def lista_questoes(request):
+    user = request.user 
     disciplinas = Disciplina.objects.all()
     questoes = Questao.objects.all()
     return render(request, 'questoes/pages/lista_questoes.html', {'disciplinas': disciplinas, 'questoes': questoes})

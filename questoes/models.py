@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 class Disciplina(models.Model):
     nome = models.CharField(max_length=100, default="")
 
@@ -9,12 +9,11 @@ class Disciplina(models.Model):
 class Assunto(models.Model):
     disciplina = models.ForeignKey(Disciplina, on_delete=models.CASCADE)
     assunto = models.CharField(max_length=150, default="")
-
-
     def __str__(self):
         return self.assunto
 
 class Questao(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     disciplina = models.ForeignKey(Disciplina, on_delete=models.CASCADE)
     assunto = models.ForeignKey(Assunto, on_delete=models.CASCADE, null=True)  # Defina como nulo temporariamente
     instituicao_ano = models.CharField(max_length=150, default="")
@@ -27,6 +26,7 @@ class Questao(models.Model):
         return f"Questão {self.id} - {self.disciplina.nome}"
     
 class Alternativa(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     questao = models.ForeignKey('Questao', related_name='alternativas', on_delete=models.CASCADE)
     texto = models.TextField(default="")
     correta = models.BooleanField(default=False)
