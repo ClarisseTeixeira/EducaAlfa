@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashcard</title>
+    <link rel="stylesheet" href="venv\Lib\site-packages\django_quill\static\django_quill\django_quill.css">
+</head>
+<body>
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.media }}
+        {{ form.title }}
+        {{ form.content }}
+        <button type="submit">Enviar</button>
+    </form>
+</body>
+</html>

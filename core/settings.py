@@ -40,7 +40,11 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    'django_quill',
+    'chartjs',
     "pomodoro",
+    "revisão",
+
 ]
 
 MIDDLEWARE = [
@@ -107,9 +111,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = "en-us"
+LANGUAGE_CODE = "pt-br"
 
-TIME_ZONE = "UTC"
+TIME_ZONE = "America/Sao_Paulo"
 
 USE_I18N = True
 
@@ -125,3 +129,34 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+LOGIN_REDIRECT_URL = '/'
+
+LOGOUT_REDIRECT_URL = '/accounts/login'
+
+QUILL_CONFIGS = {
+    'default': {
+        'theme': 'snow',
+        'modules': {
+            'syntax': True,
+            'toolbar': [
+                [{ 'size': ['small', False, 'large', 'huge'] }],
+                [{ 'header': [1, 2, 3, 4, 5, 6, False] }],  
+                ['bold', 'italic', 'underline', 'strike'],
+                [{'color': []}, {'background': []}],
+                [{'font': []}],
+                [{'align': []}],
+                ['blockquote', 'code-block'],
+                [{'list': 'ordered'}, {'list': 'bullet'}],
+                [{'script': 'sub'}, {'script': 'super'}],
+                ['link', 'image', 'video'],
+                [{'header': '1'}, {'header': '2'}],
+                [{'indent': '-1'}, {'indent': '+1'}],
+                [{'direction': 'rtl'}],
+                [{'formula': 'formula'}],
+                ['clean'],
+            ]
+        }
+    }
+}
