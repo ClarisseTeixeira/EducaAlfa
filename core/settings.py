@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'chartjs',
     "pomodoro",
     "revisão",
+    "questoes",
 
 ]
 
