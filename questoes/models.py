@@ -33,4 +33,3 @@ class Alternativa(models.Model):
 
     def __str__(self):
         return self.texto
-
