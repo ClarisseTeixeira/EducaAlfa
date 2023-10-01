@@ -1,6 +1,4 @@
-from datetime import datetime, timedelta
-from django.shortcuts import render, redirect
-from .models import PomodoroSession
+from django.shortcuts import render
 from .usecases.views.pomodoro_usecases import PomodoroUseCases
 
 def pomodoro(request):
