@@ -12,3 +12,4 @@ def pomodoro(request):
     sessions = pomodoro_usecases.get_recent_completed_sessions()
 
     return render(request, 'pomodoro/pomodoro.html', {'sessions': sessions})
+
