@@ -1,0 +1,35 @@
+<div class="questao">
+    <ul class="questao">
+        {% for questao in questoes %}
+            <div class="container-branco">
+                
+                <li class="questao_texto">
+                    <strong>{{ questao.instituicao_ano }}</strong>
+                    - {{ questao.texto }}
+                </li>
+                <li class="questao_enunciado">{{ questao.enunciado }}</li>
+                
+                <form method="post" action="{% url 'verificar_resposta' questao.id %}">
+                    {% csrf_token %}
+                    <ul>
+                        {% for alternativa in questao.alternativas.all %}
+                        <li>                                
+                            <label class="btn btn-outline-primary" >
+                                <input type="radio" name="alternativa" value="{{ alternativa.id }}">
+                                {{ alternativa.texto }}
+                            </label>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    <div class="responder">
+                    <button type="submit">Responder</button></div>
+                        
+                </div>
+            
+        
+        </form>
+
+    
+        {% endfor %}
+    </ul>
+</div>

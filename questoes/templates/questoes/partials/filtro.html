@@ -1,0 +1,31 @@
+<div class="container-filtro">
+    <h4 class="filtro">Filtrar questões</h4>
+    <form class="row row-cols-lg-auto g-3 align-items-center" method="GET" action="{% url 'filtro_questoes' %}">
+        <div class="col-12">
+            <label class="visually-hidden" for="disciplina">Disciplina:</label><br>
+            <select class="form-select" id="disciplina" name="disciplina">
+                <option class="filtros-font" value="">Disciplinas...</option>
+                {% for disciplina in disciplinas %}
+                    <option value="{{ disciplina.id }}" {% if disciplina.id == disciplina_selecionada %}selected{% endif %}>
+                        {{ disciplina.nome }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-12">
+            <label class="visually-hidden" for="assunto">Assunto:</label><br>
+            <select class="form-select" id="assunto" name="assunto">
+                <option value="">Assuntos...</option>
+                {% for assunto in assuntos %}
+                    <option value="{{ assunto.id }}" {% if assunto.id == assunto_selecionado %}selected{% endif %}>
+                        {{ assunto.assunto }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="responder">
+            <button type="submit">Filtrar</button>
+        </div>
+    </form>
+</div>
+</form>

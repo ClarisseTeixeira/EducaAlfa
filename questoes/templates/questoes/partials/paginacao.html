@@ -1,0 +1,17 @@
+<div class="pagination-container">
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            {% if questoes.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ questoes.previous_page_number }}{% if disciplina_selecionada %}&disciplina={{ disciplina_selecionada }}{% endif %}{% if assunto_selecionado %}&assunto={{ assunto_selecionado }}{% endif %}" aria-label="Previous">&laquo;</a>
+                </li>
+            {% endif %}
+            <li class="page-item"><a class="page-link" href="?page={{ questoes.number }}">{{ questoes.number }}</a></li>
+            {% if questoes.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ questoes.next_page_number }}{% if disciplina_selecionada %}&disciplina={{ disciplina_selecionada }}{% endif %}{% if assunto_selecionado %}&assunto={{ assunto_selecionado }}{% endif %}" aria-label="Next">&raquo;</a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+</div>

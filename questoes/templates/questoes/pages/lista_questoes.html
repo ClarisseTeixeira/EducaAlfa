@@ -1,0 +1,15 @@
+{% include 'questoes/partials/base.html' %}
+
+<body>
+    
+
+    <main class="main-content-container">
+        <h1 class="title-questoes">Banco de Questões</h1>
+        <div class="main">
+            {% include 'questoes/partials/questoes.html' %}
+            {% include 'questoes/partials/filtro.html' %}
+        </div>
+        {% include 'questoes/partials/paginacao.html' %}
+    </main>
+</body>
+</html>   
