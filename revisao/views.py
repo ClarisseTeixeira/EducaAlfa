@@ -29,12 +29,10 @@ def form_flashcard(request):
     return render(request, 'revisao/form_flashcard.html', {'form': form})
 
 
-
-
 @receiver(post_save, sender=Flashcard)
 def revisao_inicial(sender, instance, created, **kwargs):
     if created:
-        data_agendada = instance.created + timedelta(days=1)
+        data_agendada = instance.data + timedelta(days=1)
         Revisao.objects.create(flashcard=instance, user=instance.user, data_agendada=data_agendada)
 
 
