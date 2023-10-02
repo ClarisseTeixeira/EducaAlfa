@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registro de Usuário</title>
+</head>
+<body>
+    <h1>Registro de Usuário</h1>
+    <form method="post" action="{% url 'registro' %}">
+        {% csrf_token %}
+        <label for="username">Nome de Usuário:</label>
+        <input type="text" id="username" name="username" required><br><br>
+
+        <label for="password">Senha:</label>
+        <input type="password" id="password" name="password" required><br><br>
+
+        <label for="password_confirm">Confirme a Senha:</label>
+        <input type="password" id="password_confirm" name="password_confirm" required><br><br>
+
+        <input type="submit" value="Registrar">
+    </form>
+</body>
+</html>
