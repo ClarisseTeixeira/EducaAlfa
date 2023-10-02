@@ -22,22 +22,3 @@ def registro(request):
             messages.error(request, 'As senhas não coincidem.')
 
     return render(request, 'registration/registro.html')
-
-def fazer_login(request):
-    if request.method == 'POST':
-        form = AuthenticationForm(data=request.POST)
-        if form.is_valid():
-            user = form.get_user()
-            login(request, user)
-            return redirect(index)  # Redireciona para a página inicial após o login
-    else:
-        form = AuthenticationForm()
-    return render(request, 'registration/login.html', {'form': form})
-
-def fazer_logout(request):
-    if request.method == 'POST':
-        logout(request)
-        return redirect(index)  # Redireciona para a página inicial após o logout
-
-def index(request):
-    return render(request, 'index.html')
