@@ -9,7 +9,11 @@ from django.contrib.auth.decorators import login_required
 def lista_questoes(request):
     disciplinas = Disciplina.objects.all()
     questoes = Questao.objects.all()
-    return render(request, 'questoes/pages/lista_questoes.html', {'disciplinas': disciplinas, 'questoes': questoes})
+    context = {
+        'disciplinas': disciplinas, 
+        'questoes': questoes,
+    }
+    return render(request, 'questoes/pages/lista_questoes.html', context)
 
 
 def filtro_questoes(request):
