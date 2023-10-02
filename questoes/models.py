@@ -13,7 +13,6 @@ class Assunto(models.Model):
         return self.assunto
 
 class Questao(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
     disciplina = models.ForeignKey(Disciplina, on_delete=models.CASCADE)
     assunto = models.ForeignKey(Assunto, on_delete=models.CASCADE, null=True)  # Defina como nulo temporariamente
     instituicao_ano = models.CharField(max_length=150, default="")
@@ -26,7 +25,6 @@ class Questao(models.Model):
         return f"Questão {self.id} - {self.disciplina.nome}"
     
 class Alternativa(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
     questao = models.ForeignKey('Questao', related_name='alternativas', on_delete=models.CASCADE)
     texto = models.TextField(default="")
     correta = models.BooleanField(default=False)
