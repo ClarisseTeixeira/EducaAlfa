@@ -29,7 +29,7 @@ def fazer_login(request):
         if form.is_valid():
             user = form.get_user()
             login(request, user)
-            return redirect('questoes/pages/lista_questoes.html')  # Redireciona para a página inicial após o login
+            return redirect(index)  # Redireciona para a página inicial após o login
     else:
         form = AuthenticationForm()
     return render(request, 'registration/login.html', {'form': form})
@@ -37,4 +37,7 @@ def fazer_login(request):
 def fazer_logout(request):
     if request.method == 'POST':
         logout(request)
-        return redirect('questoes/pages/lista_questoes.html')  # Redireciona para a página inicial após o logout
+        return redirect(index)  # Redireciona para a página inicial após o logout
+
+def index(request):
+    return render(request, 'index.html')
