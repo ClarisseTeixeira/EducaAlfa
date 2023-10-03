@@ -9,7 +9,7 @@ class AlternativaInline(admin.TabularInline):
 
 class QuestaoAdmin(admin.ModelAdmin):
     inlines = [AlternativaInline]
-    list_display = ('disciplina', 'assunto', 'texto', 'ordem', 'instituicao_ano')
-    list_filter = ('disciplina', 'ordem')
+    list_display = ('disciplina', 'assunto', 'texto', 'instituicao_ano')
+    list_filter = ('disciplina', )
 
 admin.site.register(Questao, QuestaoAdmin)

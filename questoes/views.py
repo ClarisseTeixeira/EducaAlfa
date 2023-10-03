@@ -2,7 +2,26 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import Disciplina, Assunto, Questao, Alternativa
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User  # Importe User corretamente
+import json
+from django.http import JsonResponse
 
+
+@login_required
+def grafico(request, usuario_id):
+    user = User.objects.get(id=usuario_id)
+    questoes_certas = user.questoes.filter(correta=True).count()
+    questoes_erradas = user.questoes.filter(correta=False).count()
+    
+    data = {
+        'questoes_certas': questoes_certas,
+        'questoes_erradas': questoes_erradas,
+    }
+    
+    # Converta os dados em JSON
+    data_json = json.dumps(data)
+    
+    return render(request, 'questoes/partials/grafico.html', {'data_json': data_json})
 
 
 @login_required
@@ -53,7 +72,7 @@ def filtro_questoes(request):
         'assunto_selecionado': int(assunto_id) if assunto_id else None,  # Converte para int se não for None
     })
 
-
+@login_required
 def verificar_resposta(request, questao_id):
     questao = get_object_or_404(Questao, pk=questao_id)
 
@@ -63,14 +82,26 @@ def verificar_resposta(request, questao_id):
 
         if alternativa_selecionada.correta:
             mensagem = 'acertou!'
+            questao.acertou = True
         else:
             mensagem = 'errou.'
 
-            # Marque a questão como respondida
+        # Marque a questão como respondida
         questao.respondida = True
         questao.save()
 
-        return render(request, 'questoes/resposta.html', {'mensagem': mensagem})
+        questoes_certas = Questao.objects.filter(respondida=True, acertou=True).count()
+        questoes_erradas = Questao.objects.filter(respondida=True, acertou=False).count()
+        questoes_respondidas = Questao.objects.filter(respondida=True).count()
+
+        # Adicione as informações ao dicionário 'data'
+        data = {
+            'questoes_certas': questoes_certas,
+            'questoes_erradas': questoes_erradas,
+            'questoes_respondidas': questoes_respondidas,
+        }
+
+        # Retorne os dados atualizados como uma resposta JSON
+        return JsonResponse(data)
 
     return redirect('questoes', questao_id=questao_id)
-
