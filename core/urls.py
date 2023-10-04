@@ -26,7 +26,7 @@ urlpatterns = [
     path('', include('questoes.urls')),
     path('accounts/login/', auth_views.LoginView.as_view(), name='login'),
     path('accounts/logout/', auth_views.LogoutView.as_view(), name='logout'),
-    path('registro/', auth.registro, name='registro')
-
+    path('registro/', auth.registro, name='registro'),
+    path('', auth_views.index, name='index')
 
 ]

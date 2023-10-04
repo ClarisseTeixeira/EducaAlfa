@@ -22,3 +22,7 @@ def registro(request):
             messages.error(request, 'As senhas não coincidem.')
 
     return render(request, 'registration/registro.html')
+
+
+def index(request):
+    return render(request, "index.html")

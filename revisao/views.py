@@ -151,7 +151,7 @@ def revisoes_por_dia_da_semana(request):
 
 
 @login_required
-def index(request):  
+def tudo(request):  
     flashcards = Flashcard.objects.all()
     eventos_calendario = []
 
