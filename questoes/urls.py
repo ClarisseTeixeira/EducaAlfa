@@ -6,4 +6,5 @@ urlpatterns = [
     path('filtro/', views.filtro_questoes, name='filtro_questoes'),    
     path('verificar_resposta/<int:questao_id>/', views.verificar_resposta, name='verificar_resposta'),
     path('desempenho', views.desempenho, name='desempenho'),
+    path('grafico/<int:usuario_id>/', views.grafico, name='grafico'),
 ]
