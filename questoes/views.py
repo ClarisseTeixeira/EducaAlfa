@@ -3,8 +3,6 @@ from .models import Disciplina, Assunto, Questao, Alternativa
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 
-
-
 @login_required
 def lista_questoes(request):
     disciplinas = Disciplina.objects.all()
@@ -14,7 +12,6 @@ def lista_questoes(request):
         'questoes': questoes,
     }
     return render(request, 'questoes/pages/lista_questoes.html', context)
-
 
 def filtro_questoes(request):
     disciplinas = Disciplina.objects.all()
@@ -53,7 +50,6 @@ def filtro_questoes(request):
         'assunto_selecionado': int(assunto_id) if assunto_id else None,  # Converte para int se não for None
     })
 
-
 def verificar_resposta(request, questao_id):
     questao = get_object_or_404(Questao, pk=questao_id)
 
@@ -74,3 +70,5 @@ def verificar_resposta(request, questao_id):
 
     return redirect('questoes', questao_id=questao_id)
 
+def desempenho(request):
+    return render(request, 'questoes/pages/desempenho.html')
