@@ -1,0 +1,63 @@
+<div class="container">
+  <canvas id="myDoughnutChart"></canvas>
+</div>
+
+<!-- Inclua a biblioteca Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+{% block script %}
+<script>
+  const ctx = document.getElementById('myDoughnutChart').getContext('2d');
+
+  // Defina os valores iniciais com base nos dados da primeira chamada
+  let questoesCertas = 0;
+  let questoesErradas = 0;
+
+  // Função para atualizar o gráfico com base nos dados
+  function atualizarGrafico() {
+    fetch('/verificar_resposta/questao_id/', {
+        method: 'GET',
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Atualize o gráfico com os novos dados
+        myDoughnutChart.data.datasets[0].data = [data.questoes_certas, data.questoes_erradas];
+        myDoughnutChart.update(); // Atualize o gráfico
+
+
+        // Atualize as variáveis globais com os novos valores
+        questoesCertas = data.questoes_certas;
+        questoesErradas = data.questoes_erradas;
+    });
+  }
+
+
+
+  // Defina os dados e opções iniciais do gráfico
+  const data = {
+    labels: ['Questões Certas', 'Questões Erradas'],
+    datasets: [{
+      data: [2,5], // Valores iniciais
+      backgroundColor: [
+        'rgb(54, 162, 235)',
+        'rgb(255, 99, 132)',
+      ],
+      hoverOffset: 4
+    }]
+  };
+
+  const config = {
+    type: 'doughnut',
+    data: data,
+  };
+
+  // Crie o gráfico inicial
+  const myDoughnutChart = new Chart(ctx, config);
+
+  // Chame a função para atualizar o gráfico quando uma questão for verificada
+  atualizarGrafico();
+</script>
+
+
+{% endblock %}

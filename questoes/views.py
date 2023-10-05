@@ -72,3 +72,21 @@ def verificar_resposta(request, questao_id):
 
 def desempenho(request):
     return render(request, 'questoes/pages/desempenho.html')
+
+@login_required
+def grafico(request, usuario_id):
+    user = User.objects.get(id=usuario_id)
+    questoes_certas = user.questoes.filter(correta=True).count()
+    questoes_erradas = user.questoes.filter(correta=False).count()
+   
+    data = {
+        'questoes_certas': questoes_certas,
+        'questoes_erradas': questoes_erradas,
+    }
+   
+    # Converta os dados em JSON
+    data_json = json.dumps(data)
+   
+    return render(request, 'questoes/partials/grafico.html', {'data_json': data_json})
+
+
