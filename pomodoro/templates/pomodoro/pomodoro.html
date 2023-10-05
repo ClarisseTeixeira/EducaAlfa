@@ -6,6 +6,11 @@
 </head>
 
 <style>
+    body{
+        width: 1440px;
+        margin: auto;
+    }
+
     .form-container{
         background-color: rgba(45, 130, 181, 0.2);
         padding: 10px;
@@ -64,9 +69,9 @@
     .iniciar{
         background-color: rgba(2, 69, 119, 0.7); 
         font-weight: bold;
-        max-width: 430px;
+        width: 300px;
         height: 81px;
-        font-size: 65px;
+        font-size: 40px;
         color:#ffffff;
         border-radius: 50px;
         padding: 10px;
@@ -79,6 +84,13 @@
         transform: translateX(-50%);
     }
 
+    #timer{
+        font-size: 200px;
+        color: rgba(2, 69, 119, 0.7); 
+        text-align: center;
+        font-family: "digital numbers";
+    }
+
 </style>
 <body>
    
@@ -88,19 +100,12 @@
             <div class="descanso">Descanso</div>
         </div>
         <div class="timer" id="timer">25:00</div>
-        <div id="counter">1/4</div>
+        <div id="counter" style="text-align: center;">1/4</div>
+        <div id="counter" style="display: none;">1/4</div>
         <form method="post">
             {% csrf_token %}
-           
+            <button class="iniciar" id="toggleButton">Iniciar</button>
         </form>
-    
-
-
-   
-        <div id="counter" style="display: none;">1/4</div>
-        <div class="iniciar">
-            <button id="toggleButton">Iniciar</button>
-        </div>
     </div>
 
     <script>
