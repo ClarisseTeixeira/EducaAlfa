@@ -2,33 +2,106 @@
 <html>
 <head>
     <title>Pomodoro Timer</title>
-    <style>
-        body{
-            width: 1440px;
-            margin: auto;
-        }
-    </style>
+    
 </head>
+
+<style>
+    .form-container{
+        background-color: rgba(45, 130, 181, 0.2);
+        padding: 10px;
+        border-radius: 50px;
+        max-width: 970px;
+        height: 530px;
+        margin: auto;
+        box-shadow: 5px 5px 5px rgba(0, 0, 0, .3);
+        justify-content: space-between;
+        position: relative;
+    }
+
+    .timer{
+        color: rgba(2, 69, 119, 0.70);
+        font-family: ;
+        font-size: 200px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+
+    .conteineres{
+        display: flex;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        text-align: center; 
+        max-width: 877px;
+        height: 81.5px;
+        margin: auto;
+        margin-top: 20px;
+    }
+
+    .pomodoro, .descanso{
+        padding: 10px;
+        border-radius: 100px;
+        text-align: center;
+        font-weight: bold;
+        max-width: 430px;
+        height: 60px;
+        flex: 1; 
+        margin: 0 10px 10px; 
+        font-size: 65px;
+        color:#ffffff;
+        box-shadow: 5px 5px 5px rgba(0, 0, 0, .3);
+    }
+
+    .pomodoro{
+        background-color: rgba(2, 69, 119, 0.7); 
+    }
+
+    
+    .descanso{
+        background-color: rgba(45, 130, 181, 0.44);
+    }
+
+    .iniciar{
+        background-color: rgba(2, 69, 119, 0.7); 
+        font-weight: bold;
+        max-width: 430px;
+        height: 81px;
+        font-size: 65px;
+        color:#ffffff;
+        border-radius: 50px;
+        padding: 10px;
+        box-shadow: 5px 5px 5px rgba(0, 0, 0, .3);
+        text-decoration: none;
+        border-color: #ffffff;
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+</style>
 <body>
-    <h1>Pomodoro</h1>
-   
    
     <div class="form-container">
-
-
-        <div id="timer">25:00</div>
+        <div class="containeres">
+            <div class="pomodoro">Pomodoro</div>
+            <div class="descanso">Descanso</div>
+        </div>
+        <div class="timer" id="timer">25:00</div>
         <div id="counter">1/4</div>
         <form method="post">
             {% csrf_token %}
            
         </form>
-    </div>
+    
 
 
    
-    <div id="counter" style="display: none;">1/4</div>
-    <button id="toggleButton">Iniciar</button>
-
+        <div id="counter" style="display: none;">1/4</div>
+        <div class="iniciar">
+            <button id="toggleButton">Iniciar</button>
+        </div>
+    </div>
 
     <script>
         var isPomodoro = true;
