@@ -1,18 +1,13 @@
 {% include 'questoes/partials/base.html' %}
 
 <body>
-    
-
     <main class="main-content-container">
         <h1 class="title-questoes">Banco de Questões</h1>
         <div class="main">
             {% include 'questoes/partials/questoes.html' %}
             {% include 'questoes/partials/filtro.html' %}
         </div>
-        <h2>Total de Questões Certas: {{ data.questoes_certas }}</h2>
-        <h2>Total de Questões Erradas: {{ data.questoes_erradas }}</h2>
         {% include 'questoes/partials/paginacao.html' %}
-        {% include 'questoes/partials/grafico.html' %}
     </main>
 </body>
 </html>   

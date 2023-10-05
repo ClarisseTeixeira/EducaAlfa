@@ -2,27 +2,6 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import Disciplina, Assunto, Questao, Alternativa
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User  # Importe User corretamente
-import json
-from django.http import JsonResponse
-
-
-@login_required
-def grafico(request, usuario_id):
-    user = User.objects.get(id=usuario_id)
-    questoes_certas = user.questoes.filter(correta=True).count()
-    questoes_erradas = user.questoes.filter(correta=False).count()
-    
-    data = {
-        'questoes_certas': questoes_certas,
-        'questoes_erradas': questoes_erradas,
-    }
-    
-    # Converta os dados em JSON
-    data_json = json.dumps(data)
-    
-    return render(request, 'questoes/partials/grafico.html', {'data_json': data_json})
-
 
 @login_required
 def lista_questoes(request):
@@ -33,7 +12,6 @@ def lista_questoes(request):
         'questoes': questoes,
     }
     return render(request, 'questoes/pages/lista_questoes.html', context)
-
 
 def filtro_questoes(request):
     disciplinas = Disciplina.objects.all()
@@ -72,8 +50,6 @@ def filtro_questoes(request):
         'assunto_selecionado': int(assunto_id) if assunto_id else None,  # Converte para int se não for None
     })
 
-@login_required
-
 def verificar_resposta(request, questao_id):
     questao = get_object_or_404(Questao, pk=questao_id)
 
@@ -81,37 +57,19 @@ def verificar_resposta(request, questao_id):
         alternativa_id = request.POST.get('alternativa')
         alternativa_selecionada = get_object_or_404(Alternativa, pk=alternativa_id)
 
-        # Marque a questão como respondida
+        if alternativa_selecionada.correta:
+            mensagem = 'acertou!'
+        else:
+            mensagem = 'errou.'
+
+            # Marque a questão como respondida
         questao.respondida = True
         questao.save()
 
-        # Atualize o total de questões certas e erradas
-        questoes_certas = Questao.objects.filter(respondida=True, acertou=True).count()
-        questoes_erradas = Questao.objects.filter(respondida=True, acertou=False).count()
-
-        # Adicione as informações ao dicionário 'data'
-        data = {
-            'questoes_certas': questoes_certas,
-            'questoes_erradas': questoes_erradas,
-        }
-
-        # Retorne os dados atualizados como uma resposta JSON
-        return render(request, 'questoes/pages/lista_questoes.html', {'data': data})
+        return render(request, 'questoes/resposta.html', {'mensagem': mensagem})
 
     return redirect('questoes', questao_id=questao_id)
 
-@login_required
-def grafico(request, usuario_id):
-    user = User.objects.get(id=usuario_id)
-    questoes_certas = user.questoes.filter(correta=True).count()
-    questoes_erradas = user.questoes.filter(correta=False).count()
-    
-    data = {
-        'questoes_certas': questoes_certas,
-        'questoes_erradas': questoes_erradas,
-    }
-    
-    # Converta os dados em JSON
-    data_json = json.dumps(data)
-    
-    return render(request, 'questoes/partials/grafico.html', {'data_json': data_json})
+def desempenho(request):
+    return render(request, 'questoes/pages/desempenho.html')
+
