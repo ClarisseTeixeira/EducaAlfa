@@ -14,3 +14,6 @@ def pomodoro(request):
     sessions = PomodoroSession.objects.filter(completed=True).order_by('-start_time')[:4]
     
     return render(request, 'pomodoro/pomodoro.html', {'sessions': sessions})
+
+def intro(request):
+    return render(request, 'pomodoro/intro.html')
