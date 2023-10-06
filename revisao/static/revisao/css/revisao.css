@@ -1,0 +1,118 @@
+
+.imgrevisao{
+    width: 360px;
+    height: auto;
+}
+
+.textrevisao{
+    width: 570px;
+    text-align: justify;
+}
+.h1revisao{
+    font-size: 36px;
+}
+h1{
+    font-weight: 400;
+}
+
+/* Estilo da accordion-item */
+.borda{    
+    width: 500px;
+    margin: 20px;
+    border-radius: 50px 50px 0px 50px !important;
+    height: auto;
+    padding: 20px;
+    width: 470px;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+    
+}
+.accordion-item {
+    position: relative; /* Adicione posição relativa para alinhar a linha */
+    border: none;
+}
+
+.accordion-button {
+    border: none !important;
+    height: 20px;
+    width: 400px;
+    z-index: 0;
+    background-color: transparent; /* Defina o botão como transparente */
+    font-size: 20px;
+}
+
+.accordion-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 5px; /* Largura da linha */
+    background-color: #d6e8ee; /* Cor quando fechado */
+    z-index: 1;
+    transition: background-color 0.3s ease; /* Transição suave da cor */
+}
+
+/* Estilo da linha à esquerda quando .open está presente */
+.accordion-item.open::before {
+    background-color: #001b48; /* Cor quando aberto */
+}
+
+/* Estilo da linha à esquerda quando fechado */
+.accordion-item:not(.open)::before {
+    background-color: #d6e8ee; /* Cor quando fechado */
+}
+
+/* Estilo do botão do acordeão */
+.accordion-button:focus,
+.accordion-button:hover,
+.accordion-button:not(.collapsed) {
+    border: none; /* Remova a borda */
+    outline: none; /* Remova o contorno */
+    box-shadow: none; /* Remova a sombra */
+    background-color: transparent;
+    /* Defina outras propriedades personalizadas, se necessário */
+}
+
+.accordion-button::after {
+    width: 0;
+}
+
+
+.flashcard{
+    width: 300px;
+    height: 200px;
+    background-color: #fff;
+    margin: 10px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+}
+.flashcard h3{
+    font-size: 24px;
+    color: #001b48;
+    text-align: center;
+    padding-top: 30px;
+    font-weight: 400;
+}
+.flashcard p{
+    width: 200px;
+    text-align: justify;
+    margin: auto;
+    font-weight: 300;
+
+    
+}
+
+.criarflashcard{
+    border-radius: 100px;
+    border: 5px solid #001B48;
+    background: rgba(217, 217, 217, 0);
+    width: 150px;
+    height: 50px;
+    margin: auto;
+}
+.criarflashcard a{
+    margin: auto;
+    text-decoration: none;
+    color: #001B48;
+    font-size: 20px;
+}

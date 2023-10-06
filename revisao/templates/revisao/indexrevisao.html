@@ -1,0 +1,171 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head%}
+<link rel="stylesheet" href="{% static 'revisao\css\revisao.css' %}">
+<script src="{% static 'revisao/js/revisao.js' %}"></script>
+{% endblock %}
+
+{% block title%} Revisão {% endblock %}
+
+
+{% block content %}
+
+<br>
+<br>
+<br>
+<div class="d-flex justify-content-center">
+
+    <div class="mt-5 row align-items-center">
+
+        <div class="col">
+            <h1 class="h1revisao">Revisão Espaçada</h1>
+            <p class="textrevisao">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                laboris nisi ut aliquip ex ea commodo Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                exercitation ullamco laboris nisi ut aliquip ex ea commodo </p>
+        </div>
+
+        <div class="col">
+            <img class="imgrevisao" src="{% static 'revisao/img/Mental health-pana 1 (1).svg' %}" alt="">
+        </div>
+    </div>
+
+</div>
+
+<br>
+<br>
+
+
+
+
+
+
+<h1 class="d-flex justify-content-center mt-5">Como criar flashcards para revisar</h1>
+<div class="d-flex justify-content-center">
+    <div class="accordion" id="accordionExample">
+
+        <div class="borda">
+            <div class="accordion-item" id="accordionItem1">
+                <div class="d-flex align-items-center">
+                    <div class="accordion-border"></div>
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                            Passo 1
+                        </button>
+                    </h2>
+                </div>
+                <div id="collapseOne" class="accordion-collapse collapse " aria-labelledby="headingOne"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        Conteúdo do Passo 1
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="borda">
+            <div class="accordion-item" id="accordionItem2">
+                <div class="d-flex align-items-center">
+                    <div class="accordion-border"></div>
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Passo 2
+                        </button>
+                    </h2>
+                </div>
+                <div id="collapseTwo" class="accordion-collapse collapse " aria-labelledby="headingTwo"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        Conteúdo do Passo 2
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="borda">
+            <div class="accordion-item" id="accordionItem3">
+                <div class="d-flex align-items-center">
+                    <div class="accordion-border"></div>
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Passo 3
+                        </button>
+                    </h2>
+                </div>
+                <div id="collapseThree" class="accordion-collapse collapse " aria-labelledby="headingThree"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        Conteúdo do Passo 3
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="borda">
+            <div class="accordion-item" id="accordionItem4">
+                <div class="d-flex align-items-center">
+                    <div class="accordion-border"></div>
+                    <h2 class="accordion-header" id="headingFour">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            Passo 4
+                        </button>
+                    </h2>
+                </div>
+                <div id="collapseFour" class="accordion-collapse collapse " aria-labelledby="headingFour"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        Conteúdo do Passo 4
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<br>
+<br>
+<br>
+
+<h1 class="d-flex justify-content-center mt-5">Exemplos de flashcards</h1>
+
+<div class="d-flex  justify-content-center">
+<div class="row align-items-center">
+    <div class="col flashcard">
+        <h3>Lorem ipsum dolor </h3>
+        <p >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
+    </div>
+
+    <div class="col ">
+        <div class="flashcard">
+<h3>Lorem ipsum dolor </h3>
+<p >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
+        </div>
+
+        <div class="flashcard">
+<h3>Lorem ipsum dolor </h3>
+<p >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
+        </div>
+    </div>
+
+    <div class="col flashcard">
+<h3>Lorem ipsum dolor </h3>
+<p >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
+    </div>
+</div>
+</div>
+
+<div class="mt-4 d-flex justify-content-center criarflashcard ">
+<a class="align-items-center" href="{% url 'form_flashcard' %}"> Criar flashcard</a>
+</div>
+
+<br>
+<br>
+<br>
+
+{% endblock %}

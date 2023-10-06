@@ -70,8 +70,10 @@
 
 
 *{
-    font-family: Merriweather, sans-serif;
-    
+    font-family: 'Merriweather';
+}
+main{
+    background-color: #FCFDFD;;
 }
 
 header {
@@ -83,22 +85,26 @@ header {
     height: 90px;
 }
 
-nav ul {
+p{
+    font-size: 16px;
+    font-weight: 400;
+}
+.basenav .navul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     display: flex;
 }
-nav li {
+.basenav .navli {
     margin-right: 50px;
 }
 
-nav a {
+.basenav a {
     text-decoration: none;
     color: #024577;
 }
 
-img {
+.logo {
     max-height: 140px;
 }
 
@@ -120,7 +126,7 @@ img {
     left: 50%;
     transform: translate(-50%, -50%);
 }
-nav {
+.basenav {
     display: flex;
     align-items: center;
 }

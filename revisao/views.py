@@ -160,3 +160,8 @@ def tudo(request):
         "eventos_calendario": eventos_calendario,
     }
     return render(request, 'revisao/calendar.html', context)
+
+
+
+def indexrevisao(request):
+    return render(request, "revisao/indexrevisao.html")
