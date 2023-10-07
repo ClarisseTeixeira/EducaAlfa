@@ -1,113 +1,57 @@
-{% include 'questoes/partials/base.html' %}
-<style>
-    body {
-        width: 1440px;
-        padding: 20px 0;
-        background: #F8F8FF;
-    }
+{% extends 'base.html' %}
+{% load static %}
 
-    main.main-content-container {
-        width: 1168px;
-        margin: 0 auto; /* Centralizar horizontalmente */
-    }
+{% block head%}
+<link rel="stylesheet" href="{% static 'questoes\css\desempenho.css' %}">
+<script src="{% static 'questoes/js/questoes.js' %}"></script>
+{% endblock %}
 
-    .estudo-questoes {
-        text-align: center;
-        padding-bottom: 65px;
-    }
+{% block content %}
 
-    .grafico {
-        width: 469px;
-        height: 396px;
-        background-color: antiquewhite;
-        border-radius: 20px;
-        float: left; /* Alinhar à esquerda */
-    }
-
-    .num-acertos,
-    .num-erradas,
-    .taxa-acerto,
-    .num-questoes {
-        width: 250px;
-        height: 107px;
-        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-        border-radius: 10px;
-        padding: 10px;
-        margin: 0 10px;
-        font-size: 20px;
-        font-weight: bold;
-        text-align: center;
-        display: flex;
-        justify-content: center; /* Centraliza horizontalmente */
-        align-items: center; /* Centraliza verticalmente */
-    }
-
-    .num-acertos {
-        background: rgba(10, 129, 0, 0.50);
-        margin: 0px 70px 65px 0px;
-    }
-
-    .num-erradas {
-        background: rgba(255, 0, 0, 0.50);
-        margin: 0px 70px 65px 0px;
-    }
-
-    .taxa-acerto,
-    .num-questoes {
-        background: #FFF;
-        margin: 0px 70px 0px 0px;
-    }
-
-    .for-container {
-        display: flex;
-
-    }
-
-    .grafico,
-    .estatisticas {
-        display: inline-block;
-        vertical-align: middle;
-    }
-
-    .row {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-    }
-
-    .desempenho {
-        margin-bottom: 33px;
-    }
-
-</style>
-<body>
-    <main class="main-content-container">
+    <div class="main-content-container">
         <h1 class="estudo-questoes">Estudo por questões</h1>
+        <br>
+        <br>
+        <br>
+
         <h3 class="desempenho">Desempenho Geral</h3>
 
-        <div class="form-container">
 
-            <div class="grafico"></div>
+        
+        <br>
+        <br>
+            <div class="form-container">
 
-            <div class="estatisticas">
-                <div class="row">
-                    <div class="num-acertos">
-                        <h2>0 <br> certas</h2>
-                        
+                <div class="grafico"></div>
+
+                <div class="estatisticas">
+                    <div class="row">
+                        <div class="num-acertos">
+                            <h2>0 <br> certas</h2>
+                            
+                        </div>
+                        <div class="num-erradas">
+                            <h2>0 <br>Erradas</h2>
+                        </div>
                     </div>
-                    <div class="num-erradas">
-                        <h2>0 <br>Erradas</h2>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="taxa-acerto">
-                        <h2>0 <br>Taxa de acerto</h2>
-                    </div>
-                    <div class="num-questoes">
-                        <h2>0 <br>Nº de questoes</h2>
+                    <div class="row">
+                        <div class="taxa-acerto">
+                            <h2>0 <br>Taxa de acerto</h2>
+                        </div>
+                        <div class="num-questoes">
+                            <h2>0 <br>Nº de questoes</h2>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </main>
-</body>
+        <br>
+    <br>
+    <br>
+    <br>
+
+    
+    </div>
+    
+    
+
+{% endblock %}

@@ -1,0 +1,119 @@
+.estudo-questoes {
+    text-align: center;
+}
+
+.grafico {
+    width: 500px;
+    height: 420px;
+    background-color: antiquewhite;
+    border-radius: 20px;
+    float: left; /* Alinhar à esquerda */
+    margin-left: 50px;
+}
+.estatisticas{
+    float: right; /* Alinhar à esquerda */
+    margin-right: 50px;
+}
+
+.num-acertos,
+.num-erradas,
+.taxa-acerto,
+.num-questoes {
+    width: 250px;
+    height: 107px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+}
+
+.num-acertos {
+    background: rgba(10, 129, 0, 0.50);
+    margin: 0px 70px 65px 0px;
+}
+
+.num-erradas {
+    background: rgba(255, 0, 0, 0.50);
+    margin: 0px 0px 65px 0px;
+}
+
+.taxa-acerto {
+    background: #FFF;
+    margin: 0px 70px 0px 0px;
+}
+
+.num-questoes{
+    background: #FFF;
+}
+
+.desempenho {
+    margin-left: 50px;
+}
+
+/* Estilo da accordion-item */
+.borda{    
+    width: 500px;
+    margin: 20px;
+    border-radius: 50px 50px 0px 50px !important;
+    height: auto;
+    padding: 20px;
+    width: 470px;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+    
+}
+.accordion-item {
+    position: relative; /* Adicione posição relativa para alinhar a linha */
+    border: none;
+}
+
+.accordion-button {
+    border: none !important;
+    height: 20px;
+    width: 400px;
+    z-index: 0;
+    background-color: transparent; /* Defina o botão como transparente */
+    font-size: 20px;
+}
+
+.accordion-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 5px; /* Largura da linha */
+    background-color: #d6e8ee; /* Cor quando fechado */
+    z-index: 1;
+    transition: background-color 0.3s ease; /* Transição suave da cor */
+}
+
+/* Estilo da linha à esquerda quando .open está presente */
+.accordion-item.open::before {
+    background-color: #001b48; /* Cor quando aberto */
+}
+
+/* Estilo da linha à esquerda quando fechado */
+.accordion-item:not(.open)::before {
+    background-color: #d6e8ee; /* Cor quando fechado */
+}
+
+/* Estilo do botão do acordeão */
+.accordion-button:focus,
+.accordion-button:hover,
+.accordion-button:not(.collapsed) {
+    border: none; /* Remova a borda */
+    outline: none; /* Remova o contorno */
+    box-shadow: none; /* Remova a sombra */
+    background-color: transparent;
+    /* Defina outras propriedades personalizadas, se necessário */
+}
+
+.accordion-button::after {
+    width: 0;
+}
+

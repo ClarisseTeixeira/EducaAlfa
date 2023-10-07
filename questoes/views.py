@@ -73,6 +73,9 @@ def verificar_resposta(request, questao_id):
 def desempenho(request):
     return render(request, 'questoes/pages/desempenho.html')
 
+def indexquestoes(request):
+    return render(request, 'questoes/pages/indexquestoes.html')
+
 @login_required
 def grafico(request, usuario_id):
     user = User.objects.get(id=usuario_id)

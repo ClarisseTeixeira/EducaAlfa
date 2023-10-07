@@ -15,5 +15,5 @@ def pomodoro(request):
     
     return render(request, 'pomodoro/pomodoro.html', {'sessions': sessions})
 
-def intro(request):
-    return render(request, 'pomodoro/intro.html')
+def indexpomodoro(request):
+    return render(request, 'pomodoro/indexpomodoro.html')

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head%}
+<link rel="stylesheet" href="{% static 'questoes\css\indexquestoes.css' %}">
+<script src="{% static 'questoes/js/questoes.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+
+<br>
+<br>
+<br>
+<div class="d-flex justify-content-center">
+
+    <div class="mt-5 row align-items-center">
+
+        <div class="col">
+            <h1 class="h1questoes">Estudo por Questões</h1>
+            <p class="textquestoes">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                laboris nisi ut aliquip ex ea commodo Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                exercitation ullamco laboris nisi ut aliquip ex ea commodo </p>
+        </div>
+
+        <div class="col">
+            <img class="imgquestoes" src="{% static 'questoes\img\Shrug-bro (1).svg' %}" alt="">
+        </div>
+    </div>
+
+</div>
+
+<br>
+<br>
+<h1 class="d-flex justify-content-center mt-5">Acompanhe o seu progresso geral</h1>
+{% endblock %}
