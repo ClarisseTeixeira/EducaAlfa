@@ -3,6 +3,7 @@
 
 {% block head%}
 <link rel="stylesheet" href="{% static 'questoes\css\indexquestoes.css' %}">
+<link rel="stylesheet" href="{% static 'questoes\css\estatisticas.css' %}">
 <script src="{% static 'questoes/js/questoes.js' %}"></script>
 {% endblock %}
 
@@ -33,5 +34,15 @@
 
 <br>
 <br>
-<h1 class="d-flex justify-content-center mt-5">Acompanhe o seu progresso geral</h1>
+
+
+<br>
+<br>
+<h1 class="d-flex justify-content-center mt-5">Progresso de cada disciplina</h1>
+<br>
+<div class="d-flex justify-content-center">
+    {% include 'questoes/partials/valores_disciplinas.html' %}
+</div>
+<br>
+<br>
 {% endblock %}

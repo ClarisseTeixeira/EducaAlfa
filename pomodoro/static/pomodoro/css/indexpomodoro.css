@@ -15,9 +15,19 @@ h1{
     font-weight: 400;
 }
 
+.titlepasso{
+    color: #001B48;
+
+}
+
+.etapasconteudo{
+    color: #024577;
+}
+
 .etapaspomodoro{
     text-align: center;
 }
+
 .etapa{
     text-align: left;
     width: 355px;

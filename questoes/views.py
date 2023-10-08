@@ -70,8 +70,8 @@ def verificar_resposta(request, questao_id):
 
     return redirect('questoes', questao_id=questao_id)
 
-def desempenho(request):
-    return render(request, 'questoes/pages/desempenho.html')
+def estatisticas(request):
+    return render(request, 'questoes/pages/estatisticas.html')
 
 def indexquestoes(request):
     return render(request, 'questoes/pages/indexquestoes.html')
