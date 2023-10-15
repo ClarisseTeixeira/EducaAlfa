@@ -1,0 +1,27 @@
+.linhaassunto {
+
+    background: rgba(2, 69, 119, 0.05);
+}
+
+.likconteudo {
+    color: #000;
+    text-decoration: none;
+    font-size: 18px;
+    border-bottom: 3px solid #F2F2F2;
+    width: 600px;
+    margin-top: 20px;
+}
+
+.likconteudo:hover {
+    transition: color 0.3s ease;
+    color: #02447790;
+}
+
+.assuntonome {
+    color: #024577;
+    font-size: 25px;
+}
+
+p {
+    text-align: justify;
+}

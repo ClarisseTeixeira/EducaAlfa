@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head%}
+<link rel="stylesheet" href="{% static 'materiais\css\style.css' %}">
+
+{% endblock %}
+
+{% block title%} Materiais {% endblock %}
+
+
+{% block content %}
+
+<h1 class="d-flex justify-content-center mt-5"> Materiais de Apoio de {{disciplina.nome}}</h1>
+
+<div>
+    {% for assunto in assuntos %}
+    <hr class="linhaassunto ">
+    <h3 class="assuntonome">{{ assunto.nome }}</h3>
+</div>
+
+
+
+
+        {% for conteudo in conteudos %}
+        <div class="d-flex justify-content-center" >
+        {% if conteudo.assunto.id == assunto.id %}
+
+        <a class="likconteudo" href="{% url 'lista_materiais' conteudo.id %}">
+            {{ conteudo.nome }}
+        
+        </a>
+        {% endif %}
+    </div>
+
+        {% endfor %}
+  
+
+
+{% endfor %}
+{% endblock %}

@@ -27,5 +27,6 @@ urlpatterns = [
     path("", include('revisao.urls')),
     path('', include('questoes.urls')),
     path('', include('core.urls')),
+    path('', include('materiais.urls')),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
