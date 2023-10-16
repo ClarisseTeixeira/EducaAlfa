@@ -1,0 +1,135 @@
+:root {
+    --cor-1: #001B48;
+    --cor-2: #024577;
+    --cor-3: #015C92;
+    --cor-4: #2d82B5;
+    --cor-5: #018ABE;
+    --cor-6: #97C4D8;
+    --cor-7: #88CDF6;
+    --cor-8: #B6E6FF;
+    --cor-9: #D6E8EE;
+    --cor-10: #ECEFF1;
+}
+
+@font-face {
+    font-family: 'Merriweather';
+    src: url('/static/fonts/Merriweather-Light.ttf') format('ttf');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Merriweather';
+    src: url('/static/fonts/Merriweather-LightItalic.ttf') format('ttf');
+    font-weight: 300;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Merriweather';
+    src: url('/static/fonts/Merriweather-Regular.ttf') format('ttf');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Merriweather';
+    src: url('/static/fonts/Merriweather-Italic.ttf') format('ttf');
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Merriweather';
+    src: url('/static/fonts/Merriweather-Bold.ttf') format('ttf');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Merriweather';
+    src: url('/static/fonts/Merriweather-BoldItalic.ttf') format('ttf');
+    font-weight: 700;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Merriweather';
+    src: url('/static/fonts/Merriweather-Black.ttf') format('ttf');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Merriweather';
+    src: url('/static/fonts/Merriweather-BlackItalic.ttf') format('ttf');
+    font-weight: 900;
+    font-style: italic;
+}
+
+
+
+*{
+    font-family: 'Merriweather';
+}
+
+
+
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #fff;
+    height: 90px;
+}
+
+p{
+    font-size: 16px;
+    font-weight: 400;
+}
+.basenav .navul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+.basenav .navli {
+    margin-right: 50px;
+}
+
+.basenav a {
+    text-decoration: none;
+    color: #024577;
+}
+
+.logo {
+    max-height: 140px;
+}
+
+.entrar {
+    background-color: #024577;
+    border-radius: 20px;
+    width: 100px;
+    height: 35px;
+    position: relative;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+
+.entrar a {
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.basenav {
+    display: flex;
+    align-items: center;
+}
+
+
+

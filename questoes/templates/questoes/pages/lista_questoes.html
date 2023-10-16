@@ -1,13 +1,19 @@
-{% include 'questoes/partials/base.html' %}
+{% extends 'base.html' %}
+{% load static %}
 
-<body>
-    <main class="main-content-container">
-        <h1 class="title-questoes">Banco de Questões</h1>
-        <div class="main">
-            {% include 'questoes/partials/questoes.html' %}
-            {% include 'questoes/partials/filtro.html' %}
-        </div>
-        {% include 'questoes/partials/paginacao.html' %}
-    </main>
-</body>
-</html>   
+{% block head%}
+<link rel="stylesheet" href="{% static 'questoes\css\style.css' %}">
+<script src="{% static 'questoes/js/questoes.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+
+<main class="main-content-container">
+    <h1 class="title-questoes">Banco de Questões</h1>
+    <div class="main">
+        {% include 'questoes/partials/questoes.html' %}
+        {% include 'questoes/partials/filtro.html' %}
+    </div>
+    {% include 'questoes/partials/paginacao.html' %}
+</main>
+{% endblock %}
