@@ -17,13 +17,15 @@ Including another URLconf
 
 from django.urls import path
 from django.contrib.auth import views as auth_views 
-from .views.home import index
+from .views.home import index, dashboard
 from .views.auth import *
 
 urlpatterns = [
     path('accounts/login/', auth_views.LoginView.as_view(), name='login'),
     path('accounts/logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('registro/', registro, name='registro'),
-    path('', index, name='index')
+    path('', index, name='index'),
+    path('dashboard/', dashboard, name='dashboard'),
+
 
 ] 

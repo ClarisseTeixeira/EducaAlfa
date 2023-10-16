@@ -1,0 +1,50 @@
+nav.menu-lateral {
+    width: 70px;
+    height: 95vh;
+    background-color: #024577;
+    margin: 20px;
+    position: fixed;
+    border-radius: 15px;
+}
+
+.item-nav {
+    list-style-type: none;
+}
+
+.item-nav.logo {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+    margin-bottom: 20px;
+}
+
+ul li.item-nav {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    display: flex;
+}
+ul li a img{
+    display: block;
+}
+ul li.ativo{
+    background-color: #000;
+    border-radius: 16.5px;
+    width: 78px;
+    height: 37px;
+    margin-left: 20px;
+}
+
+ul li.ativo .navimg {
+    fill: blue !important; 
+    position: relative; 
+}
+
+ul.navul{
+    margin-top: 20px;
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
