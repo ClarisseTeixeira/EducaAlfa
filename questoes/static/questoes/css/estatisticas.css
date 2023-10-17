@@ -18,7 +18,7 @@
 .num-erradas,
 .taxa-acerto,
 .num-questoes {
-    width: 250px;
+    width: 200px;
     height: 107px;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     border-radius: 10px;
@@ -33,17 +33,17 @@
 
 .num-acertos {
     background: rgba(10, 129, 0, 0.50);
-    margin: 0px 70px 65px 0px;
+    margin: 0px 35px 30px 0px;
 }
 
 .num-erradas {
     background: rgba(255, 0, 0, 0.50);
-    margin: 0px 0px 65px 0px;
+    margin: 0px 0px 30px 0px;
 }
 
 .taxa-acerto {
     background: #FFF;
-    margin: 0px 70px 0px 0px;
+    margin: 0px 35px 0px 0px;
 }
 
 .num-questoes{

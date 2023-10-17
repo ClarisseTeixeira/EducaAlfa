@@ -1,8 +1,8 @@
 <div class="container-filtro">
-    <h4 class="filtro">Filtrar questões</h4>
-    <form class="row row-cols-lg-auto g-3 align-items-center" method="GET" action="{% url 'filtro_questoes' %}">
-        <div class="col-12">
-            <label class="visually-hidden" for="disciplina">Disciplina:</label><br>
+    <h3 class="filtro">Filtrar questões</h3>
+    <form class="row row-cols-lg-auto g-3 align-items-center justify-content-center" method="GET" action="{% url 'filtro_questoes' %}">
+        <div class="col-12 text-center">
+            <p class="filtro-nome">Disciplina:</p>
             <select class="form-select" id="disciplina" name="disciplina">
                 <option class="filtros-font" value="">Disciplinas...</option>
                 {% for disciplina in disciplinas %}
@@ -12,8 +12,8 @@
                 {% endfor %}
             </select>
         </div>
-        <div class="col-12">
-            <label class="visually-hidden" for="assunto">Assunto:</label><br>
+        <div class="col-12 text-center">
+            <p class="filtro-nome">Assunto:</p>
             <select class="form-select" id="assunto" name="assunto">
                 <option value="">Assuntos...</option>
                 {% for assunto in assuntos %}
@@ -23,8 +23,9 @@
                 {% endfor %}
             </select>
         </div>
-        <div class="responder">
+        <div class="filtrar text-center">
             <button type="submit">Filtrar</button>
         </div>
     </form>
 </div>
+

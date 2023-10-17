@@ -14,19 +14,28 @@ from django.contrib import messages
 
 # Create your views here.
 @login_required
-def form_flashcard(request):
+def flashcards(request):
+    flashcards = Flashcard.objects.all()
+    form = FlashcardForm()
+
     if request.method == 'POST':
         form = FlashcardForm(request.POST)
         if form.is_valid():
             flashcard = form.save(commit=False)
-            flashcard.user = request.user  
+            flashcard.user = request.user
             flashcard.save()
-            messages.success(request, 'Flashcard criado com sucesso.')
-            return HttpResponse('Flashcard criado')
-    else:
-        form = FlashcardForm()
-          
-    return render(request, 'revisao/form_flashcard.html', {'form': form})
+
+    context = {
+        "flashcards": flashcards,
+        "form": form,
+    }
+    return render(request, 'revisao/flashcard.html', context)
+
+
+
+
+
+
 
 
 @receiver(post_save, sender=Flashcard)
@@ -158,6 +167,12 @@ def tudo(request):
         "eventos_calendario": eventos_calendario,
     }
     return render(request, 'revisao/calendar.html', context)
+
+
+
+
+
+
 
 
 

@@ -9,14 +9,20 @@
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     {% block head%} {% endblock %}
     <link rel="stylesheet" href="{% static 'core/css/dashboard.css' %}">
-
     <title>{% block title%} {% endblock %}</title>
 </head>
 
+
 <body>
     <div class="d-flex">
-        <header class="headerdash">
-            <p class="container username">{{user.username}}</p>
+        <header class="headerdash ">
+            <div class="username">
+            <p class="">{{user.username}}</p>
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" class="bi bi-person-circle" viewBox="0 0 16 16">
+                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+              </svg>
+            </div>
         </header>
 
         <nav class="menu-lateral">
@@ -33,7 +39,7 @@
                     </li>
 
                     <li class="item-nav {% block linkf%} {% endblock %}">
-                        <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"  class="bi bi-card-text" viewBox="0 0 16 16">
+                        <a href="{% url 'flashcards' %}"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"  class="bi bi-card-text" viewBox="0 0 16 16">
                             <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
                             <path d="M3 5.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 8zm0 2.5a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5z"/>
                           </svg></a>
@@ -72,8 +78,10 @@
     </div>
 
     <main>
+        <div class="centro">
             {% block content %}
             {% endblock %}
+        </div>
     </main>
 
 

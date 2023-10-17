@@ -111,6 +111,11 @@ ul{
     text-align:justify;
 }
 
+.dados {
+    display: flex;
+    justify-content: center;
+}
+
 .filtro{
     text-align: center;
 }
@@ -205,3 +210,19 @@ button{
     text-align: center;
 }
 
+.filtrar button{
+    text-decoration: none;
+    color: #001B48;
+    font-size: 20px;
+}
+
+.filtrar{
+    text-align: center;
+}
+
+.filtro-nome{
+    text-align: left;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-size: 20px;
+}
