@@ -1,16 +1,32 @@
+* {
+    font-family: 'Merriweather';
+}
+
 .username {
     color: #001B48;
     font-size: 25px;
     display: flex;
     justify-content: flex-end;
-    margin: 30px;
+    margin: 15px;
+    max-width: 95%;
+}
+
+.username p {
+    margin-right: 20px;
+}
+
+.username svg {
+    fill: rgba(2, 69, 119, 0.20);
+    ;
 }
 
 .headerdash {
     height: 70px;
     background-color: #fff;
     width: 100%;
+    
 }
+
 
 body {
     background-color: #F8F8FF;
@@ -75,7 +91,7 @@ nav.menu-lateral {
 
 
 .modalform {
-    max-width: 810px;
+    max-width: 820px;
 }
 
 
@@ -96,20 +112,95 @@ nav.menu-lateral {
     width: auto;
 }
 
-.ql-editor{
-    max-height: 300px !important;
+.titulof:focus {
+    box-shadow: 0 0 0 0;
+    border: 0 none;
+    outline: 0;
+
 }
 
+.ql-editor {
+    height: 280px !important;
+    border-bottom: none !important;
+}
+
+.ql-editor p {
+
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 16px !important;
+}
 
 .salvar {
     border-radius: 20px;
     background: #14F500;
     width: 110px;
-height: 40px;
-border: none;
-color: #fff;
+    height: 40px;
+    border: none;
+    color: #fff;
+    margin-top: 20px;
 }
 
-.divsalvar{
+.divsalvar {
     align-items: flex-end;
+}
+
+.django-quill-widget-container {
+    max-width: 810px;
+    margin: auto;
+}
+
+
+.flashcards {
+    width: 270px;
+    height: 200px;
+    margin: 10px;
+    border-radius: 10px;
+    background: #FFF;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tituloflash {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.bflash {
+    display: flex;
+    padding: 3px;
+}
+
+.mais {
+    margin-right: 100px;
+}
+
+
+.tituloflash a {
+    text-decoration: none;
+    color: #001B48;
+}
+
+.buttonf{
+    width: 265px;
+    height: 45px;
+    border-radius: 50px;
+    background: #024577;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    color: #FFF;
+}
+.tflash{
+    margin: 20px;
+}
+.tflash h1{
+    margin: auto;
+}
+
+.centro{
+    margin-left: 100px;
+    max-width: 90%;
 }
