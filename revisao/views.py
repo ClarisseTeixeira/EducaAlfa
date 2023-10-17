@@ -22,7 +22,7 @@ def form_flashcard(request):
             flashcard.user = request.user  
             flashcard.save()
             messages.success(request, 'Flashcard criado com sucesso.')
-            return
+            return HttpResponse('Flashcard criado')
     else:
         form = FlashcardForm()
           
@@ -34,8 +34,6 @@ def revisao_inicial(sender, instance, created, **kwargs):
     if created:
         data_agendada = instance.data + timedelta(days=1)
         Revisao.objects.create(flashcard=instance, user=instance.user, data_agendada=data_agendada)
-
-
 
 
 def proxima_revisao(revisao):
@@ -95,7 +93,7 @@ def lista_revisao(request):
         'revisoes_do_dia': revisoes_do_dia,
         'revisoes_pendentes': revisoes_pendentes,
     }
-    return render(request, 'revisao/calendar.html', context)
+    return render(request, 'core/templates/core/pages/dashboard.html', context)
 
 
 @login_required
