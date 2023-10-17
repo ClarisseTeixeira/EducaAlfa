@@ -87,24 +87,6 @@ def detalhes_flashcard(request, flashcard_id):
 
 
 
-@login_required 
-def lista_revisao(request):
-    user = request.user 
-
-    todas_revisoes = Revisao.objects.filter(user=user, data_agendada__gte=date.today()).order_by('data_agendada')
-
-    revisoes_do_dia = Revisao.objects.filter(user=user, data_agendada=date.today(), concluida=False)
-
-    revisoes_pendentes = Revisao.objects.filter(user=user, data_agendada__lt=date.today(), concluida=False)
-
-    context = {
-        'todas_revisoes': todas_revisoes,
-        'revisoes_do_dia': revisoes_do_dia,
-        'revisoes_pendentes': revisoes_pendentes,
-    }
-    return render(request, 'core/templates/core/pages/dashboard.html', context)
-
-
 @login_required
 def calendario(request):
     user = request.user
