@@ -11,4 +11,4 @@ def home(request):
 
 
 def dashboard(request):
-    return render(request, "pages/dashboard.html")
+    return render(request, "core/pages/dashboard.html")

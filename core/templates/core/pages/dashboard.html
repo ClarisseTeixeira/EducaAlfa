@@ -1,0 +1,89 @@
+{% extends 'core/partials/base.html' %}
+{% load static %}
+
+
+{% block linkh%} ativo {% endblock %}
+
+
+{% block content %}
+<div class="container">
+<div>
+    <h1> E aí, {{user.username}}</h1>
+    <p>No dia de hoje, estão disponíveis 4 flashcards para revisão, mas não podemos esquecer dos 5 flashcards atrasados.
+        Eles estão na beira da curva do esquecimento. Além disso, sua taxa de acerto nas questões é de 60%.</p>
+    <img src="{% static 'core/img/image 3.png' %}" alt="">
+</div>
+
+<div>
+    <div>
+        <h1>Flashcards Agendados</h1>
+    </div>
+
+    <div>
+        <div>
+            <h1>4</h1>
+            <p>Atribuídos</p>
+        </div>
+
+        <div>
+            <h1>4</h1>
+            <p>Pendentes</p>
+        </div>
+
+    </div>
+
+
+    <div>
+        <a href="">Veja mais</a>
+
+        <h1>Próximas Revisões</h1>
+
+
+        <table>
+
+        </table>
+
+    </div>
+
+</div>
+
+<hr>
+
+
+<h1>Próximas Revisões Agendadas</h1>
+    <ul>
+        {% for revisao in todas_revisoes %}
+            <li>{{ revisao.flashcard.titulo }} - Data: {{ revisao.data_agendada|date:"Y-m-d" }}</li>
+        {% empty %}
+            <li>Não há próximas revisões agendadas.</li>
+        {% endfor %}
+    </ul>
+
+
+<hr>
+
+
+<h1>Revisões do Dia</h1>
+
+
+    <ul>
+        {% for revisao in revisoes_do_dia %}
+            <li>{{ revisao.flashcard.titulo }}</li>
+        {% endfor %}
+    </ul>
+
+
+<h1>Revisões Pendentes</h1>
+    <ul>
+        {% for revisao in revisoes_pendentes %}
+            <li>{{ revisao.flashcard.titulo }}</li>
+        {% endfor %}
+    </ul>
+
+
+<hr>
+
+</div>
+
+
+{% endblock %}

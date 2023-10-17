@@ -1,18 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flashcard</title>
-    <link rel="stylesheet" href="venv\Lib\site-packages\django_quill\static\django_quill\django_quill.css">
-</head>
-<body>
-    <form action="" method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.media }}
-        {{ form.titulo }}
-        {{ form.content }}
-        <button type="submit">Enviar</button>
-    </form>
-</body>
-</html>
+{% extends 'core/partials/base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<div class="d-flex align-items-center justify-content-center">
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+    Abrir Modal
+  </button>
+
+  <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+    <div class="modal-dialog modal-dialog-centered modalform ">
+
+      <div class="modal-content d-flex">
+
+        <form action="" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          {{ form.media }}
+
+          <div class="d-flex">
+            <input class="titulof" placeholder="Título" type="text" name="titulo" maxlength="150" required=""
+              id="id_titulo">
+          </div>
+
+          {{ form.content }}
+
+          
+          <div class="d-flex justify-content-center divsalvar">
+            <button class="salvar" type="submit">Enviar</button>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+
+</div>
+{% endblock %}
