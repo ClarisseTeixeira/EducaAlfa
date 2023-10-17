@@ -1,5 +1,5 @@
 """
-URL configuration for core project.
+URL configuration for main project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.2/topics/http/urls/
@@ -14,21 +14,18 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
-from django.urls import path, include
+
+from django.urls import path
 from django.contrib.auth import views as auth_views 
-from .views import auth
-from django.conf.urls.static import static
-from django.conf import settings
+from .views.home import index, dashboard
+from .views.auth import *
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
-    path("", include('pomodoro.urls')),
-    path("", include('revisao.urls')),
-    path('', include('questoes.urls')),
     path('accounts/login/', auth_views.LoginView.as_view(), name='login'),
     path('accounts/logout/', auth_views.LogoutView.as_view(), name='logout'),
-    path('registro/', auth.registro, name='registro'),
-    path('', auth.index, name='index')
+    path('registro/', registro, name='registro'),
+    path('', index, name='index'),
+    path('dashboard/', dashboard, name='dashboard'),
 
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+] 

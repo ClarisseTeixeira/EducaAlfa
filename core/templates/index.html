@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+        {% block head%} {% endblock %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">    
+    <title>{% block title%} {% endblock %}</title>
+</head>
+
+<body>
+    <header class="container" >
+        <img class="logo" src="{% static 'img\LogoOficial.svg'  %}" alt="">
+        <nav class="basenav">
+            <ul class="navul">
+                <li class="navli"><a href="#">Revisão</a></li>
+                <li class="navli"><a href="#">Materiais</a></li>
+                <li class="navli"><a href="#">Questões</a></li>
+                <li class="navli"><a href="#">Pomodoro</a></li>
+            </ul>
+            
+            <div class="entrar"><a  href="{% url 'login' %}">Entrar</a> </div>
+        </nav>
+    </header>
+
+
+    <main>
+        
+            <div class="parte1">
+                <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="760" viewBox="0 0 1440 760" fill="none">
+                    <path d="M0 0H1440V760H0V0Z" fill="url(#paint0_linear_613_15)"/>
+                    <defs> 
+                        <linearGradient id="paint0_linear_613_15" x1="720" y1="12.4231" x2="720" y2="734.788" gradientUnits="userSpaceOnUse">
+                            <stop offset="0.546875" stop-color="#2D82B5"/>
+                            <stop offset="0.75" stop-color="#2D82B5" stop-opacity="0.6"/>
+                            <stop offset="0.869092" stop-color="#2D82B5" stop-opacity="0.376953"/>
+                            <stop offset="0.993386" stop-color="#2D82B5" stop-opacity="0"/>
+                            <stop offset="1" stop-color="white" stop-opacity="0"/>
+                        </linearGradient>
+                        
+                    </defs>
+                </svg>
+                
+            </div>
+            
+            <div class="parte2">
+
+            </div>
+
+            <div class="parte3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="760" viewBox="0 0 1440 760" fill="none">
+                    <path d="M1440 1013L0 1013L0 -6.10352e-05L1440 -6.10352e-05L1440 1013Z" fill="url(#paint0_linear_613_1033)"/>
+                    <defs>
+                      <linearGradient id="paint0_linear_613_1033" x1="720" y1="996.441" x2="720" y2="33.6043" gradientUnits="userSpaceOnUse">
+                        <stop offset="0.546875" stop-color="#2D82B5"/>
+                        <stop offset="0.75" stop-color="#2D82B5" stop-opacity="0.6"/>
+                        <stop offset="0.869092" stop-color="#2D82B5" stop-opacity="0.376953"/>
+                        <stop offset="0.993386" stop-color="#2D82B5" stop-opacity="0"/>
+                        <stop offset="1" stop-color="white" stop-opacity="0"/>
+                      </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+
+</body>
+</body>
+
+</html>

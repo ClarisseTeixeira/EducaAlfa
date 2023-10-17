@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<div class="d-flex justify-content-center m-5">
+{% for disciplina in disciplinas %}
+<div class="p-3">
+  <a href="{% url 'lista_assuntos' disciplina.id %}">
+    <img src="{{ disciplina.imagem.url }}" alt="">
+  </a>
+  <p>{{ disciplina.nome }}</p>
+</div>    
+
+{% endfor %}
+</div>
+{% endblock %}

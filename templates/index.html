@@ -1,77 +1,167 @@
+
 {% load static %}
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    
         {% block head%} {% endblock %}
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">    
-    <title>{% block title%} {% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}"> 
+    <title></title>
+
 </head>
-
 <body>
-    <header class="container" >
-        <img class="logo" src="{% static 'img\LogoOficial.svg'  %}" alt="">
-        <nav class="basenav">
-            <ul class="navul">
-                <li class="navli"><a href="#">Revisão</a></li>
-                <li class="navli"><a href="#">Materiais</a></li>
-                <li class="navli"><a href="#">Questões</a></li>
-                <li class="navli"><a href="#">Pomodoro</a></li>
-            </ul>
-            
-            <div class="entrar"><a  href="{% url 'login' %}">Entrar</a> </div>
-        </nav>
-    </header>
+    
 
-
-    <main>
-        
-            <div class="parte1">
-                <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="760" viewBox="0 0 1440 760" fill="none">
-                    <path d="M0 0H1440V760H0V0Z" fill="url(#paint0_linear_613_15)"/>
-                    <defs> 
-                        <linearGradient id="paint0_linear_613_15" x1="720" y1="12.4231" x2="720" y2="734.788" gradientUnits="userSpaceOnUse">
-                            <stop offset="0.546875" stop-color="#2D82B5"/>
-                            <stop offset="0.75" stop-color="#2D82B5" stop-opacity="0.6"/>
-                            <stop offset="0.869092" stop-color="#2D82B5" stop-opacity="0.376953"/>
-                            <stop offset="0.993386" stop-color="#2D82B5" stop-opacity="0"/>
-                            <stop offset="1" stop-color="white" stop-opacity="0"/>
-                        </linearGradient>
-                        
-                    </defs>
-                </svg>
+    <div class="container1">
+        <header class="container" >
+            <img class="logo" src="{% static 'img\LogoOficial.svg'  %}" alt="">
+            <nav class="basenav">
+                <ul class="navul">
+                    <li class="navli"><a href="#">Revisão</a></li>
+                    <li class="navli"><a href="#">Materiais</a></li>
+                    <li class="navli"><a href="#">Questões</a></li>
+                    <li class="navli"><a href="#">Pomodoro</a></li>
+                </ul>
                 
-            </div>
-            
-            <div class="parte2">
+                <div class="entrar"><a  href="{% url 'login' %}">Entrar</a> </div>
+            </nav>
+        </header>
 
-            </div>
 
-            <div class="parte3">
-                <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="760" viewBox="0 0 1440 760" fill="none">
-                    <path d="M1440 1013L0 1013L0 -6.10352e-05L1440 -6.10352e-05L1440 1013Z" fill="url(#paint0_linear_613_1033)"/>
-                    <defs>
-                      <linearGradient id="paint0_linear_613_1033" x1="720" y1="996.441" x2="720" y2="33.6043" gradientUnits="userSpaceOnUse">
-                        <stop offset="0.546875" stop-color="#2D82B5"/>
-                        <stop offset="0.75" stop-color="#2D82B5" stop-opacity="0.6"/>
-                        <stop offset="0.869092" stop-color="#2D82B5" stop-opacity="0.376953"/>
-                        <stop offset="0.993386" stop-color="#2D82B5" stop-opacity="0"/>
-                        <stop offset="1" stop-color="white" stop-opacity="0"/>
-                      </linearGradient>
-                    </defs>
-                </svg>
-            </div>
-    </main>
 
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+        <div class="d-flex justify-content-center">
 
+            <div class="mt-5 row align-items-center">
+
+                <div class="col">
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <h1 class="educaalfa">A melhor maneira de estudar você encontra no EducaAlfa</h1>
+                    <p class="subtitulo">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                        laboris nisi ut aliquip ex ea commodo</p>
+                </div>
+        
+                <div class="col">
+                    
+                    <br>
+                    <img class="imgindex" src="{% static 'img\Online learning-amico.svg' %}" alt="">
+                </div>
+            </div>        
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="branca">
+
+        <h1>Técnicas de estudo</h1>
+        <br>
+        <br>
+
+        <div class="quadro">
+            <h3 class="tecnica">Pomodoro</h3>
+            <p class="conteudotecnica">gttttttttttttttttttttttttttttttLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo </p>
+        </div>
+        <div class="quadro">
+            <h3 class="tecnica">Repetição espaçada</h3>
+            <p class="conteudotecnica">gttttttttttttttttttttttttttttttLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo </p>
+        </div>
+        <div class="quadro1">
+            <h3 class="tecnica">Teste prático</h3>
+            <p class="conteudotecnica">gttttttttttttttttttttttttttttttLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo </p>
+        </div>
+
+
+        <div class="d-flex justify-content-center">
+            <div class="mt-5 row align-items-center">
+                <div class="col1">
+                    <img class="imgconteudo" src="{% static 'img\Work time-cuate.svg' %}" alt="">               
+                </div>
+
+                <div class="col-tecnicas">
+                    
+                    <h1 class="textconteudo">O que são Técnicas de Estudo</h1>
+                    <p class="conteudo">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                        laboris nisi ut aliquip ex ea commodo Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                        exercitation ullamco laboris nisi ut aliquip ex ea commodo </p>
+                </div>
+            </div>        
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+    
+
+    <div class="container2">
+        <br>
+        <br>
+        <div class="d-flex justify-content-center">
+
+            <div class="mt-5 row align-items-center">
+
+                <div class="col">
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    
+                    <h1 class="materiais">Acessa diferentes materiais de estudo</h1>
+                    <p class="text-materiais">loremLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                </div>
+
+                <div class="col">
+                    <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                          <div class="carousel-item active" data-bs-interval="10000">
+                            <img src="{% static 'img\Work time-cuate.svg' %}" class="d-block w-100" alt="...">
+                          </div>
+                          <div class="carousel-item" data-bs-interval="2000">
+                            <img src="{% static 'img\Online learning-amico.svg' %}" class="d-block w-100" alt="...">
+                          </div>
+                          <div class="carousel-item">
+                            <img src="..." class="d-block w-100" alt="...">
+                          </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Next</span>
+                        </button>
+                      </div>
+            </div> 
+        </div>       
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>
+    
 </body>
-</body>
-
 </html>

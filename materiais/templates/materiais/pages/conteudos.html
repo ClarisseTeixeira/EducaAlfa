@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head%}
+<link rel="stylesheet" href="{% static 'materiais\css\style.css' %}">
+
+{% endblock %}
+
+{% block content %}
+
+
+        {% for material in materiais %}
+
+        <h2 class="p-5 d-flex justify-content-center">{{ material.titulo }}</h2>
+
+        <div class="d-flex justify-content-center">
+        <iframe width="670" height="385" src="{{ material.link }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+
+        <h4 class="mt-5">{{ material.textotitulo }}</h4>
+        <p>{{ material.texto }}</p>
+              
+        <h4 class="mt-5">Referências</h4>        
+        <p> {{ material.referencias }}</p>     
+    
+
+        {% endfor %}
+        
+
+{% endblock %}
