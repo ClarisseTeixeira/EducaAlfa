@@ -1,0 +1,73 @@
+{% load static %}
+
+{% block head%}
+<link rel="stylesheet" href="{% static 'pomodoro\css\pomodoro.css' %}">
+<script src="{% static 'pomodoro/js/pomodoro.js' %}"></script>
+{% endblock %}
+<div class="form-container">
+    <div class="containeres">
+        <div class="pomodoro">Pomodoro</div>
+        <div class="descanso">Descanso</div>
+    </div>
+    <div class="timer" id="timer">25:00</div>
+    <div id="counter">1/4</div>
+    <button class="iniciar" id="toggleButton">Iniciar</button>
+</div>
+
+<script>
+    var isPomodoro = true;
+    var isRunning = false;  // Variável para controlar se o temporizador está em execução
+    var interval;  // Variável para armazenar o intervalo do temporizador
+    var pomodoroCount = 1; // Contador de Pomodoros
+
+
+    function startTimer(duration) {
+        var timerDisplay = document.getElementById('timer');
+        var counterDisplay = document.getElementById('counter');
+        var minutes, seconds;
+
+
+        interval = setInterval(function () {
+            minutes = parseInt(duration / 60, 10);
+            seconds = parseInt(duration % 60, 10);
+
+
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+
+            timerDisplay.innerHTML = minutes + ":" + seconds;
+
+
+            if (--duration < 0) {
+                clearInterval(interval);
+
+
+                isPomodoro = !isPomodoro;
+                if (isPomodoro) {
+                    pomodoroCount++;
+                    counterDisplay.innerHTML = pomodoroCount + "/4"; // Atualiza o contador
+                    startTimer(25 * 60);
+                } else {
+                    startTimer(5 * 60);
+                }
+            }
+        }, 1000);
+    }
+
+
+    document.getElementById('toggleButton').addEventListener('click', function () {
+        var counterDisplay = document.getElementById('counter');
+       
+        if (isRunning) {
+            clearInterval(interval);
+            isRunning = false;
+            this.innerHTML = "Iniciar"; // Muda o rótulo do botão para "Iniciar"
+        } else {
+            startTimer(25 * 60);
+            isRunning = true;
+            this.innerHTML = "Pausar"; // Muda o rótulo do botão para "Pausar"
+            counterDisplay.style.display = 'block'; // Mostra o contador
+        }
+    });
+</script>

@@ -5,20 +5,23 @@
 
 .grafico {
     width: 400px;
-    height: 320px;
-    float: left; /* Alinhar à esquerda */
-    margin-left: 50px;
+    height: 376px;
+    margin-right: 100px;
+    
 }
-.estatisticas{
-    float: right; /* Alinhar à esquerda */
-    margin-right: 50px;
+
+.dados{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
 }
 
 .num-acertos,
 .num-erradas,
 .taxa-acerto,
 .num-questoes {
-    width: 200px;
+    width: 250px;
     height: 107px;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     border-radius: 10px;
@@ -50,7 +53,7 @@
     background: #FFF;
 }
 
-.desempenho {
+.desempenho, .disciplinas {
     margin-left: 50px;
 }
 

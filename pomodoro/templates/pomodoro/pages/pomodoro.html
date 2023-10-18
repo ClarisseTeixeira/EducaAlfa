@@ -1,0 +1,15 @@
+{% extends "core/partials/base.html" %}
+{% load static %}
+
+{% block head%}
+<link rel="stylesheet" href="{% static 'pomodoro\css\pomodoro.css' %}">
+<link rel="stylesheet" href="{% static 'css/style.css' %}"> 
+{% endblock %}
+{% block content %}
+   <div class="container">
+    <br>
+    <br>
+    <br>
+{% include "pomodoro/partials/pomodoro.html" %}
+</div>
+{% endblock %}
