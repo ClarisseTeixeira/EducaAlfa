@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Gráfico de Revisões por Dia da Semana</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+</head>
+
+<body>
+    <h1>Gráfico de Revisões por Dia da Semana</h1>
+    <div style="width: 50%;">
+        <canvas id="Chart"></canvas>
+    </div>
+
+
+    <script>
+        var ctx = document.getElementById('Chart').getContext('2d');
+        var data = JSON.parse('{{ serialized_data|safe|escapejs }}');
+    
+        var chart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: data.weekdays,
+                datasets: [{
+                    label: 'Revisões Concluídas por Dia da Semana',
+                    data: data.revisoes,
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Dia da Semana',
+                        },
+                    },
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Revisões Concluídas',
+                        },
+                    },
+                },
+            },
+        });
+    </script>
+    
+    
+</body>
+
+</html>

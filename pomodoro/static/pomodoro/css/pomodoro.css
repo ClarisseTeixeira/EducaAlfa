@@ -1,68 +1,65 @@
+.form-container{
+    background-color: rgba(45, 130, 181, 0.2);
+    padding: 20px;
+    border-radius: 50px;
+    max-width: 970px;
+    height: 530px;
+    margin: auto;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, .3);
+    position: relative;
+}
 
-    .form-container{
-        background-color: rgba(45, 130, 181, 0.2);
-        padding: 20px;
-        border-radius: 50px;
-        max-width: 970px;
-        height: 530px;
-        margin: auto;
-        box-shadow: 5px 5px 5px rgba(0, 0, 0, .3);
-        justify-content: space-between;
-        position: relative;
-    }
+.timer{
+    color: rgba(2, 69, 119, 0.70);
+    font-size: 200px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 
-    .timer{
-        color: rgba(2, 69, 119, 0.70);
-        font-size: 200px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
+.containeres {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    text-align: center;
+    max-width: 877px;
+    height: 81.5px;
+    margin: auto;
+    margin-top: 20px;
+}
 
-    .containeres {
-        display: flex;
-        align-items: flex-start;
-        flex-wrap: nowrap; /* Alteração aqui para evitar quebras de linha */
-        text-align: center;
-        max-width: 877px;
-        height: 81.5px;
-        margin: auto;
-        margin-top: 20px;
-    }
+.pomodoro, .descanso {
+    padding: 10px;
+    border-radius: 100px;
+    text-align: center;
+    font-weight: bold;
+    max-width: 430px;
+    flex: 1;
+    margin: 0 10px 10px;
+    font-size: 65px;
+    color: #ffffff;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, .3);
+    display: inline-block;
+    line-height: 60px;
+}
 
-    .pomodoro, .descanso {
-        padding: 10px;
-        border-radius: 100px;
-        text-align: center;
-        font-weight: bold;
-        max-width: 430px;
-        flex: 1;
-        margin: 0 10px 10px;
-        font-size: 65px;
-        color: #ffffff;
-        box-shadow: 5px 5px 5px rgba(0, 0, 0, .3);
-        display: inline-block;
-        line-height: 60px; /* Adicione esta linha */
-    }
+.pomodoro {
+    background-color: rgba(2, 69, 119, 0.7);
+}
 
-    .pomodoro {
-        background-color: rgba(2, 69, 119, 0.7);
-    }
-
-    .descanso {
-        background-color: rgba(45, 130, 181, 0.44);
-    }
-
+.descanso {
+    background-color: rgba(45, 130, 181, 0.44);
+}
 
 #counter {
     display: none;
     text-align: center;
     position: absolute;
-    top: calc(70% + 20px); /* Posição vertical entre o botão e o temporizador */
+    top: calc(70% + 20px);
     left: 50%;
     transform: translateX(-50%);
     font-size: 30px;
@@ -88,9 +85,32 @@
     border: none;
 }
 
-    #timer{
-        font-size: 200px;
-        color: rgba(2, 69, 119, 0.7); 
-        text-align: center;
-        font-family: "digital numbers";
+#timer{
+    font-size: 200px;
+    color: rgba(2, 69, 119, 0.7);
+    text-align: center;
+    font-family: "digital numbers";
+}
+
+@media only screen and (max-width: 600px) {
+    .form-container {
+        height: 300px;
+        padding: 10px;
     }
+    #timer {
+        font-size: 100px;
+    }
+    .pomodoro, .descanso {
+        font-size: 30px;
+        max-width: 200px;
+        height: 40,75px;
+        flex: 1;
+        line-height: 30px;
+    }
+    .iniciar {
+        width: 200px;
+        height: 61px;
+        font-size: 30px;
+    }
+}
+

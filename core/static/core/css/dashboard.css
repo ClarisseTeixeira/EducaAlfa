@@ -1,6 +1,4 @@
-* {
-    font-family: 'Merriweather';
-}
+
 
 .username {
     color: #001B48;
@@ -9,10 +7,14 @@
     justify-content: flex-end;
     margin: 15px;
     max-width: 95%;
+    font-family: 'Merriweather';
+
 }
 
 .username p {
     margin-right: 20px;
+    font-family: 'Merriweather';
+
 }
 
 .username svg {
@@ -24,7 +26,7 @@
     height: 70px;
     background-color: #fff;
     width: 100%;
-    
+
 }
 
 
@@ -157,7 +159,7 @@ nav.menu-lateral {
     border-radius: 10px;
     background: #FFF;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-
+    font-family: 'Merriweather';
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -168,6 +170,8 @@ nav.menu-lateral {
     display: flex;
     align-items: center;
     flex-grow: 1;
+    font-family: 'Merriweather';
+
 }
 
 .bflash {
@@ -185,7 +189,7 @@ nav.menu-lateral {
     color: #001B48;
 }
 
-.buttonf{
+.buttonf {
     width: 265px;
     height: 45px;
     border-radius: 50px;
@@ -193,14 +197,92 @@ nav.menu-lateral {
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     color: #FFF;
 }
-.tflash{
+
+.tflash {
     margin: 20px;
 }
-.tflash h1{
+
+.tflash h1 {
     margin: auto;
+    font-family: 'Merriweather';
+
 }
 
-.centro{
+.centro {
     margin-left: 100px;
     max-width: 90%;
+}
+
+.msgbv {
+    width: 670px;
+    height: 170px;
+    border-radius: 20px;
+    background: #FFF;
+    box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.25);
+    padding: 10px;
+}
+
+.msgbv img {
+    height: 170px;
+
+}
+
+.msgbv p {
+    text-align: justify;
+    font-family: 'Merriweather';
+
+}
+
+.fage {
+    width: 460px;
+    height: 70px;
+    border-radius: 10px;
+    background: #FFF;
+
+}
+
+.fage h1 {
+    font-size: 25px;
+    font-weight: 700;
+    padding-top: 20px;
+    font-family: 'Merriweather';
+
+}
+
+.fatri {
+    display: flex;
+    width: 217px;
+    height: 87px;
+    border-radius: 5px;
+    background: #FFF;
+}
+
+.fatri h1 {
+    color: #000;
+    text-align: center;
+    font-family: Crimson Text;
+    font-size: 64px;
+    font-weight: 600;
+}
+
+.fatri p {
+    text-align: center;
+    font-size: 24px;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: center !important;
+}
+
+.modal-header h5 {
+    font-size: 36px;
+}
+
+
+/* Custom CSS for event colors */
+.fc-event {
+    background-color: #024577; /* Green */
+    color: #fff;
+    border: none;
 }

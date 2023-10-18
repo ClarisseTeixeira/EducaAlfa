@@ -25,6 +25,8 @@ def flashcards(request):
             flashcard.user = request.user
             flashcard.save()
 
+    
+    
     context = {
         "flashcards": flashcards,
         "form": form,
@@ -62,11 +64,11 @@ def proxima_revisao(revisao):
 
     
 @login_required
-def detalhes_flashcard(request, flashcard_id):
-    flashcard = get_object_or_404(Flashcard, id=flashcard_id)
+def detalhes_flashcard(request, id):
+    detalhes = get_object_or_404(Flashcard, id=id)
     user = request.user 
 
-    revisao = Revisao.objects.filter(flashcard=flashcard, user=user, concluida=False).first()
+    revisao = Revisao.objects.filter(flashcard=detalhes, user=user, concluida=False).first()
 
     if request.method == 'POST':
         if revisao:
@@ -75,38 +77,20 @@ def detalhes_flashcard(request, flashcard_id):
             revisao.save()
 
             nova_data_revisao = proxima_revisao(revisao)
-            Revisao.objects.create(flashcard=flashcard, user=user, data_agendada=nova_data_revisao)
+            Revisao.objects.create(flashcard=detalhes, user=user, data_agendada=nova_data_revisao)
 
-            return redirect('detalhes_flashcard', flashcard_id=flashcard.id)
+            return redirect('detalhes_flashcard', flashcard_id=detalhes.id)
     context = {
-        'flashcard': flashcard,
+        'detalhes': detalhes,
         'revisao': revisao,
     }
-    return render(request,'revisao/flashcard_detail.html'  , context)
+    return redirect('flashcards', context)
 
 
-
-
-@login_required 
-def lista_revisao(request):
-    user = request.user 
-
-    todas_revisoes = Revisao.objects.filter(user=user, data_agendada__gte=date.today()).order_by('data_agendada')
-
-    revisoes_do_dia = Revisao.objects.filter(user=user, data_agendada=date.today(), concluida=False)
-
-    revisoes_pendentes = Revisao.objects.filter(user=user, data_agendada__lt=date.today(), concluida=False)
-
-    context = {
-        'todas_revisoes': todas_revisoes,
-        'revisoes_do_dia': revisoes_do_dia,
-        'revisoes_pendentes': revisoes_pendentes,
-    }
-    return render(request, 'core/templates/core/pages/dashboard.html', context)
 
 
 @login_required
-def calendario(request):
+def calendar(request):
     user = request.user
     proximas_revisoes = Revisao.objects.filter(user=user, data_agendada__gte=date.today()).order_by('data_agendada')
 
@@ -120,59 +104,23 @@ def calendario(request):
     return JsonResponse(eventos, safe=False)
 
 
-@login_required
-def revisoes_por_dia_da_semana(request):
-    user = request.user
-    today = timezone.now().date()
-    start_date = today - timedelta(days=6)
-
-    revisoes = Revisao.objects.filter(
-        user=user,
-        concluida=True,
-        data_agendada__range=[start_date, today]
-    ).annotate(
-        dia_semana=ExtractWeekDay('data_agendada')
-    ).values('dia_semana').annotate(total=Count('id')).order_by('dia_semana')
-
-    dias_da_semana = [0] * 7
-    nomes_dias_semana = []
-
-    for revisao in revisoes:
-        dia_semana = revisao['dia_semana'] 
-        dias_da_semana[dia_semana] = revisao['total']
-
-    # Defina rótulos para os dias da semana na ordem desejada
-    dias_semana_ordem = ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado', 'Domingo' ]
-    
-    dia_atual_idx = today.weekday()
-
-    nomes_dias_semana = dias_semana_ordem[dia_atual_idx + 1:] + dias_semana_ordem[:dia_atual_idx + 1]
-
-    return render(request, 'revisao/revisoes_por_dia_da_semana.html', {
-        'dias_da_semana': dias_da_semana,
-        'nomes_dias_semana': nomes_dias_semana,
-    })
-
-
-
-
 
 @login_required
-def tudo(request):  
-    flashcards = Flashcard.objects.all()
-    eventos_calendario = []
-
+def calendario(request):  
+    eventos_calendario = Revisao.objects.filter(user=request.user, data_agendada__gte=date.today())
     context = {
-        "flashcards": flashcards,
         "eventos_calendario": eventos_calendario,
     }
-    return render(request, 'revisao/calendar.html', context)
+    return render(request, 'revisao/calendario.html', context)
 
 
 
 
 
-
+def remover(request, id):
+    flashcard = get_object_or_404(Flashcard, id=id)
+    flashcard.delete()
+    return redirect('flashcards') 
 
 
 
