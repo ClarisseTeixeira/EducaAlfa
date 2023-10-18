@@ -41,7 +41,7 @@
         </div>
     </div>
 
-<h1>Meus Flashcards</h1>
+    <h1>Meus Flashcards</h1>
 
 </div>
 
@@ -58,16 +58,18 @@
         {% for flashcards in flashcards %}
 
 
+
         <div class="flashcards">
             <div class="tituloflash">
-                <h4><a href="">{{flashcards.titulo }}</a></h4>
+                <h4><a href="#" data-bs-toggle="modal"
+                        data-bs-target="#flashcardModal{{ flashcards.id }}">{{flashcards.titulo }}</a></h4>
             </div>
 
 
             <div class="bflash">
 
                 <div class="mais">
-                    <a href="">
+                    <a href="{% url 'remover' flashcards.id %}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" class="bi bi-trash"
                             viewBox="0 0 16 16">
                             <path
@@ -93,7 +95,19 @@
 
 
         </div>
-
+        <div class="modal fade" id="flashcardModal{{ flashcards.id }}" tabindex="-1"
+            aria-labelledby="flashcardLabel{{ flashcards.id }}" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modalform">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="flashcardLabel{{ flashcards.id }}">{{ flashcards.titulo }}</h5>
+                    </div>
+                    <div class="modal-body">
+                        <div>{{ flashcards.content.html|safe }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
         {% endfor %}
 
     </div>
