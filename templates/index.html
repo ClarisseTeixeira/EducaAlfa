@@ -9,7 +9,7 @@
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fody Slider</title>
+    
     <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
     <link rel="stylesheet" href="style.css">
         {% block head%} {% endblock %}
@@ -25,10 +25,10 @@
             <img class="logo" src="{% static 'img\logooficialindex.svg'  %}" alt="">
             <nav class="basenav">
                 <ul class="navul">
-                    <li class="navli"><a href="#">Revisão</a></li>
-                    <li class="navli"><a href="#">Materiais</a></li>
-                    <li class="navli"><a href="#">Questões</a></li>
-                    <li class="navli"><a href="#">Pomodoro</a></li>
+                    <li class="navli"><a href="{% url 'indexrevisao' %}">Revisão</a></li>
+                  <li class="navli"><a href="#">Materiais</a></li>
+                  <li class="navli"><a href="{% url 'indexquestoes' %}">Questões</a></li>
+                  <li class="navli"><a href="{% url 'indexpomodoro' %}">Pomodoro</a></li>
                 </ul>
                 
                 <div class="entrar"><a  href="{% url 'login' %}">Entrar</a> </div>
