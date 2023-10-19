@@ -7,6 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fody Slider</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="style.css">
         {% block head%} {% endblock %}
     <link rel="stylesheet" href="{% static 'css/index.css' %}"> 
     <title></title>
@@ -17,7 +22,7 @@
 
     <div class="container1">
         <header class="container" >
-            <img class="logo" src="{% static 'img\LogoOficial.svg'  %}" alt="">
+            <img class="logo" src="{% static 'img\logooficialindex.svg'  %}" alt="">
             <nav class="basenav">
                 <ul class="navul">
                     <li class="navli"><a href="#">Revisão</a></li>
@@ -69,19 +74,20 @@
 
         <h1>Técnicas de estudo</h1>
         <br>
-        <br>
 
         <div class="quadro">
+            <img class="img-quadro" src="{% static 'img\pomodoro.svg'  %}" alt="">
             <h3 class="tecnica">Pomodoro</h3>
-            <p class="conteudotecnica">gttttttttttttttttttttttttttttttLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo </p>
+            <p class="conteudotecnica">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris </p>
         </div>
         <div class="quadro">
             <h3 class="tecnica">Repetição espaçada</h3>
-            <p class="conteudotecnica">gttttttttttttttttttttttttttttttLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo </p>
+            <p class="conteudotecnica">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris </p>
         </div>
         <div class="quadro1">
+            <img class="img-quadro" src="{% static 'img\questoes.svg'  %}" alt="">
             <h3 class="tecnica">Teste prático</h3>
-            <p class="conteudotecnica">gttttttttttttttttttttttttttttttLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo </p>
+            <p class="conteudotecnica">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris</p>
         </div>
 
 
@@ -116,52 +122,166 @@
     <div class="container2">
         <br>
         <br>
+        <br>
+        <br>
+        <br>
+        <br>
         <div class="d-flex justify-content-center">
 
             <div class="mt-5 row align-items-center">
 
                 <div class="col">
                     <br>
-                    <br>
-                    <br>
-                    <br>
                     
-                    <h1 class="materiais">Acessa diferentes materiais de estudo</h1>
+                    
+                    
+                    <h1 class="materiais">Acesso a diferentes materiais de estudo</h1>
                     <p class="text-materiais">loremLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                 </div>
 
                 <div class="col">
-                    <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-inner">
-                          <div class="carousel-item active" data-bs-interval="10000">
-                            <img src="{% static 'img\Work time-cuate.svg' %}" class="d-block w-100" alt="...">
-                          </div>
-                          <div class="carousel-item" data-bs-interval="2000">
-                            <img src="{% static 'img\Online learning-amico.svg' %}" class="d-block w-100" alt="...">
-                          </div>
-                          <div class="carousel-item">
-                            <img src="..." class="d-block w-100" alt="...">
+                    <section id="tranding">
+                        
+                        <div class="container">
+                          <div class="swiper tranding-slider">
+                            <div class="swiper-wrapper">
+                              <!-- Slide-start -->
+                              
+                              <div class="swiper-slide tranding-slide">
+                                <div class="retangulo">
+                                <div class="tranding-slide-content">
+                                  <h1 class="food-price">Matemática</h1>
+                                  <div class="tranding-slide-content-bottom">
+                                  </div>
+                                  <div class="tranding-slide-img">
+                                    <img class="imgcarrossel" src="{% static 'img\Work time-cuate.svg' %}" alt="Tranding">               
+                                </div>
+                                </div>
+                              </div>
+                            </div>
+                              <!-- Slide-end -->
+                              <!-- Slide-start -->
+                              <div class="swiper-slide tranding-slide">
+                                <div class="retangulo">
+                                <div class="tranding-slide-content">
+                                  <h1 class="food-price">Biologia</h1>
+                                  <div class="tranding-slide-content-bottom">
+                                  </div>
+                                  <div class="tranding-slide-img">
+                                    <img class="imgcarrossel" src="{% static 'img\Biologist-bro.svg' %}" alt="Tranding"> 
+                                </div>
+                                </div>
+                              </div>
+                            </div>
+                              <!-- Slide-end -->
+                              <!-- Slide-start -->
+                              <div class="swiper-slide tranding-slide">
+                                <div class="retangulo">
+                                <div class="tranding-slide-content">
+                                  <h1 class="food-price">Química</h1>
+                                  <div class="tranding-slide-content-bottom">
+                                  </div>
+                                  <div class="tranding-slide-img">
+                                    <img class="imgcarrossel" src="{% static 'img\chemistry lab-bro.svg' %}" alt="Tranding">
+                                </div>
+                                </div>
+                              </div>
+                            </div>
+                              <!-- Slide-end -->
+                              <!-- Slide-start -->
+                              <div class="swiper-slide tranding-slide">
+                                <div class="retangulo">
+                                <div class="tranding-slide-content">
+                                  <h1 class="food-price">Geografia</h1>
+                                  <div class="tranding-slide-content-bottom">
+                                  </div>
+                                  <div class="tranding-slide-img">
+                                    <img class="imgcarrossel" src="{% static 'img\Destination-rafiki.svg' %}" alt="Tranding"> 
+                                </div>
+                                </div>
+                              </div>
+                            </div>
+                              <!-- Slide-end -->
+                              <!-- Slide-start -->
+                              <div class="swiper-slide tranding-slide">
+                                <div class="retangulo">
+                                <div class="tranding-slide-content">
+                                  <h1 class="food-price">História</h1>
+                                  <div class="tranding-slide-content-bottom">
+                                    <div class="tranding-slide-img">
+                                        <img class="imgcarrossel" src="{% static 'img\People visiting history museum-bro.svg' %}" alt="Tranding"> 
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                              <!-- Slide-end -->
+                              <!-- Slide-start -->
+                              <div class="swiper-slide tranding-slide">
+                                <div class="retangulo">
+                                <div class="tranding-slide-content">
+                                  <h1 class="food-price">Português</h1>
+                                  <div class="tranding-slide-content-bottom">
+                                  </div>
+                                  <div class="tranding-slide-img">
+                                    <img class="imgcarrossel" src="{% static 'img\Bibliophile-rafiki.svg' %}" alt="Tranding">
+                                </div>
+                                </div>
+                              </div>
+                            </div>
+                              <!-- Slide-end -->
+                              <!-- Slide-start -->
+                              
+                              <!-- Slide-end -->
+                            </div>
+                  
+                            <div class="tranding-slider-control">
+                              <div class="swiper-button-prev slider-arrow">
+                                <ion-icon name="arrow-back-outline"></ion-icon>
+                              </div>
+                              <div class="swiper-button-next slider-arrow">
+                                <ion-icon name="arrow-forward-outline"></ion-icon>
+                              </div>
+                              <div class="swiper-pagination"></div>
+                            </div>
+                  
                           </div>
                         </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
-                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                          <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
-                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                          <span class="visually-hidden">Next</span>
-                        </button>
-                      </div>
+                      </section>
+                  
+                      <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+                      <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+                      <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+                      <script src="script.js"></script>
             </div> 
         </div>       
         </div>
         <br>
         <br>
         <br>
-        <br>
-        <br>
-        <br>
     </div>
-    
+    <script>
+        var TrandingSlider = new Swiper('.tranding-slider', {
+  effect: 'coverflow',
+  grabCursor: true,
+  centeredSlides: true,
+  loop: true,
+  slidesPerView: 'auto',
+  coverflowEffect: {
+    rotate: 0,
+    stretch: 0,
+    depth: 100,
+    modifier: 2.5,
+  },
+  pagination: {
+    el: '.swiper-pagination',
+    clickable: true,
+  },
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  }
+});
+    </script>
 </body>
 </html>

@@ -208,9 +208,13 @@ text-align: justify;
 text-align: center;
 }
 
+.img-quadro{
+    text-align: left;
+}
+
 .quadro, .quadro1{
     width: 270px;
-    height: 280px;
+    height: auto;
     flex-shrink: 0;
     border-radius: 25px 25px var(--Number, 0px) 25px;
     display: inline-block;
@@ -247,4 +251,37 @@ flex-shrink: 0;
 border-radius: 20px;
 background: #FFF;
 }
+
+
+
+
+
+.container-carrossel{
+    width: 700px;
+}
+
+.retangulo{
+    width: 475px;
+    height: 350px;
+    background: white;
+    border-radius: 20px;
+    text-align: center;
+    
+    padding: 20px;
+    text-align: center;
+}
+
+.imgcarrossel{
+    width: 250px;
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+
 

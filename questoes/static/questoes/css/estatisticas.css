@@ -56,6 +56,9 @@
 .desempenho, .disciplinas {
     margin-left: 50px;
 }
+.desempenho{
+    margin-right: 500px;
+}
 
 /* Estilo da accordion-item */
 .borda{    
@@ -66,8 +69,8 @@
     padding: 20px;
     width: 470px;
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
-    
 }
+
 .accordion-item {
     position: relative; /* Adicione posição relativa para alinhar a linha */
     border: none;
@@ -118,6 +121,23 @@
 .accordion-button::after {
     width: 0;
 }
+
+#responder-questoes{
+    border-radius: 100px;
+    border: 5px solid #001B48;
+    background: rgba(217, 217, 217, 0);
+    width: 210px;
+    height: 50px;
+    margin: auto;
+}
+.responder-questoes a,  #responder-questoes a{
+    margin: auto;
+    text-decoration: none;
+    color: #001B48;
+    font-size: 20px;
+}
+
+
 
 .title-table{
     border-radius: var(--Number, 0px);

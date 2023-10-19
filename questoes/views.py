@@ -73,9 +73,6 @@ def verificar_resposta(request, questao_id):
 def estatisticas(request):
     return render(request, 'questoes/pages/estatisticas.html')
 
-def desempenho(request):
-    return render(request, 'questoes/pages/desempenho.html')
-
 def indexquestoes(request):
     return render(request, 'questoes/pages/indexquestoes.html')
 
