@@ -21,11 +21,11 @@ from .views.home import index, dashboard, revisoes
 from .views.auth import *
 
 urlpatterns = [
-    path('accounts/login/', auth_views.LoginView.as_view(), name='login'),
-    path('accounts/logout/', auth_views.LogoutView.as_view(), name='logout'),
-    path('registro/', registro, name='registro'),
+    path('accounts/login/', user_login, name='login'),
+    path('accounts/logout/', user_logout, name='logout'),
+    path('registro', registro, name='registro'),
     path('', index, name='index'),
-    path('dashboard/', dashboard, name='dashboard'),
+    path('dashboard', dashboard, name='dashboard'),
     path('revisoes', revisoes, name='revisoes')
 
 
