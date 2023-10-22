@@ -31,12 +31,13 @@ h1{
 
 .etapa{
     text-align: left;
-    width: 355px;
-    height: 306px;
+    width: 300px;
+    height: 270px;
     border-radius: 25px 25px var(--Number, 0px) 25px;
     background: #F1F1F1;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     padding: 20px;
+    margin-top: 20px;
 }
 
 .etapasconteudo{
@@ -53,3 +54,104 @@ h1{
 }
 /* Estilo da accordion-item */
 
+@media screen and (max-width: 1200px) {
+    .imgpomodoro {
+        width: 300px;
+    }
+
+    .textpomodoro {
+        width: 450px;
+    }
+
+    .h1pomodoro {
+        font-size: 24px;
+    }
+
+    .etapa{
+        width: 355px;
+        height: 306px;
+        padding: 20px;
+    }
+
+    .etapaspomodoro .etapa:nth-last-child(2n){
+        margin-right: 0; /* Remove o espaçamento à direita da última div */
+    }
+
+}
+
+@media screen and (max-width: 1000px) {
+    .imgpomodoro {
+        width: 250px;
+    }
+
+    .textpomodoro {
+        width: 400px;
+    }
+
+    .h1pomodoro {
+        font-size: 24px;
+    }
+
+    .etapa{
+        width: 355px;
+        height: 306px;
+        padding: 20px;
+    }
+
+    .etapaspomodoro .etapa{
+        margin-right: 0px
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .imgpomodoro {
+        width: 250px;
+    }
+
+    .col{
+        text-align: center;
+    }
+
+    .textpomodoro {
+        width: 600px;
+    }
+
+    .h1pomodoro {
+        font-size: 24px;
+    }
+
+   .etapa{
+        width: 355px;
+        height: 306px;
+        padding: 20px;
+    }
+
+    .titlepasso{
+
+    }
+    
+    .etapasconteudo{
+        
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .imgpomodoro {
+        width: 300px;
+    }
+
+    .textpomodoro {
+        width: 400px;
+    }
+
+    .h1pomodoro {
+        font-size: 24px;
+    }
+
+    .etapa{
+        width: 355px;
+        height: 306px;
+        padding: 20px;
+    }
+
+}

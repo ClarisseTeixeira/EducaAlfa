@@ -5,11 +5,11 @@ from .models import Flashcard, Revisao
 
 @admin.register(Revisao)
 class RevisaodAdmin(admin.ModelAdmin):
-    list_display=['data_agendada','concluida']
+    list_display=['id','data_agendada','concluida']
 
 
 @admin.register(Flashcard)
 class FlashcardAdmin(admin.ModelAdmin):
-    list_display=['titulo', 'content',]
+    list_display=['id','titulo', 'content',]
     pass
 

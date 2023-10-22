@@ -15,7 +15,7 @@ from django.contrib import messages
 # Create your views here.
 @login_required
 def flashcards(request):
-    flashcards = Flashcard.objects.all()
+    flashcards = Flashcard.objects.all().filter(user=request.user).order_by('-data')
     form = FlashcardForm()
 
     if request.method == 'POST':
@@ -24,9 +24,7 @@ def flashcards(request):
             flashcard = form.save(commit=False)
             flashcard.user = request.user
             flashcard.save()
-
-    
-    
+            return redirect('flashcards')
     context = {
         "flashcards": flashcards,
         "form": form,
@@ -79,12 +77,12 @@ def detalhes_flashcard(request, id):
             nova_data_revisao = proxima_revisao(revisao)
             Revisao.objects.create(flashcard=detalhes, user=user, data_agendada=nova_data_revisao)
 
-            return redirect('detalhes_flashcard', flashcard_id=detalhes.id)
+            return redirect('detalhes_flashcard', id=detalhes.id)
     context = {
         'detalhes': detalhes,
         'revisao': revisao,
     }
-    return redirect('flashcards', context)
+    return render(request,'revisao/flashcard_detail.html' , context)
 
 
 
@@ -116,7 +114,7 @@ def calendario(request):
 
 
 
-
+@login_required
 def remover(request, id):
     flashcard = get_object_or_404(Flashcard, id=id)
     flashcard.delete()

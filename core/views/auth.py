@@ -34,7 +34,7 @@ def user_login(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                next_url = request.POST.get('next', 'index')
+                next_url = request.POST.get('next', 'dashboard')
                 return redirect(next_url)   
     else:
         form = AuthenticationForm()
