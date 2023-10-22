@@ -53,12 +53,19 @@
     background: #FFF;
 }
 
-.desempenho, .disciplinas {
-    margin-left: 50px;
-}
-.desempenho{
+.disciplinas {
     margin-right: 500px;
 }
+
+.subtitulo-disciplina{
+    margin-right: 1000px;
+}
+
+.subtitulo-desempenho{
+    margin-right: 900px;
+}
+
+
 
 /* Estilo da accordion-item */
 .borda{    

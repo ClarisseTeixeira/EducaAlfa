@@ -64,8 +64,8 @@
                     </li>
 
                     <li class="item-nav {% block linkq%} {% endblock %}">
-                        <a href="{% url 'pomodoro' %}"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" class="bi bi-alarm"
-                                viewBox="0 0 16 16">
+                        <a href="{% url 'pomodoro' %}"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                             class="bi bi-alarm" viewBox="0 0 16 16">
                                 <path
                                     d="M8.5 5.5a.5.5 0 0 0-1 0v3.362l-1.429 2.38a.5.5 0 1 0 .858.515l1.5-2.5A.5.5 0 0 0 8.5 9V5.5z" />
                                 <path
@@ -74,12 +74,12 @@
                     </li>
 
                     <li class="item-nav {% block link%} {% endblock %}">
-                        <a href="#"><img class="navimg" src="{% static 'core/img/navquestoes.svg' %}" alt=""></a>
+                        <a href="{% url 'estatisticas' %}"><img class="navimg" src="{% static 'core/img/navquestoes.svg' %}" alt=""></a>
                     </li>
 
 
                     <li class="item-nav">
-                        <a href="{% url 'estatisticas' %}"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                        <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
                                 class="bi bi-box-arrow-left" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd"
                                     d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z" />

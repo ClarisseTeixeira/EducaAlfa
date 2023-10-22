@@ -12,14 +12,11 @@
        
         <br>
         <br>
+       
+        <h3 class="d-flex justify-content-center subtitulo-desempenho">Desempenho Geral</h3>
         <br>
-
-        <div class="dados d-flex justify-content-center align-items-center">
-            <h3 class="desempenho">Desempenho Geral</h3>
-
-        {% include 'questoes/partials/botao.html' %}
-        </div> 
         
+        <br>
         <br>
         <div class="dados d-flex justify-content-center align-items-center">
             <div class="grafico">
@@ -32,9 +29,17 @@
     <br>
     <br>
     <br>
-    <div class="disciplinas">
-    <h3>Disciplinas</h3>
+
+    <h3 class="d-flex justify-content-center subtitulo-disciplina">Disciplinas</h3>
     <br>
+    <div class="dados d-flex justify-content-center align-items-center disciplinas">
+    
         {% include 'questoes/partials/valores_disciplinas.html' %}
     </div>
+     
+    <br>
+        <br>
+        <div class="d-flex justify-content-center">
+            {% include 'questoes/partials/botao.html' %}
+        </div>
 {% endblock %}
