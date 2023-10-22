@@ -168,8 +168,76 @@
     font-family: "digital numbers";
 }
 
-@media (max-width: 600px) {
+
+@media screen and (max-width: 1000px) {
     .form-container {
+        max-width: 700px;
+        height: 400px;
+        padding: 10px;
+    }
+    #timer {
+        font-size: 150px;
+    }
+
+    .containeres {
+        display: flex;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        text-align: center;
+        
+    }
+    .pomodoro, .descanso {
+        font-size: 30px;
+        max-width: 315px;
+        height: 40,75px;
+        flex: 1;
+        line-height: 30px;
+    }
+    .iniciar {
+        width: 200px;
+        height: 61px;
+        font-size: 30px;
+    }
+
+    #counter {
+        display: none;
+        text-align: center;
+        position: absolute;
+        top: calc(70% + 5px);
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 25px;
+        color: rgba(2, 69, 119, 0.70);
+    }
+    
+}
+
+@media screen and (max-width: 800px) {
+    .form-container {
+        max-width: 600px;
+        height: 400px;
+        padding: 10px;
+    }
+    #timer {
+        font-size: 150px;
+    }
+    .pomodoro, .descanso {
+        font-size: 30px;
+        max-width: 300px;
+        height: 40,75px;
+        flex: 1;
+        line-height: 30px;
+    }
+    .iniciar {
+        width: 200px;
+        height: 61px;
+        font-size: 30px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .form-container {
+        max-width: 400px;
         height: 300px;
         padding: 10px;
     }
@@ -182,12 +250,14 @@
         height: 40,75px;
         flex: 1;
         line-height: 30px;
+        font-size: 25px;
     }
     .iniciar {
         width: 200px;
         height: 61px;
         font-size: 30px;
     }
+
 }
 
 

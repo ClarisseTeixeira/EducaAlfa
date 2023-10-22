@@ -212,6 +212,11 @@ text-align: center;
     text-align: left;
 }
 
+.img-alinhar{
+    text-align: left;
+    margin-bottom: 10px;
+}
+
 .quadro, .quadro1{
     width: 270px;
     height: auto;
@@ -276,6 +281,10 @@ background: #FFF;
     text-align: center;
 }
 
+.link-carroseel{
+    text-decoration: none;
+    color: black;
+}
 
 
 

@@ -69,17 +69,24 @@
         <br>
 
         <div class="quadro">
+          <div class="img-alinhar">
             <img class="img-quadro" src="{% static 'img\pomodoro.svg'  %}" alt="">
+          </div>
             <h3 class="tecnica">Pomodoro</h3>
             <p class="conteudotecnica">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris </p>
         </div>
+      
         <div class="quadro">
-          <img class="img-quadro" src="{% static 'img\questoes.svg'  %}" alt="">
+          <div class="img-alinhar">
+          <img class="img-quadro" src="{% static 'img\image 2.png'  %}" alt="">
+        </div>
             <h3 class="tecnica">Repetição espaçada</h3>
             <p class="conteudotecnica">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris </p>
         </div>
         <div class="quadro1">
+          <div class="img-alinhar">
             <img class="img-quadro" src="{% static 'img\questoes.svg'  %}" alt="">
+          </div>
             <h3 class="tecnica">Teste prático</h3>
             <p class="conteudotecnica">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris</p>
         </div>
@@ -142,7 +149,7 @@
                           <div class="swiper tranding-slider">
                             <div class="swiper-wrapper">
                               <!-- Slide-start -->
-                              
+                              <a class="link-carroseel" href="{% url 'lista_assuntos' id=2 %}">
                               <div class="swiper-slide tranding-slide">
                                 <div class="retangulo">
                                 <div class="tranding-slide-content">
@@ -155,6 +162,7 @@
                                 </div>
                               </div>
                             </div>
+                          </a>
                               <!-- Slide-end -->
                               <!-- Slide-start -->
                               <div class="swiper-slide tranding-slide">
