@@ -135,7 +135,7 @@ p{
 
 .container2{
     background: linear-gradient(0deg, #2D82B5 53.61%, rgba(45, 130, 181, 0.60) 72.92%, rgba(45, 130, 181, 0.38) 84.24%, rgba(45, 130, 181, 0.00) 96.05%, rgba(255, 255, 255, 0.00) 96.68%);
-    height: 760px;
+    height: 800px;
 }
 
 .educaalfa{
@@ -229,11 +229,10 @@ text-align: center;
 }
 
 .branca .quadro {
-display: inline-block; /* Permite que as divs fiquem uma ao lado da outra */
-margin-right: 65px; /* Espaçamento de 65px entre as divs */
+display: inline-block;
+margin-right: 65px; 
 }
 
-/* Estilo da accordion-item */
 
 
 .materiais{
@@ -286,7 +285,13 @@ background: #FFF;
     color: black;
 }
 
+.text-muted{
+    fill:#ffffff;
+}
 
+.color-criador{
+    color: #ffffff;
+}
 
 
 

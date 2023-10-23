@@ -45,14 +45,13 @@ h1{
 }
 
 .etapaspomodoro .etapa {
-    display: inline-block; /* Permite que as divs fiquem uma ao lado da outra */
-    margin-right: 65px; /* Espaçamento de 65px entre as divs */
+    display: inline-block;
+    margin-right: 65px;
 }
 
 .etapaspomodoro .etapa:last-child {
-    margin-right: 0; /* Remove o espaçamento à direita da última div */
+    margin-right: 0;
 }
-/* Estilo da accordion-item */
 
 @media screen and (max-width: 1200px) {
     .imgpomodoro {
@@ -74,7 +73,7 @@ h1{
     }
 
     .etapaspomodoro .etapa:nth-last-child(2n){
-        margin-right: 0; /* Remove o espaçamento à direita da última div */
+        margin-right: 0;
     }
 
 }

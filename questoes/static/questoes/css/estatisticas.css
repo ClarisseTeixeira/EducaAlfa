@@ -30,8 +30,8 @@
     font-weight: bold;
     text-align: center;
     display: flex;
-    justify-content: center; /* Centraliza horizontalmente */
-    align-items: center; /* Centraliza verticalmente */
+    justify-content: center;
+    align-items: center;
 }
 
 .num-acertos {
@@ -66,8 +66,6 @@
 }
 
 
-
-/* Estilo da accordion-item */
 .borda{    
     width: 500px;
     margin: 20px;
@@ -79,7 +77,7 @@
 }
 
 .accordion-item {
-    position: relative; /* Adicione posição relativa para alinhar a linha */
+    position: relative; 
     border: none;
 }
 
@@ -88,7 +86,7 @@
     height: 20px;
     width: 400px;
     z-index: 0;
-    background-color: transparent; /* Defina o botão como transparente */
+    background-color: transparent;
     font-size: 20px;
 }
 
@@ -98,31 +96,27 @@
     top: 0;
     left: 0;
     height: 100%;
-    width: 5px; /* Largura da linha */
-    background-color: #d6e8ee; /* Cor quando fechado */
+    width: 5px;
+    background-color: #d6e8ee;
     z-index: 1;
-    transition: background-color 0.3s ease; /* Transição suave da cor */
+    transition: background-color 0.3s ease; 
 }
 
-/* Estilo da linha à esquerda quando .open está presente */
 .accordion-item.open::before {
-    background-color: #001b48; /* Cor quando aberto */
+    background-color: #001b48;
 }
 
-/* Estilo da linha à esquerda quando fechado */
 .accordion-item:not(.open)::before {
-    background-color: #d6e8ee; /* Cor quando fechado */
+    background-color: #d6e8ee;
 }
 
-/* Estilo do botão do acordeão */
 .accordion-button:focus,
 .accordion-button:hover,
 .accordion-button:not(.collapsed) {
-    border: none; /* Remova a borda */
-    outline: none; /* Remova o contorno */
-    box-shadow: none; /* Remova a sombra */
+    border: none; 
+    outline: none;
+    box-shadow: none; 
     background-color: transparent;
-    /* Defina outras propriedades personalizadas, se necessário */
 }
 
 .accordion-button::after {

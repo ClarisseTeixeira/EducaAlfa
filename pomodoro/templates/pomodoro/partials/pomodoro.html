@@ -16,9 +16,9 @@
 
 <script>
     var isPomodoro = true;
-    var isRunning = false;  // Variável para controlar se o temporizador está em execução
-    var interval;  // Variável para armazenar o intervalo do temporizador
-    var pomodoroCount = 1; // Contador de Pomodoros
+    var isRunning = false; 
+    var interval;
+    var pomodoroCount = 1;
 
 
     function startTimer(duration) {
@@ -46,7 +46,7 @@
                 isPomodoro = !isPomodoro;
                 if (isPomodoro) {
                     pomodoroCount++;
-                    counterDisplay.innerHTML = pomodoroCount + "/4"; // Atualiza o contador
+                    counterDisplay.innerHTML = pomodoroCount + "/4";
                     startTimer(25 * 60);
                 } else {
                     startTimer(5 * 60);
@@ -62,12 +62,12 @@
         if (isRunning) {
             clearInterval(interval);
             isRunning = false;
-            this.innerHTML = "Iniciar"; // Muda o rótulo do botão para "Iniciar"
+            this.innerHTML = "Iniciar";
         } else {
             startTimer(25 * 60);
             isRunning = true;
-            this.innerHTML = "Pausar"; // Muda o rótulo do botão para "Pausar"
-            counterDisplay.style.display = 'block'; // Mostra o contador
+            this.innerHTML = "Pausar";
+            counterDisplay.style.display = 'block';
         }
     });
 </script>

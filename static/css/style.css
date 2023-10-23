@@ -121,3 +121,11 @@ nav{
     display: flex;
     align-items: center;
 }
+
+.logo-footer{
+    margin-right: 50px;
+}
+
+.text-muted{
+    fill:#015C92;
+}
