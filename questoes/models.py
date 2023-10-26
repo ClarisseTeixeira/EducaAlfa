@@ -13,7 +13,7 @@ class Assunto(models.Model):
 
 class Questao(models.Model):
     disciplina = models.ForeignKey(Disciplina, on_delete=models.CASCADE)
-    assunto = models.ForeignKey(Assunto, on_delete=models.CASCADE, null=True)  # Defina como nulo temporariamente
+    assunto = models.ForeignKey(Assunto, on_delete=models.CASCADE, null=True)
     instituicao_ano = models.CharField(max_length=150, default="")
     texto = models.TextField(default="")
     enunciado = models.TextField(default="")
