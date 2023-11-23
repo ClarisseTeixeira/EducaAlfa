@@ -4,13 +4,10 @@ from django.shortcuts import render
 from revisao.models import Revisao  
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
-
 import json
 
 def index(request):
     return render(request, "index.html")
-
-
 
 
 def home(request):

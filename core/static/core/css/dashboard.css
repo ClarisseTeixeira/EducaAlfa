@@ -104,6 +104,10 @@ nav.menu-lateral {
 
 }
 
+.modal-body{
+    height: auto !important;
+}
+
 .titulof {
     font-size: 36px;
     border: none;
@@ -129,6 +133,7 @@ nav.menu-lateral {
     font-family: Arial, Helvetica, sans-serif !important;
     font-size: 16px !important;
 }
+
 
 .salvar {
     border-radius: 20px;
@@ -169,7 +174,6 @@ nav.menu-lateral {
     align-items: center;
     flex-grow: 1;
     font-family: 'Merriweather';
-
 }
 
 .bflash {
@@ -208,7 +212,6 @@ nav.menu-lateral {
 .tflash h1 {
     margin: auto;
     font-family: 'Merriweather';
-
 }
 
 .centro {
