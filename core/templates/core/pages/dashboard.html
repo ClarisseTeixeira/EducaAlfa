@@ -44,7 +44,7 @@
 
         <div class="d-flex ">
             <div class="fatri">
-                <h1>{{todas_revisoes.count}}</h1>
+                <h1>{{revisoes_do_dia.count}}</h1>
                 <p>Atribuídos</p>
             </div>
 
@@ -68,17 +68,31 @@
                     <th>Data</th>
                     <th>Tipo</th>
                 </tr>
-                {% for revisao in todas_revisoes|slice:":5" %}
-                <tr>
-                    <td>{{ revisao.flashcard.titulo }}</td>
+                
+                
+                {% for revisao in revisoes_pendentes|slice:":5" %}
+                <tr class="pendentes">
+                    <td>{{ revisao.flashcard.titulo}}</td>
+                    <td>{{ revisao.data_agendada|date:"d/m/Y" }}</td>
+                    <td>{{ revisao.id }}</td>
+                </tr>
+                {% endfor %} 
+
+
+
+                {% for revisao in revisoes_do_dia|slice:":5" %}
+                <tr class="atribuídas">
+                    <td>{{ revisao.flashcard.titulo}}</td>
                     <td>{{ revisao.data_agendada|date:"d/m/Y" }}</td>
                     <td>{{ revisao.id }}</td>
                 </tr>
                 {% endfor %}
 
             </table>
+
+
             <div class="bcomecarev">
-                <a  href="#">Começar revisão</a>
+                <a  href="AQUI EU QUERO IR PARA A PÁGINA">Começar revisão</a>
             </div>
         </div>
 
