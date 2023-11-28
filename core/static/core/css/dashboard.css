@@ -99,10 +99,11 @@ nav.menu-lateral {
     margin-right: 7px !important;
 }
 
-.modal-content {
-    height: 450px !important;
 
+.modal-body{
+    min-height: 380px !important;
 }
+
 
 .titulof {
     font-size: 36px;
@@ -130,14 +131,16 @@ nav.menu-lateral {
     font-size: 16px !important;
 }
 
+
 .salvar {
     border-radius: 20px;
-    background: #14F500;
+    background: #11ca00e0;
     width: 110px;
     height: 40px;
     border: none;
     color: #fff;
-    margin-top: 20px;
+    margin-top: 15px;
+    margin-bottom: 10px;
 }
 
 .divsalvar {
@@ -169,7 +172,6 @@ nav.menu-lateral {
     align-items: center;
     flex-grow: 1;
     font-family: 'Merriweather';
-
 }
 
 .bflash {
@@ -199,20 +201,19 @@ nav.menu-lateral {
     background: #024577;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     color: #FFF;
+    margin: 10px 30px ;
 }
+
 
 .tflash {
-    margin: 20px;
-}
 
-.tflash h1 {
-    margin: auto;
     font-family: 'Merriweather';
-
+    display: flex;
+    justify-content: center;
 }
 
 .centro {
-    margin-left: 120px;
+    margin-left: 100px;
     max-width: 90%;
 }
 
@@ -328,4 +329,12 @@ nav.menu-lateral {
     margin-top: 15px;
     padding: 10px;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.05));
+}
+
+.atribuídas td{
+    color: green;
+}
+
+.pendentes td{
+    color: red;
 }

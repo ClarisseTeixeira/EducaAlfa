@@ -7,8 +7,12 @@
 
 {% block content %}
 
+<div class="tflash mt-4">
+    <h1>Meus Flashcards</h1>
+</div>
 
-<div class="d-flex tflash ">
+
+<div class="d-flex">
     <button type="button" class="buttonf" data-bs-toggle="modal" data-bs-target="#myModal">
         + Adicionar novos Flashcards
     </button>
@@ -24,7 +28,8 @@
                     {{ form.media }}
 
                     <div class="d-flex">
-                        <input class="titulof" placeholder="Título" type="text" name="titulo" maxlength="150"id="id_titulo">
+                        <input class="titulof" placeholder="Título" type="text" name="titulo" maxlength="150"
+                            id="id_titulo">
                     </div>
 
                     {{ form.content }}
@@ -40,7 +45,7 @@
         </div>
     </div>
 
-    <h1>Meus Flashcards</h1>
+
 
 </div>
 
@@ -94,6 +99,7 @@
 
 
         </div>
+
         <div class="modal fade" id="flashcardModal{{ flashcards.id }}" tabindex="-1"
             aria-labelledby="flashcardLabel{{ flashcards.id }}" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modalform">

@@ -17,10 +17,12 @@
 <section class="vh-90   ">
   <div class="container-fluid h-custom">
     <div class="row d-flex justify-content-center align-items-center h-100">
+
       <div class="col-md-9 col-lg-6 col-xl-5">
-        <img src="{% static 'img/login.svg' %}" class="img-fluid"
-          alt="imagem de login">
+        <a href="{% url 'index' %}"><img src="{% static 'img/login.svg' %}" class="img-fluid" alt="imagem de login"></a>
       </div>
+
+
       <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
         <h3 class="pb-2">Entrar no EducaAlfa</h3>
         <form method="post">
@@ -28,13 +30,11 @@
           {% csrf_token %}
 
 
-          <!-- Email input -->
           <div class="form-outline mb-4">
             <input type="text" name="username" id="id_username" class="form-control form-control-lg"
               placeholder="Nome" />
           </div>
 
-          <!-- Password input -->
           <div class="form-outline mb-3">
             <input type="password" name="password" id="id_password" class="form-control form-control-lg"
               placeholder="Senha" />
