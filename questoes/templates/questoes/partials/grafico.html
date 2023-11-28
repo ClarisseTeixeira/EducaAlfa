@@ -5,59 +5,84 @@
 <!-- Inclua a biblioteca Chart.js -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-
 {% block script %}
 <script>
   const ctx = document.getElementById('myDoughnutChart').getContext('2d');
 
-  // Defina os valores iniciais com base nos dados da primeira chamada
-  let questoesCertas = 0;
-  let questoesErradas = 0;
+  // Função para inicializar o gráfico com os valores iniciais
+  function inicializarGrafico() {
+    const data = {
+      labels: ['Questões Certas', 'Questões Erradas'],
+      datasets: [{
+        data: [{{ user_profile.questoes_certas|default:0 }}, {{ user_profile.questoes_erradas|default:0 }}],
+        backgroundColor: [
+          'rgb(54, 162, 235)',
+          'rgb(255, 99, 132)',
+        ],
+        hoverOffset: 4
+      }],
+    };
 
-  // Função para atualizar o gráfico com base nos dados
-  function atualizarGrafico() {
-    fetch('/verificar_resposta/questao_id/', {
-        method: 'GET',
-    })
-    .then(response => response.json())
-    .then(data => {
-        // Atualize o gráfico com os novos dados
-        myDoughnutChart.data.datasets[0].data = [data.questoes_certas, data.questoes_erradas];
-        myDoughnutChart.update(); // Atualize o gráfico
+    const config = {
+      type: 'doughnut',
+      data: data,
+    };
 
-
-        // Atualize as variáveis globais com os novos valores
-        questoesCertas = data.questoes_certas;
-        questoesErradas = data.questoes_erradas;
-    });
+    window.myDoughnutChart = new Chart(ctx, config);
   }
 
+  // Função para atualizar o gráfico com base nos dados
+  function atualizarGrafico(questoes_certas, questoes_erradas) {
+    // Atualize o gráfico com os novos dados
+    window.myDoughnutChart.data.datasets[0].data = [questoes_certas, questoes_erradas];
+    window.myDoughnutChart.update(); // Atualize o gráfico
+  }
 
+  // Função para chamar a verificação de resposta
+  function verificarResposta(questao_id) {
+  console.log('Clicou em Verificar Resposta');
 
-  // Defina os dados e opções iniciais do gráfico
-  const data = {
-    labels: ['Questões Certas', 'Questões Erradas'],
-    datasets: [{
-      data: [6,7], // Valores iniciais
-      backgroundColor: [
-        'rgb(54, 162, 235)',
-        'rgb(255, 99, 132)',
-      ],
-      hoverOffset: 4
-    }],
-  };
+  fetch('/verificar_resposta/' + questao_id + '/', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json',
+          'X-CSRFToken': getCookie('csrftoken'),
+      },
+      body: JSON.stringify({
+          alternativa: 'id_da_alternativa_selecionada',
+      }),
+  })
+  .then(response => response.json())
+  .then(data => {
+      console.log('Dados recebidos:', data);
 
-  const config = {
-    type: 'doughnut',
-    data: data,
-  };
+      // Atualize o gráfico com os novos dados
+      atualizarGrafico(data.questoes_certas, data.questoes_erradas);
+  });
+}
 
-  // Crie o gráfico inicial
-  const myDoughnutChart = new Chart(ctx, config);
+  // Encapsule a lógica de obtenção do token CSRF em uma função
+  function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+      const cookies = document.cookie.split(';');
+      for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i].trim();
+        if (cookie.startsWith(name + '=')) {
+          cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+          break;
+        }
+      }
+    }
+    return cookieValue;
+  }
 
-  // Chame a função para atualizar o gráfico quando uma questão for verificada
-  atualizarGrafico();
+  // Chame a função de inicialização assim que a página for carregada
+  document.addEventListener('DOMContentLoaded', inicializarGrafico);
+
 </script>
+
+
 
 
 {% endblock %}

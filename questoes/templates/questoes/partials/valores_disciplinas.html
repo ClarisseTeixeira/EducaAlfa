@@ -5,16 +5,16 @@
         <th class="item">Corretas</th>
         <th class="item">Incorretas</th>
     </tr>
+    {% for disciplina_data in dados_disciplinas %}
     <tr class="valores-table">
-        <td class="item-1">Biologia</td>
-        <td class="item">0</td>
-        <td class="item">0</td>
-        <td class="item">0</td>
+        <td class="item-1">{{ disciplina_data.disciplina_nome }}</td>
+        <td class="item">
+            {% with total_questoes=disciplina_data.questoes_certas|add:disciplina_data.questoes_erradas %}
+                {{ total_questoes }}
+            {% endwith %}
+        </td>
+        <td class="item">{{ disciplina_data.questoes_certas }}</td>
+        <td class="item">{{ disciplina_data.questoes_erradas }}</td>
     </tr>
-    <tr class="valores-table">
-        <td class="item-1">Língua Portuguesa</td>
-        <td class="item">0</td>
-        <td class="item">0</td>
-        <td class="item">0</td>
-    </tr>
+    {% endfor %}
 </table>
