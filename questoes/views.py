@@ -5,9 +5,16 @@ from django.http import JsonResponse
 from .models import Disciplina, Assunto, Questao, Alternativa, UserProfile
 from django.contrib.auth.models import User
 import json
+from django.db.models import Count, Sum
 
 
+@login_required
+def estatisticas_disciplinas(request):
+    disciplinas = Disciplina.objects.all()
+    return render(request, 'questoes\partials\valores_disciplinas.html', {'disciplinas': disciplinas})
 
+
+@login_required
 def estatisticas(request):
     # Obtenha os dados iniciais
     questoes_certas = 0
@@ -34,6 +41,8 @@ def estatisticas(request):
     }
 
     return render(request, 'questoes/pages/estatisticas.html', data)
+
+# No seu arquivo views.py
 
 
 @login_required
@@ -120,11 +129,7 @@ def verificar_resposta(request, questao_id):
         return JsonResponse(data)
 
     return redirect('questoes', questao_id=questao_id)
-
-
-
-
-
+    
 
 def indexquestoes(request):
     return render(request, 'questoes/pages/indexquestoes.html')
@@ -144,6 +149,6 @@ def grafico(request, usuario_id):
             'questoes_erradas': questoes_erradas,
         })
 
-    return render(request, 'questoes/partials/valores_disciplinas.html', {'dados_disciplinas': dados_disciplinas})
+    return render(request, 'questoes/partials/s.html', {'dados_disciplinas': dados_disciplinas})
 
 
