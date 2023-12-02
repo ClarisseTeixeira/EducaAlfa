@@ -88,7 +88,9 @@ nav.menu-lateral {
     align-items: center;
     justify-content: flex-start;
 }
-
+.sair{
+    padding-top: 175px;
+}
 
 .modalform {
     max-width: 820px;
@@ -123,10 +125,6 @@ nav.menu-lateral {
 .ql-editor {
     height: 280px !important;
     border-bottom: none !important;
-}
-
-.ql-editor p {
-
     font-family: Arial, Helvetica, sans-serif !important;
     font-size: 16px !important;
 }
@@ -337,4 +335,56 @@ nav.menu-lateral {
 
 .pendentes td{
     color: red;
+}
+
+p img{
+    max-width: 100%;
+}
+
+
+
+.ql-align-right {
+	text-align: right;
+}
+.ql-align-center {
+	text-align: center;
+}
+.ql-align-left {
+	text-align: left;
+}
+.ql-align-justify{
+    text-align: justify;
+}
+
+
+
+.ql-indent-1 {
+    margin-left: 3rem;
+}
+
+.ql-indent-2 {
+    margin-left: 6rem;
+}
+
+.ql-indent-3 {
+    margin-left: 9rem;
+}
+.ql-indent-4 {
+    margin-left: 12rem;
+}
+
+.ql-indent-5 {
+    margin-left: 15rem;
+}
+
+.ql-indent-6 {
+    margin-left: 18rem;
+}
+
+.ql-indent-7 {
+    margin-left: 21rem;
+}
+
+.ql-indent-8 {
+    margin-left: 24rem;
 }
