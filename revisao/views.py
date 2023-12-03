@@ -2,7 +2,7 @@ from django.http import HttpResponse, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from .models import Flashcard, Revisao
 from .forms import FlashcardForm
-from datetime import date, timedelta
+from datetime import date, timedelta, datetime
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.contrib.auth.decorators import login_required
@@ -30,11 +30,6 @@ def flashcards(request):
         "form": form,
     }
     return render(request, 'revisao/flashcard.html', context)
-
-
-
-
-
 
 
 
@@ -77,7 +72,8 @@ def detalhes_flashcard(request, id):
             nova_data_revisao = proxima_revisao(revisao)
             Revisao.objects.create(flashcard=detalhes, user=user, data_agendada=nova_data_revisao)
 
-            proximo_flashcard = Revisao.objects.filter(user=user, concluida=False).order_by('data_agendada').first()
+            proximo_flashcard = Revisao.objects.filter(user=user, concluida=False, data_agendada= datetime.now().date()).order_by('data_agendada').first()
+            
 
             if proximo_flashcard:
                 return redirect('detalhes_flashcard', id=proximo_flashcard.flashcard.id)
@@ -87,7 +83,7 @@ def detalhes_flashcard(request, id):
         'detalhes': detalhes,
         'revisao': revisao,
     }
-    return render(request,'revisao/flashcard_detail.html' , context)
+    return render(request,'revisao/flashcard_detail.html', context)
 
 
 
@@ -95,8 +91,7 @@ def detalhes_flashcard(request, id):
 @login_required
 def calendar(request):
     user = request.user
-    proximas_revisoes = Revisao.objects.filter(user=user, data_agendada__gte=date.today()).order_by('data_agendada')
-
+    proximas_revisoes = Revisao.objects.filter(user=user)
     eventos = []
     for revisao in proximas_revisoes:
         eventos.append({
@@ -110,7 +105,7 @@ def calendar(request):
 
 @login_required
 def calendario(request):  
-    eventos_calendario = Revisao.objects.filter(user=request.user, data_agendada__gte=date.today())
+    eventos_calendario = Revisao.objects.filter(user=request.user)
     context = {
         "eventos_calendario": eventos_calendario,
     }
