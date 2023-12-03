@@ -15,7 +15,7 @@ def registro(request):
             try:
                 user = User.objects.create_user(username=username, password=password)
                 messages.success(request, 'Usuário registrado com sucesso.')
-                return redirect('user_login')
+                return redirect('login')
             except:
                 messages.error(request, 'Erro ao criar usuário.')
         else:
