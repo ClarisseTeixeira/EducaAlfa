@@ -77,7 +77,12 @@ def detalhes_flashcard(request, id):
             nova_data_revisao = proxima_revisao(revisao)
             Revisao.objects.create(flashcard=detalhes, user=user, data_agendada=nova_data_revisao)
 
-            return redirect('detalhes_flashcard', id=detalhes.id)
+            proximo_flashcard = Revisao.objects.filter(user=user, concluida=False).order_by('data_agendada').first()
+
+            if proximo_flashcard:
+                return redirect('detalhes_flashcard', id=proximo_flashcard.flashcard.id)
+            else:
+                return redirect('dashboard')
     context = {
         'detalhes': detalhes,
         'revisao': revisao,

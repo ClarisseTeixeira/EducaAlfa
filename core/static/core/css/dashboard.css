@@ -88,14 +88,16 @@ nav.menu-lateral {
     align-items: center;
     justify-content: flex-start;
 }
-.sair{
-    padding-top: 175px;
+
+ul .sair{
+    position: absolute;
+    bottom: 0;
+
 }
 
 .modalform {
     max-width: 820px;
 }
-
 
 .ql-toolbar.ql-snow .ql-formats {
     margin-right: 7px !important;
@@ -104,8 +106,9 @@ nav.menu-lateral {
 
 .modal-body{
     min-height: 380px !important;
+    padding: 2rem !important;
+    
 }
-
 
 .titulof {
     font-size: 36px;

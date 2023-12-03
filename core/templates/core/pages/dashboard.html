@@ -71,7 +71,8 @@
                 
                 {% for revisao in revisoes_pendentes|slice:":5" %}
                 <tr class="pendentes">
-                    <td>{{ revisao.flashcard.titulo}}</td>
+                    <td><a href="{% url 'detalhes_flashcard' id=revisao.flashcard.id %}">{{ revisao.flashcard.titulo}}</a>
+                    </td>
                     <td>{{ revisao.data_agendada|date:"d/m/Y" }}</td>
                     <td>{{ revisao.id }}</td>
                 </tr>
@@ -81,7 +82,8 @@
 
                 {% for revisao in revisoes_do_dia|slice:":5" %}
                 <tr class="atribuídas">
-                    <td>{{ revisao.flashcard.titulo}}</td>
+                    <td> <a href="{% url 'detalhes_flashcard' id=revisao.flashcard.id %}">{{ revisao.flashcard.titulo}}</a>
+                    </td>
                     <td>{{ revisao.data_agendada|date:"d/m/Y" }}</td>
                     <td>{{ revisao.id }}</td>
                 </tr>
