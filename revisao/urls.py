@@ -3,7 +3,7 @@ from .views import  detalhes_flashcard, calendario, indexrevisao, flashcards, re
 
 
 urlpatterns = [
-    path('flashcard/<int:id>/', detalhes_flashcard, name='detalhes_flashcard'),
+    path('flashcard/', detalhes_flashcard, name='detalhes_flashcard'),
     path('calendario/', calendario, name='calendario'),
     path('indexrevisao/', indexrevisao, name='indexrevisao'),
     path('flashcards/', flashcards, name='flashcards'),
