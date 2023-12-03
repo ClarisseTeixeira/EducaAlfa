@@ -3,6 +3,8 @@
 
 {% block head%}
 <link rel="stylesheet" href="{% static 'pomodoro\css\indexpomodoro.css' %}">
+<link rel="stylesheet" href="{% static 'pomodoro\css\pomodoro.css' %}">
+
 <script src="{% static 'pomodoro/js/pomodoro.js' %}"></script>
 {% endblock %}
 
@@ -64,7 +66,15 @@
 <br>
 <br>
 <div class="container">
-    {% include 'pomodoro/partials/pomodoro.html' %}
+    <div class="form-container">
+        <div class="containeres">
+            <div class="pomodoro">Pomodoro</div>
+            <div class="descanso">Descanso</div>
+        </div>
+        <div class="timer" id="timer">25:00</div>
+        <div id="counter">1/4</div>
+        <button class="iniciar" id="toggleButton">Iniciar</button>
+    </div>
 </div>
 <br>
 <br>

@@ -67,6 +67,12 @@
     font-style: italic;
 }
 
+@font-face {
+    font-family: 'DS-Digital';
+    src: url('/static/pomodoro/fonts/DS-DIGI.TTF') format('truetype');
+}
+
+
 
 
 *{
@@ -87,7 +93,7 @@
 
 .timer{
     color: rgba(2, 69, 119, 0.70);
-    font-size: 200px;
+    font-size: 250px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -162,11 +168,13 @@
 }
 
 #timer{
-    font-size: 200px;
+    font-size: 250px;
     color: rgba(2, 69, 119, 0.7);
     text-align: center;
-    font-family: "digital numbers";
+    font-family: "DS-Digital";
 }
+
+
 
 
 @media screen and (max-width: 1000px) {
@@ -259,5 +267,7 @@
     }
 
 }
+
+
 
 

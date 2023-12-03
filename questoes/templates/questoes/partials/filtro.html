@@ -1,3 +1,8 @@
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+
+
+
 <div class="container-filtro">
     <h3 class="filtro">Filtrar questões</h3>
     <form class="row row-cols-lg-auto g-3 align-items-center justify-content-center" method="GET" action="{% url 'filtro_questoes' %}">
@@ -27,5 +32,32 @@
             <button type="submit">Filtrar</button>
         </div>
     </form>
-</div>
 
+
+    <script>
+        $(document).ready(function () {
+            // Quando o valor da disciplina é alterado
+            $('#disciplina').change(function () {
+                var disciplinaId = $(this).val();
+   
+                // Requisição AJAX para obter os assuntos relacionados à disciplina selecionada
+                $.ajax({
+                    url: '/obter_assuntos/',  // Substitua pela URL correta em sua aplicação
+                    data: { 'disciplina_id': disciplinaId },
+                    dataType: 'json',
+                    success: function (data) {
+                        // Limpa as opções atuais de assuntos
+                        $('#assunto').empty();
+   
+                        // Adiciona as novas opções de assuntos
+                        $('#assunto').append('<option value="">Assuntos...</option>');
+                        $.each(data, function (key, value) {
+                            $('#assunto').append('<option value="' + value.id + '">' + value.assunto + '</option>');
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+   
+</div>

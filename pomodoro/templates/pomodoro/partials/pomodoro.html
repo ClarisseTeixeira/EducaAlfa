@@ -14,60 +14,93 @@
     <button class="iniciar" id="toggleButton">Iniciar</button>
 </div>
 
+
 <script>
     var isPomodoro = true;
-    var isRunning = false; 
+    var isRunning = false;
     var interval;
     var pomodoroCount = 1;
-
 
     function startTimer(duration) {
         var timerDisplay = document.getElementById('timer');
         var counterDisplay = document.getElementById('counter');
-        var minutes, seconds;
+        var pomodoro = document.querySelector('.pomodoro');
+        var descanso = document.querySelector('.descanso');
+        var toggleButton = document.getElementById('toggleButton');
 
+        var minutes, seconds;
 
         interval = setInterval(function () {
             minutes = parseInt(duration / 60, 10);
             seconds = parseInt(duration % 60, 10);
 
-
             minutes = minutes < 10 ? "0" + minutes : minutes;
             seconds = seconds < 10 ? "0" + seconds : seconds;
 
-
             timerDisplay.innerHTML = minutes + ":" + seconds;
-
 
             if (--duration < 0) {
                 clearInterval(interval);
 
-
                 isPomodoro = !isPomodoro;
+
+                // Ajuste apenas a cor de fundo sem mudar o tamanho
+                pomodoro.style.backgroundColor = isPomodoro ? 'rgba(2, 69, 119, 0.7)' : 'rgba(45, 130, 181, 0.44)';
+                descanso.style.backgroundColor = isPomodoro ? 'rgba(45, 130, 181, 0.44)' : 'rgba(2, 69, 119, 0.7)';
+
                 if (isPomodoro) {
                     pomodoroCount++;
-                    counterDisplay.innerHTML = pomodoroCount + "/4";
-                    startTimer(25 * 60);
+
+                    if (pomodoroCount <= 4) {
+                        counterDisplay.innerHTML = pomodoroCount + "/4";
+                        startTimer(0.1 * 60);
+                    } else {
+                        pomodoroCount = 1;
+                        counterDisplay.innerHTML = ''; // Oculta o contador ao finalizar os 4 pomodoros
+                        toggleButton.innerHTML = "Reiniciar"; // Transforma o botão de pausar em reiniciar
+                        timerDisplay.innerHTML = "25:00"; // Define o timer para "25:00" ao reiniciar
+
+                        
+                        // Adicione aqui o código para indicar que os 4 pomodoros foram concluídos
+                    }
                 } else {
-                    startTimer(5 * 60);
+                    startTimer(0.1 * 60);
                 }
             }
         }, 1000);
     }
 
-
     document.getElementById('toggleButton').addEventListener('click', function () {
         var counterDisplay = document.getElementById('counter');
-       
+
         if (isRunning) {
             clearInterval(interval);
             isRunning = false;
             this.innerHTML = "Iniciar";
         } else {
-            startTimer(25 * 60);
+            if (isPomodoro) {
+                startTimer(0.1 * 60);
+            } else {
+                pomodoroCount = 1;
+                counterDisplay.innerHTML = ''; // Oculta o contador ao finalizar os 4 pomodoros
+                toggleButton.innerHTML = "Reiniciar"; // Transforma o botão de pausar em reiniciar
+
+                // Adicione aqui o código para indicar que os 4 pomodoros foram concluídos
+            }
+
             isRunning = true;
             this.innerHTML = "Pausar";
             counterDisplay.style.display = 'block';
         }
     });
 </script>
+</body>
+</html>
+
+<style>
+    /* Adicione esta regra CSS para a cor inicial */
+    .pomodoro {
+        background-color: rgba(2, 69, 119, 0.7);
+        transition: background-color 0.5s ease; /* Adicione uma transição suave */
+    }
+</style>

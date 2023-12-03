@@ -1,3 +1,27 @@
+<script>
+    $(document).ready(function () {
+        $('.btn-responder').click(function (event) {
+            event.preventDefault();
+            var form = $(this).closest('form');
+            var questaoId = $(this).data('questao-id');
+
+            $.ajax({
+                type: form.attr('method'),
+                url: form.attr('action'),
+                data: form.serialize(),
+                success: function (data) {
+                    // Manipule a resposta, se necessário
+                    console.log(data);
+
+                    // Altere a URL da página para a questão respondida
+                    var novaUrl = '/questoes/' + questaoId + '/';
+                    history.pushState(null, null, novaUrl);
+                }
+            });
+        });
+    });
+</script>
+
 <div class="questao">
     <ul class="questao">
         {% for questao in questoes %}
@@ -7,13 +31,13 @@
             </div>
             <div class="central">
             <div class="container-branco">
-                
+               
                 <li class="questao_texto">
-                    
+                   
                     {{ questao.texto }}
                 </li>
                 <li class="questao_enunciado">{{ questao.enunciado }}</li>
-                
+               
                 <form method="post" action="{% url 'verificar_resposta' questao.id %}">
                     {% csrf_token %}
                     <ul  class="alternativas-container">
@@ -30,12 +54,15 @@
                 </div>
             </div>
                 <div class="responder">
-                    <button type="submit">Responder</button>
+                    <button type="submit" class="btn-responder" data-questao-id="{{ questao.id }}">Responder</button>
                 </div>
             </div>
-        
+       
         </form>
-    
+   
         {% endfor %}
     </ul>
+
+
+    
 </div>

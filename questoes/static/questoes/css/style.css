@@ -224,3 +224,13 @@ button{
     margin-bottom: 5px;
     font-size: 20px;
 }
+
+.selecionada {
+    background-color: #ff0000; /* Cor de fundo para alternativa errada */
+    color: #ffffff; /* Cor do texto para alternativa errada */
+}
+
+.correta {
+    background-color: #00ff00; /* Cor de fundo para alternativa correta */
+    color: #ffffff; /* Cor do texto para alternativa correta */
+}

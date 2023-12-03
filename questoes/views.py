@@ -8,10 +8,14 @@ import json
 from django.db.models import Count, Sum
 
 
+
+
 @login_required
 def estatisticas_disciplinas(request):
     disciplinas = Disciplina.objects.all()
     return render(request, 'questoes\partials\valores_disciplinas.html', {'disciplinas': disciplinas})
+
+
 
 
 @login_required
@@ -21,6 +25,7 @@ def estatisticas(request):
     questoes_erradas = 0
     taxa_acerto = 0
     num_questoes = 0
+
 
     # Se o usuário estiver autenticado, obtenha os dados reais
     if request.user.is_authenticated:
@@ -32,6 +37,7 @@ def estatisticas(request):
         if num_questoes > 0:
             taxa_acerto = round((questoes_certas / num_questoes) * 100, 2)
 
+
     # Envie os dados para o template
     data = {
         'questoes_certas': questoes_certas,
@@ -40,9 +46,13 @@ def estatisticas(request):
         'num_questoes': num_questoes,
     }
 
+
     return render(request, 'questoes/pages/estatisticas.html', data)
 
+
 # No seu arquivo views.py
+
+
 
 
 @login_required
@@ -50,29 +60,37 @@ def lista_questoes(request):
     disciplinas = Disciplina.objects.all()
     questoes = Questao.objects.all()
 
+
     # Adicione a lógica de paginação aqui
     questoes_por_pagina = 5
     paginator = Paginator(questoes, questoes_por_pagina)
     page_number = request.GET.get('page')
     page = paginator.get_page(page_number)
 
+
     context = {
-        'disciplinas': disciplinas, 
+        'disciplinas': disciplinas,
         'questoes': page,
     }
     return render(request, 'questoes/pages/lista_questoes.html', context)
 
-# Defina a função filtro_questoes
+
+@login_required
 def filtro_questoes(request):
     disciplinas = Disciplina.objects.all()
 
+
     disciplina_id = request.GET.get('disciplina')
+
 
     assuntos = []
     if disciplina_id:
+        # Recupere apenas os assuntos relacionados à disciplina selecionada
         assuntos = Assunto.objects.filter(disciplina_id=disciplina_id)
 
+
     assunto_id = request.GET.get('assunto')
+
 
     questoes = Questao.objects.all()
     if disciplina_id:
@@ -80,21 +98,31 @@ def filtro_questoes(request):
     if assunto_id:
         questoes = questoes.filter(assunto_id=assunto_id)
 
+
     questoes_por_pagina = 5
     paginator = Paginator(questoes, questoes_por_pagina)
 
+
     page_number = request.GET.get('page')
     page = paginator.get_page(page_number)
+
 
     return render(request, 'questoes/pages/lista_questoes.html', {
         'disciplinas': disciplinas,
         'assuntos': assuntos,
         'questoes': page,
-        'disciplina_selecionada': int(disciplina_id) if disciplina_id else None, 
-        'assunto_selecionado': int(assunto_id) if assunto_id else None, 
+        'disciplina_selecionada': int(disciplina_id) if disciplina_id else None,
+        'assunto_selecionado': int(assunto_id) if assunto_id else None,
     })
 
+
+def obter_assuntos(request):
+    disciplina_id = request.GET.get('disciplina_id')
+    assuntos = Assunto.objects.filter(disciplina_id=disciplina_id).values('id', 'assunto')
+    return JsonResponse(list(assuntos), safe=False)
 # Restante do seu código...
+
+
 
 
 @login_required
@@ -102,9 +130,11 @@ def verificar_resposta(request, questao_id):
     questao = get_object_or_404(Questao, pk=questao_id)
     user_profile, created = UserProfile.objects.get_or_create(user=request.user)
 
+
     if request.method == 'POST':
         alternativa_id = request.POST.get('alternativa')
         alternativa_selecionada = get_object_or_404(Alternativa, pk=alternativa_id)
+
 
         if alternativa_selecionada.correta:
             mensagem = 'acertou!'
@@ -113,9 +143,11 @@ def verificar_resposta(request, questao_id):
             mensagem = 'errou.'
             user_profile.questoes_erradas += 1
 
+
         questao.respondida = True
         questao.save()
         user_profile.save()
+
 
         # Retorne os dados atualizados para o gráfico
         data = {
@@ -125,23 +157,29 @@ def verificar_resposta(request, questao_id):
             'num_questoes': user_profile.num_questoes(),
         }
 
+
         # Se preferir, pode retornar a resposta como JSON
         return JsonResponse(data)
 
+
     return redirect('questoes', questao_id=questao_id)
-    
+   
+
 
 def indexquestoes(request):
     return render(request, 'questoes/pages/indexquestoes.html')
+
 
 def grafico(request, usuario_id):
     user = User.objects.get(id=usuario_id)
     disciplinas = Disciplina.objects.all()
 
+
     dados_disciplinas = []
     for disciplina in disciplinas:
         questoes_certas = user.questoes.filter(disciplina=disciplina, correta=True).count()
         questoes_erradas = user.questoes.filter(disciplina=disciplina, correta=False).count()
+
 
         dados_disciplinas.append({
             'disciplina_nome': disciplina.nome,
@@ -149,6 +187,5 @@ def grafico(request, usuario_id):
             'questoes_erradas': questoes_erradas,
         })
 
+
     return render(request, 'questoes/partials/s.html', {'dados_disciplinas': dados_disciplinas})
-
-
