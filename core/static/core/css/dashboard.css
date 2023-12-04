@@ -332,12 +332,17 @@ ul .sair{
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.05));
 }
 
-.atribuídas td{
+#atribuídas{
     color: green;
 }
 
-.pendentes td{
+#pendentes{
     color: red;
+}
+
+tr td a {
+    text-decoration: none;
+    color: #000;
 }
 
 p img{

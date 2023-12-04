@@ -65,41 +65,36 @@
                 <tr>
                     <th>Título</th>
                     <th>Data</th>
-                    <th>Tipo</th>
                 </tr>
 
 
                 {% for revisao in revisoes_pendentes|slice:":5" %}
-                <tr class="pendentes">
+                <tr>
                     <td><a href="{% url 'detalhes_flashcard' id=revisao.flashcard.id %}">{{revisao.flashcard.titulo}}</a>
                     </td>
-                    <td>{{ revisao.data_agendada|date:"d/m/Y" }}</td>
-                    <td>{{ revisao.id }}</td>
+                    <td id="pendentes">{{ revisao.data_agendada|date:"d/m/Y" }}</td>
                 </tr>
                 {% endfor %}
 
 
-
                 {% for revisao in revisoes_do_dia|slice:":5" %}
-                <tr class="atribuídas">
-                    <td> <a href="{% url 'detalhes_flashcard' id=revisao.flashcard.id %}">{{
-                            revisao.flashcard.titulo}}</a>
+                <tr>
+                    <td> <a href="{% url 'detalhes_flashcard' id=revisao.flashcard.id %}">{{revisao.flashcard.titulo}}</a>
                     </td>
-                    <td>{{ revisao.data_agendada|date:"d/m/Y" }}</td>
-                    <td>{{ revisao.id }}</td>
+                    <td id="atribuídas">{{ revisao.data_agendada|date:"d/m/Y" }}</td>
                 </tr>
                 {% endfor %}
 
             </table>
 
-            {% if revisao %}
+        {% if revisao %}
             <div class="bcomecarev">
                 <a href="{% url 'detalhes_flashcard' id=revisao.flashcard.id %}">Começar revisão</a>
             </div>
-        {% else %}
-            <div>
-                <p>Parabéns</p>
-            </div>
+            {% else %}
+                <div>
+                    <p>Parabéns</p>
+                </div>
         {% endif %}
         
 

@@ -1,10 +1,12 @@
 from datetime import date, timedelta, datetime
 from django.db.models import Count
 from django.shortcuts import render
-from revisao.models import Revisao  
+from revisao.models import Revisao, Flashcard
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 import json
+from django.shortcuts import get_object_or_404, redirect, render
+
 
 def index(request):
     return render(request, "index.html")
@@ -16,9 +18,12 @@ def home(request):
 def dashboard(request):
     user = request.user
 
-    todas_revisoes = get_revisions(user, data_agendada__gte=date.today()).order_by('data_agendada')
+    todas_revisoes = get_revisions(user, concluida=False, data_agendada__gte=date.today()).order_by('data_agendada')
     revisoes_do_dia = get_revisions(user, data_agendada=date.today(), concluida=False)
     revisoes_pendentes = get_revisions(user, data_agendada__lt=date.today(), concluida=False)
+
+    revisao = Revisao.objects.filter(user=user, concluida=False, data_agendada__lte=date.today()).order_by('data_agendada').first()
+
 
     serialized_data = revisoes(user)
 
@@ -27,6 +32,7 @@ def dashboard(request):
         'revisoes_do_dia': revisoes_do_dia,
         'revisoes_pendentes': revisoes_pendentes,
         'serialized_data': serialized_data,
+        'revisao':revisao,
     }
     return render(request, "core/pages/dashboard.html", context)
 

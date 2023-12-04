@@ -1,5 +1,5 @@
 from django.http import HttpResponse, JsonResponse
-from django.shortcuts import get_object_or_404, redirect, render
+from django.shortcuts import get_object_or_404, redirect, render    
 from .models import Flashcard, Revisao
 from .forms import FlashcardForm
 from datetime import date, timedelta, datetime
@@ -74,7 +74,6 @@ def detalhes_flashcard(request, id):
 
             proximo_flashcard = Revisao.objects.filter(user=user, concluida=False, data_agendada= datetime.now().date()).order_by('data_agendada').first()
             
-
             if proximo_flashcard:
                 return redirect('detalhes_flashcard', id=proximo_flashcard.flashcard.id)
             else:
