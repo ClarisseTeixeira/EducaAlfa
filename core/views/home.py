@@ -25,7 +25,7 @@ def dashboard(request):
     revisao = Revisao.objects.filter(user=user, concluida=False, data_agendada__lte=date.today()).order_by('data_agendada').first()
 
 
-    serialized_data = revisoes(user)
+    serialized_data = revisoes(user) 
 
     context = {
         'todas_revisoes': todas_revisoes,
@@ -33,7 +33,7 @@ def dashboard(request):
         'revisoes_pendentes': revisoes_pendentes,
         'serialized_data': serialized_data,
         'revisao':revisao,
-    }
+        }
     return render(request, "core/pages/dashboard.html", context)
 
 def get_revisions(user, **kwargs):

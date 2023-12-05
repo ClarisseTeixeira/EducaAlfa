@@ -1,19 +1,44 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-</head>
-<body>
-    <p>{{ detalhes.titulo }}</p>
-        <div>{{ detalhes.content.html|safe }}</div>
+    <link rel="stylesheet" href="{% static 'revisao\css\revisao.css' %}">
 
-{% if revisao %}
-<form method="post">
-    {% csrf_token %}
-    <input type="submit" value="Marcar Revisão Concluída">
-</form>
-{% endif %}
+</head>
+
+<style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+
+<body>  
+    <div class="rfade">
+        <a href="{% url 'dashboard' %}"></a>
+      </div>
+      <div class="rmodal-container">
+        <div class="rmodal">
+          <h1>{{ detalhes.titulo }}</h1>
+          <hr>
+          <p>{{ detalhes.content.html|safe }}</p>
+          {% if revisao %}
+            <div class="rconcluida">
+          <form method="post" class="p-3">
+            {% csrf_token %}
+            <button class="bconcluida" type="submit">Revisão Concluída</button>
+          </form>
+        </div>
+          {% endif %}
+        </div>
+      </div>
+
+      
 </body>
+
 </html>
