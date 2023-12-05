@@ -5,7 +5,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
 {% endblock %}
 
-{% block linkh %}ativo{% endblock %}
+{% block linkh %}ativo{% endblock %} 
 
 {% block content %}
 <br>
@@ -41,7 +41,7 @@
             <h1 class="d-flex justify-content-center">Flashcards Agendados</h1>
         </div>
 
-        <div class="d-flex ">
+        <div class="d-flex" style="width: 440px; margin: auto;">
             <div class="fatri">
                 <h1>{{todas_revisoes.count}}</h1>
                 <p>Atribuídos</p>
@@ -61,45 +61,53 @@
                 <a class="lta" href="{% url 'calendario' %}">Veja mais &#8594;</a>
             </div>
 
+            {% if revisao %}
+
             <table class="table table-borderless">
-                <tr>
-                    <th>Título</th>
-                    <th>Data</th>
+                <tr class="ftr">
+                    <th class="fth">Título</th>
+                    <th class="fth">Data</th>
                 </tr>
 
 
                 {% for revisao in revisoes_pendentes|slice:":5" %}
-                <tr>
-                    <td><a href="{% url 'detalhes_flashcard' id=revisao.flashcard.id %}">{{revisao.flashcard.titulo}}</a>
+                <tr class="ftr">
+                    <td class="ftd"><a
+                            href="{% url 'detalhes_flashcard' id=revisao.flashcard.id %}">{{revisao.flashcard.titulo}}</a>
                     </td>
-                    <td id="pendentes">{{ revisao.data_agendada|date:"d/m/Y" }}</td>
+                    <td class="ftd" id="pendentes">{{ revisao.data_agendada|date:"d/m/Y" }}</td>
                 </tr>
                 {% endfor %}
 
 
                 {% for revisao in revisoes_do_dia|slice:":5" %}
-                <tr>
-                    <td> <a href="{% url 'detalhes_flashcard' id=revisao.flashcard.id %}">{{revisao.flashcard.titulo}}</a>
+                <tr class="ftr">
+                    <td class="ftd"> <a
+                            href="{% url 'detalhes_flashcard' id=revisao.flashcard.id %}">{{revisao.flashcard.titulo}}</a>
                     </td>
-                    <td id="atribuídas">{{ revisao.data_agendada|date:"d/m/Y" }}</td>
+                    <td class="ftd" id="atribuídas">{{ revisao.data_agendada|date:"d/m/Y" }}</td>
                 </tr>
                 {% endfor %}
 
             </table>
 
-        {% if revisao %}
+
             <div class="bcomecarev">
                 <a href="{% url 'detalhes_flashcard' id=revisao.flashcard.id %}">Começar revisão</a>
             </div>
+
+
+
             {% else %}
-                <div>
-                    <p>Parabéns</p>
-                </div>
-        {% endif %}
-        
+            <div class="nhra">
+                <p>Não há revisões agendadas</p>
+            </div>
+            {% endif %}
 
+
+        </div>
     </div>
-</div>
-<br>
+    <br>
 
-{% endblock %}
+
+    {% endblock %}

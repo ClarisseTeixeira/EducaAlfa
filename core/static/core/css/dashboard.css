@@ -122,7 +122,6 @@ ul .sair{
     box-shadow: 0 0 0 0;
     border: 0 none;
     outline: 0;
-
 }
 
 .ql-editor {
@@ -146,7 +145,7 @@ ul .sair{
 
 .divsalvar {
     align-items: flex-end;
-}
+} 
 
 .django-quill-widget-container {
     max-width: 810px;
@@ -190,9 +189,10 @@ ul .sair{
     color: #001B48;
 }
 
-.lta {
+.tabelare .lta {
     text-decoration: none;
-    margin: 5px;
+    display: flex;
+    align-items: flex-start;
 }
 
 .buttonf {
@@ -259,7 +259,7 @@ ul .sair{
 .fatri {
     display: flex;
     align-items: center;
-    width: 217px;
+    width: 200px;
     height: 87px;
     border-radius: 5px;
     background: #FFF;
@@ -327,10 +327,21 @@ ul .sair{
 
 .tabelare{
     background-color: white; 
-    margin-top: 15px;
+    margin: auto;
     padding: 10px;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.05));
+    width: 420px;
 }
+
+ .ftd, .fth{
+    width: 100px;
+    margin: 0px 50px;
+}
+ .ftr{
+    justify-content: center;
+    display: flex;
+}
+
 
 #atribuídas{
     color: green;
@@ -340,9 +351,16 @@ ul .sair{
     color: red;
 }
 
-tr td a {
+.ftr .ftd a {
     text-decoration: none;
     color: #000;
+}
+
+.tabelare .nhra{
+    display: flex;
+    justify-content: center;
+    margin: 15px;
+
 }
 
 p img{
