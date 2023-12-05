@@ -3,7 +3,6 @@ from django.db import models
 
 class Disciplina(models.Model):
     nome = models.CharField(max_length=100, default="")
-    imagem = models.ImageField(upload_to='materiais/static/materiais/img/')
 
 
 class Assunto(models.Model):

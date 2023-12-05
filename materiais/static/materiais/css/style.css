@@ -25,3 +25,28 @@
 p {
     text-align: justify;
 }
+
+.bmateriais{
+    border: 1px solid #024577;
+    background-color: #024577;
+    width: 200px;
+    height: 40px;
+    border-radius: 40px;
+    display: flex;    
+    align-items: center;
+    margin: auto;
+}
+
+.bmateriais a{
+    text-decoration: none;
+    color: #fff;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+}
+
+.bmateriais:hover{
+    transition: 1s;
+    background-color: #024477e3;
+}

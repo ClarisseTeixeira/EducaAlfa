@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head%}
+<link rel="stylesheet" href="{% static 'materiais\css\style.css' %}">
+
+{% endblock %}
+
+{% block content %}
+
+<!-- Formulário de Materiais -->
+<div class="container py-5">
+    <section class="py-3 text-center container">
+        <div class="row py-lg-3">
+            <div class="col-lg-6 col-md-8 mx-auto">
+                <h1 class="fw-light">Formulário de Materiais</h1>
+            </div>
+        </div>
+    </section>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="mb-3">
+            <label for="conteudo" class="form-label">Conteúdo</label>
+            {{ form.conteudo }}
+        </div>
+
+        <div class="mb-3">
+            <label for="titulo" class="form-label">Título</label>
+            {{ form.titulo }}
+        </div>
+
+        <div class="mb-3">
+            <label for="link" class="form-label">Link</label>
+            {{ form.link }}
+        </div>
+
+        <div class="mb-3">
+            <label for="textotitulo" class="form-label">Texto Título</label>
+            {{ form.textotitulo }}
+        </div>
+
+        <div class="mb-3">
+            <label for="texto" class="form-label">Texto</label>
+            {{ form.texto }}
+        </div>
+
+        <div class="mb-3">
+            <label for="referencias" class="form-label">Referências</label>
+            {{ form.referencias }}
+        </div>
+
+        <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
+</div>
+
+        
+
+{% endblock %}

@@ -6,6 +6,9 @@ from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 import json
 from django.shortcuts import get_object_or_404, redirect, render
+from django.contrib.auth.decorators import user_passes_test
+from core.views.auth import superuser
+from materiais.models import *
 
 
 def index(request):
@@ -61,5 +64,18 @@ def semana_atual():
     end_of_week = start_of_week + timedelta(days=6)  # Fim da semana
     return start_of_week, end_of_week
 
+@user_passes_test(superuser)
+def arearestrita(request):
+    disciplinas = Disciplina.objects.all()
+    assuntos = Assunto.objects.all()
+    conteudos = Conteudo.objects.all()
+    materiais = Materiais.objects.all()
 
+    context = {
+        'disciplinas': disciplinas,
+        'assuntos': assuntos,
+        'conteudos': conteudos,
+        'materiais': materiais,
+    }
 
+    return render(request, 'core/pages/arearestrita.html', context)
