@@ -8,51 +8,63 @@ import json
 from django.db.models import Count, Sum
 
 
-
-
-@login_required
-def estatisticas_disciplinas(request):
-    disciplinas = Disciplina.objects.all()
-    return render(request, 'questoes\partials\valores_disciplinas.html', {'disciplinas': disciplinas})
-
-
-
-
 @login_required
 def estatisticas(request):
-    # Obtenha os dados iniciais
-    questoes_certas = 0
-    questoes_erradas = 0
-    taxa_acerto = 0
-    num_questoes = 0
+    # Obtém as disciplinas disponíveis
+    disciplinas = Disciplina.objects.all()
 
+    # Inicializa uma lista para armazenar os dados de cada disciplina
+    dados_disciplinas = []
 
-    # Se o usuário estiver autenticado, obtenha os dados reais
+    # Se o usuário estiver autenticado, obtenha os dados reais do usuário
     if request.user.is_authenticated:
         user_profile, created = UserProfile.objects.get_or_create(user=request.user)
-        questoes_certas = user_profile.questoes_certas
-        questoes_erradas = user_profile.questoes_erradas
-        num_questoes = questoes_certas + questoes_erradas
-        # Evite a divisão por zero
-        if num_questoes > 0:
-            taxa_acerto = round((questoes_certas / num_questoes) * 100, 2)
 
+        # Adiciona os dados do usuário à lista
+        dados_usuario = {
+            'questoes_certas': user_profile.questoes_certas or 0,
+            'questoes_erradas': user_profile.questoes_erradas or 0,
+            'taxa_acerto': user_profile.taxa_acerto(),
+            'num_questoes': user_profile.num_questoes(),
+        }
+
+        for disciplina in disciplinas:
+            # Filtra as questões por disciplina
+            questoes_disciplina = Questao.objects.filter(disciplina=disciplina)
+
+            # Obtém o número total de questões para cada disciplina
+            num_questoes_disciplina = questoes_disciplina.count()
+
+            # Obtém o número de questões certas e erradas para cada disciplina
+            dados_disciplina = questoes_disciplina.aggregate(
+                questoes_certas=Sum('questoes_certas'),
+                questoes_erradas=Sum('questoes_erradas'),
+            )
+
+            # Trata valores None como 0
+            dados_disciplina['questoes_certas'] = dados_disciplina['questoes_certas'] or 0
+            dados_disciplina['questoes_erradas'] = dados_disciplina['questoes_erradas'] or 0
+
+            # Adiciona os dados da disciplina à lista
+            dados_disciplina['disciplina'] = disciplina
+            dados_disciplina['taxa_acerto'] = round((dados_disciplina['questoes_certas'] / (dados_disciplina['questoes_certas'] + dados_disciplina['questoes_erradas'])) * 100, 2) if (dados_disciplina['questoes_certas'] + dados_disciplina['questoes_erradas']) > 0 else 0
+            dados_disciplina['num_questoes_respondidas'] = num_questoes_disciplina
+
+            dados_disciplinas.append(dados_disciplina)
+
+    # Adicione prints para debug
+    print(dados_usuario)
+    print(dados_disciplinas)
 
     # Envie os dados para o template
     data = {
-        'questoes_certas': questoes_certas,
-        'questoes_erradas': questoes_erradas,
-        'taxa_acerto': taxa_acerto,
-        'num_questoes': num_questoes,
+        'dados_usuario': dados_usuario,
+        'dados_disciplinas': dados_disciplinas,
     }
-
 
     return render(request, 'questoes/pages/estatisticas.html', data)
 
-
 # No seu arquivo views.py
-
-
 
 
 @login_required

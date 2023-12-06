@@ -1,32 +1,50 @@
 {% extends "core/partials/base.html" %}
 {% load static %}
 
-{% block head%}
-<link rel="stylesheet" href="{% static 'questoes\css\estatisticas.css' %}">
+{% block head %}
+<link rel="stylesheet" href="{% static 'questoes/css/estatisticas.css' %}">
 <script src="{% static 'questoes/js/questoes.js' %}"></script>
 {% endblock %}
-{% block linkq%} ativo {% endblock %}
+{% block linkq %} ativo {% endblock %}
 
 {% block content %}
-        <br>
-        <h1 class="estudo-questoes">Estudo por questões</h1>
-       
-        <br>
-        <br>
-       
-        <h3 class="d-flex justify-content-center subtitulo-desempenho">Desempenho Geral</h3>
-        <br>
-        
-        <br>
-        <br>
-        <div class="dados d-flex justify-content-center align-items-center">
-            <div class="grafico">
-                {% include 'questoes/partials/grafico.html' %}
+    <br>
+    <h1 class="estudo-questoes">Estudo por questões</h1>
+
+    <br>
+    <br>
+
+    <h3 class="d-flex justify-content-center subtitulo-desempenho">Desempenho Geral</h3>
+    <br>
+
+    <br>
+    <br>
+    <div class="dados d-flex justify-content-center align-items-center">
+        <div class="grafico">
+            {% include 'questoes/partials/grafico.html' %}
+        </div>
+        <div class="valores">
+            <div class="estatisticas-gerais">
+                <div class="row">
+                    <div class="num-acertos">
+                        <h2>{{ dados_usuario.questoes_certas }} <br> certas</h2>
+                    </div>
+                    <div class="num-erradas">
+                        <h2>{{ dados_usuario.questoes_erradas }} <br>Erradas</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="taxa-acerto">
+                        <h2>{{ dados_usuario.taxa_acerto }}% <br>Taxa de acerto</h2>
+                    </div>
+                    <div class="num-questoes">
+                        <h2>{{ dados_usuario.num_questoes }} <br>Nº de questões</h2>
+                    </div>
+                </div>
             </div>
-            <div class="valores">
-                {% include 'questoes/partials/valores.html' %}
-            </div>
-        </div>         
+        </div>
+    </div>
+
     <br>
     <br>
     <br>
@@ -34,17 +52,35 @@
     <h3 class="d-flex justify-content-center subtitulo-disciplina">Disciplinas</h3>
     <br>
     <div class="dados d-flex justify-content-center align-items-center disciplinas">
-    
-        {% include 'questoes/partials/valores_disciplinas.html' %}
-    </div>
-     
-    <br>
-        <br>
-        <div class="d-flex justify-content-center">
-            {% include 'questoes/partials/botao.html' %}
-        </div>
 
-        <br>
-        <br>
-        <br>
+        <table>
+            <tr class="title-table">
+                <th class="item">Disciplina</th>
+                <th class="item">Nº de Questões</th>
+                <th class="item">Corretas</th>
+                <th class="item">Incorretas</th>
+                <th class="item">Taxa de acerto</th>
+            </tr>
+            {% for dados_disciplina in dados_disciplinas %}
+            <tr class="valores-table">
+                <td class="item-1">{{ dados_disciplina.disciplina.nome }}</td>
+                <td class="item">{{ dados_disciplina.num_questoes_respondidas }}</td>
+                <td class="item">{{ dados_disciplina.questoes_certas }}</td>
+                <td class="item">{{ dados_disciplina.questoes_erradas }}</td>
+                <td class="item">{{ dados_disciplina.taxa_acerto }}%</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+    </div>
+
+    <br>
+    <br>
+    <div class="d-flex justify-content-center">
+        {% include 'questoes/partials/botao.html' %}
+    </div>
+
+    <br>
+    <br>
+    <br>
 {% endblock %}
