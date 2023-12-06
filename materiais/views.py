@@ -124,7 +124,7 @@ def materiais_editar(request, id):
         form = MateriaisForm(request.POST, request.FILES, instance=material)
         if form.is_valid():
             form.save()
-            return redirect('materiais_listar')
+            return redirect('arearestrita')
     else:
         form = MateriaisForm(instance=material)
     return render(request, 'materiais/forms/formmateriais.html', {'form': form})
@@ -135,7 +135,7 @@ def assunto_editar(request, id):
         form = AssuntoForm(request.POST, instance=assunto)
         if form.is_valid():
             form.save()
-            return redirect('assunto_listar')
+            return redirect('arearestrita')
     else:
         form = AssuntoForm(instance=assunto)
     return render(request, 'materiais/forms/formassunto.html', {'form': form})
@@ -146,7 +146,7 @@ def disciplina_editar(request, id):
         form = DisciplinaForm(request.POST, instance=disciplina)
         if form.is_valid():
             form.save()
-            return redirect('disciplina_listar')
+            return redirect('arearestrita')
     else:
         form = DisciplinaForm(instance=disciplina)
     return render(request, 'materiais/forms/formdisciplina.html', {'form': form})
@@ -157,7 +157,7 @@ def conteudo_editar(request, id):
         form = ConteudoForm(request.POST, instance=conteudo)
         if form.is_valid():
             form.save()
-            return redirect('conteudo_listar')
+            return redirect('arearestrita')
     else:
         form = ConteudoForm(instance=conteudo)
     return render(request, 'materiais/forms/formconteudo.html', {'form': form})
