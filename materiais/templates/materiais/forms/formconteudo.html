@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head%}
+<link rel="stylesheet" href="{% static 'materiais\css\style.css' %}">
+
+{% endblock %}
+
+{% block content %}
+
+<!-- Conteúdo do Formulário de Conteúdo -->
+<div class="container py-5">
+    <section class="py-3 text-center container">
+        <div class="row py-lg-3">
+            <div class="col-lg-6 col-md-8 mx-auto">
+                <h1 class="fw-light">Formulário de Conteúdo</h1>
+            </div>
+        </div>
+    </section>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <div class="mb-3">
+            <label for="disciplina" class="form-label">Disciplina</label>
+            {{ form.disciplina }}
+        </div>
+
+        <div class="mb-3">
+            <label for="assunto" class="form-label">Assunto</label>
+            {{ form.assunto }}
+        </div>
+
+        <div class="mb-3">
+            <label for="nome" class="form-label">Nome</label>
+            {{ form.nome }}
+        </div>
+
+        <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
+</div>
+
+        
+
+{% endblock %}
