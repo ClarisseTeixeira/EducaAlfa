@@ -7,10 +7,8 @@ class PerfilForm(ModelForm):
         model = Perfil
         fields = '__all__'
         widgets = {
-            'conteudo': forms.Select(attrs={'class': 'form-control'}),
-            'titulo': forms.TextInput(attrs={'class': 'form-control'}),
-            'link': forms.URLInput(attrs={'class': 'form-control'}),
-            'textotitulo': forms.TextInput(attrs={'class': 'form-control'}),
-            'texto': forms.Textarea(attrs={'class': 'form-control'}),
-            'referencias': forms.Textarea(attrs={'class': 'form-control'}),
+            'email': forms.EmailInput(attrs={'class': 'form-control'}),
+            'telefone': forms.TextInput(attrs={'class': 'form-control'}),
+            'endereco': forms.TextInput(attrs={'class': 'form-control'}),
+            'foto': forms.FileInput(attrs={'class': 'form-control'}),
         }

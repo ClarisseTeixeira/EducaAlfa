@@ -1,0 +1,13 @@
+{% extends 'core/partials/base.html' %}
+{% load static %}
+
+
+{% block content %}
+<h1>Perfil do Usuário</h1>
+        <p>Email: {{ perfil.email }}</p>
+        <p>Telefone: {{ perfil.telefone }}</p>
+        <p>Endereço: {{ perfil.endereco }}</p>
+        <img src="{{ perfil.foto.url }}" alt="Foto do perfil">
+        <br>    
+        <a href="{% url 'perfiledit' %}">Editar informações</a>
+{% endblock %}
