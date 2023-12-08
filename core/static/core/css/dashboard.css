@@ -17,7 +17,6 @@
 
 .username svg {
     fill: rgba(2, 69, 119, 0.20);
-    ;
 }
 
 .headerdash {
@@ -210,7 +209,6 @@ ul .sair{
 
 
 .tflash {
-
     font-family: 'Merriweather';
     display: flex;
     justify-content: center;
