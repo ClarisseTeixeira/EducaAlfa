@@ -14,11 +14,8 @@
     const data = {
       labels: ['Questões Certas', 'Questões Erradas'],
       datasets: [{
-        data: [{{ user_profile.questoes_certas|default:0 }}, {{ user_profile.questoes_erradas|default:0 }}],
-        backgroundColor: [
-          'rgb(54, 162, 235)',
-          'rgb(255, 99, 132)',
-        ],
+        data: [2,3],
+        backgroundColor: ['rgb(54, 162, 235)', 'rgb(255, 99, 132)'],
         hoverOffset: 4
       }], 
     };
