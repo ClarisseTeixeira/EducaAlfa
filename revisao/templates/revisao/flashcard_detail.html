@@ -3,42 +3,68 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="{% static 'revisao\css\revisao.css' %}">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="{% static 'revisao\css\revisao.css' %}">
+  <link rel="stylesheet" href="{% static 'core\css\dashboard.css' %}">
 </head>
 
 <style>
-    html, body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-    }
-  </style>
+  html,
+  body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+</style>
 
-<body>  
-    <div class="rfade">
-        <a href="{% url 'dashboard' %}"></a>
-      </div>
-      <div class="rmodal-container">
-        <div class="rmodal">
-          <h1>{{ detalhes.titulo }}</h1>
-          <hr>
-          <p>{{ detalhes.content.html|safe }}</p>
-          {% if revisao %}
-            <div class="rconcluida">
-          <form method="post" class="p-3">
-            {% csrf_token %}
-            <button class="bconcluida" type="submit">Revisão Concluída</button>
-          </form>
-        </div>
+<body>
+  <div class="rfade">
+    <a href="{% url 'dashboard' %}"></a>
+  </div>
+
+  <div class="rmodal-container">
+    <div class="rmodal">
+      <h1>{{ detalhes.titulo }}</h1>
+      <hr>
+
+
+      <p>{{ detalhes.content.html|safe }}</p>
+
+      <div class="bcpa">
+
+        <div>
+          {% if anterior_id %}
+          <a class="bantprox ant" href="{% url 'detalhes_flashcard' id=anterior_id %}"> Anterior</a>
+          {% else %}
+          <a class="bantprox ant" href="">Anterior</a>
           {% endif %}
         </div>
-      </div>
 
-      
+
+        <div class="rconcluida">
+          {% if revisao.data_agendada <= data%} 
+            {% if revisao %} 
+              <form method="post" class="p-3">
+                {% csrf_token %}
+                <button class="bconcluida" type="submit">Revisão Concluída</button>
+              </form>
+            {% endif %}
+          {% endif %}
+        </div>
+
+        <div>
+          {% if proximo_id %}
+            <a class="bantprox prox" href="{% url 'detalhes_flashcard' id=proximo_id %}">Próximo</a>
+          {% else %}
+            <a class="bantprox prox" href="">Próximo</a>
+          {% endif %}
+        </div>
+        
+      </div>
+    </div>
+  </div>
 </body>
 
 </html>

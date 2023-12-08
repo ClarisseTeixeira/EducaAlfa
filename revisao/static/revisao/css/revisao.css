@@ -171,16 +171,21 @@ h1 {
 .rmodal hr{
     border-color: #001a4825 !important ;
 }
-.rconcluida{  
-    display: flex;
-    justify-content: center;
-}
-
-.rconcluida form{
-    
+.bcpa{
     position: absolute;
     bottom: 0;
+    left: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+    margin-top: 10px;
+    margin-bottom: 15px;
+
 }
+
 .bconcluida{
     border-radius: 20px;
     background: #fff;
@@ -188,8 +193,6 @@ h1 {
     height: 40px;
     border: 2px solid #11ca00e0;
     font-size: 16px;
-    margin-top: 15px;
-    margin-bottom: 10px;
 }
 
 
@@ -199,6 +202,18 @@ h1 {
     background-color: #11ca00e0;
 }
 
+.bantprox{
+    border-radius: 20px;
+    background-color: #001B48;
+    width: 120px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    text-decoration: none;
+    justify-content: center;
+    font-size: 16px;
+}
 
 
 @media (max-width: 980px) {
