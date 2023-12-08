@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'revisao\css\revisao.css' %}">
+    <link rel="stylesheet" href="{% static 'core\css\dashboard.css' %}">
+</head>
+
+<style>
+    html,
+    body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+</style>
+
+<body>
+    <div class="rfade">
+        <a href="{% url 'flashcards' %}"></a>
+    </div>
+
+    <div class="rmodal-container">
+        <div class="rmodal">
+            <div class="">
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.media }}
+
+                    <div style="display: flex;">
+                        <input class="titulof" placeholder="Título" type="text" name="titulo" maxlength="150" id="titulo" value="{{ form.instance.titulo }}">
+                    </div>
+
+                    {{ form.content }}
+
+
+                    <div class="divsalvar" style="display: flex; justify-content: center;">
+                        <button class="salvar" type="submit">Enviar</button>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

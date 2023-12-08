@@ -151,6 +151,7 @@ def disciplina_editar(request, id):
         form = DisciplinaForm(instance=disciplina)
     return render(request, 'materiais/forms/formdisciplina.html', {'form': form})
 
+
 def conteudo_editar(request, id):
     conteudo = get_object_or_404(Conteudo, id=id)
     if request.method == 'POST':

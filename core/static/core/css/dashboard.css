@@ -145,6 +145,7 @@ ul .sair{
 
 .divsalvar {
     align-items: flex-end;
+
 } 
 
 .django-quill-widget-container {
@@ -172,6 +173,7 @@ ul .sair{
     align-items: center;
     flex-grow: 1;
     font-family: 'Merriweather';
+
 }
 
 .bflash {
@@ -187,6 +189,7 @@ ul .sair{
 .tituloflash a {
     text-decoration: none;
     color: #001B48;
+    word-break: break-all;
 }
 
 .tabelare .lta {
@@ -264,7 +267,7 @@ ul .sair{
     border-radius: 5px;
     background: #FFF;
     margin: 15px 10px;
-    padding: 20px;
+    padding: 10px;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.20));
 }
 

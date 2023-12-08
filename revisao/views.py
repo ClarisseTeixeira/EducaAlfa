@@ -10,9 +10,11 @@ from django.db.models import Count
 from django.db.models.functions import ExtractWeekDay
 from django.utils import timezone
 from django.contrib import messages
+from core.views.home import dashboard
 
 
 # Create your views here.
+
 @login_required
 def flashcards(request):
     flashcards = Flashcard.objects.all().filter(user=request.user).order_by('-data')
@@ -58,10 +60,19 @@ def proxima_revisao(revisao):
     
 @login_required
 def detalhes_flashcard(request, id):
-    detalhes = get_object_or_404(Flashcard, id=id)
     user = request.user 
-
+    detalhes = get_object_or_404(Flashcard, id=id)
     revisao = Revisao.objects.filter(flashcard=detalhes, user=user, concluida=False).first()
+    if not revisao:
+        return HttpResponse("Você não tem permissão para acessar essa página.")
+
+    data = timezone.now().date
+
+    proximo = Flashcard.objects.filter(user = user, id__gt=id).order_by('id').first()
+    proximo_id = proximo.id if proximo else dashboard
+
+    anterior = Flashcard.objects.filter(user = user, id__lt=id).order_by('-id').first()
+    anterior_id = anterior.id if anterior else dashboard
 
     if request.method == 'POST':
         if revisao:
@@ -72,7 +83,8 @@ def detalhes_flashcard(request, id):
             nova_data_revisao = proxima_revisao(revisao)
             Revisao.objects.create(flashcard=detalhes, user=user, data_agendada=nova_data_revisao)
 
-            proximo_flashcard = Revisao.objects.filter(user=user, concluida=False, data_agendada= datetime.now().date()).order_by('data_agendada').first()
+            proximo_flashcard = Revisao.objects.filter(user=user, concluida=False, data_agendada__lte=timezone.now().date()).order_by('data_agendada').first()
+
             
             if proximo_flashcard:
                 return redirect('detalhes_flashcard', id=proximo_flashcard.flashcard.id)
@@ -81,6 +93,9 @@ def detalhes_flashcard(request, id):
     context = {
         'detalhes': detalhes,
         'revisao': revisao,
+        'anterior_id': anterior_id,
+        'proximo_id': proximo_id,
+        'data': data
     }
     return render(request,'revisao/flashcard_detail.html', context)
 
@@ -111,13 +126,23 @@ def calendario(request):
     return render(request, 'revisao/calendario.html', context)
 
 
-
-
 @login_required
 def remover(request, id):
     flashcard = get_object_or_404(Flashcard, id=id)
     flashcard.delete()
     return redirect('flashcards') 
+
+def flashcard_editar(request, id):
+    flashcard = get_object_or_404(Flashcard, id=id)
+
+    if request.method == 'POST':
+        form = FlashcardForm(request.POST, instance=flashcard)
+        if form.is_valid():
+            form.save()
+            return redirect('flashcards')
+    else:
+        form = FlashcardForm(instance=flashcard)
+    return render(request, 'revisao/flashcardform.html', {'form': form})
 
 
 
