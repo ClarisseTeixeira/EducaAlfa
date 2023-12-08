@@ -5,7 +5,12 @@ from django.http import JsonResponse
 from .models import Disciplina, Assunto, Questao, Alternativa, UserProfile
 from django.contrib.auth.models import User
 import json
-from django.db.models import Count, Sum
+from django.contrib import messages
+from .forms import QuestaoForm
+from django.contrib.auth.decorators import user_passes_test
+from core.views.auth import superuser
+from django.db.models import Sum, Count, Q, Case, When, F, IntegerField
+from .models import Disciplina, UserProfile, Questao, Resposta
 
 @login_required
 def estatisticas(request):
@@ -31,27 +36,35 @@ def estatisticas(request):
             # Filtra as questões por disciplina
             questoes_disciplina = Questao.objects.filter(disciplina=disciplina)
 
-            # Obtém o número total de questões para cada disciplina
-            num_questoes_disciplina = questoes_disciplina.count()
+            # Obtém o número total de respostas do usuário para cada disciplina
+            num_questoes_disciplina = Resposta.objects.filter(
+                alternativa__questao__in=questoes_disciplina,
+                user_profile=user_profile
+            ).count()
 
-            # Obtém o número de questões certas e erradas para cada disciplina
+            # Obtém o número de respostas certas e erradas do usuário para cada disciplina
+            questoes_certas = Resposta.objects.filter(
+                alternativa__questao__in=questoes_disciplina,
+                user_profile=user_profile,
+                certa=True
+            ).count()
+
+            questoes_erradas = Resposta.objects.filter(
+                alternativa__questao__in=questoes_disciplina,
+                user_profile=user_profile,
+                certa=False
+            ).count()
+
+            # Adiciona os dados da disciplina à lista
             dados_disciplina = {
                 'disciplina': disciplina,
-                'questoes_certas': questoes_disciplina.aggregate(questoes_certas=Sum('questoes_certas'))['questoes_certas'] or 0,
-                'questoes_erradas': questoes_disciplina.aggregate(questoes_erradas=Sum('questoes_erradas'))['questoes_erradas'] or 0,
-                'taxa_acerto': 0,  # Definir para 0 inicialmente
+                'questoes_certas': questoes_certas,
+                'questoes_erradas': questoes_erradas,
                 'num_questoes_respondidas': num_questoes_disciplina,
+                'taxa_acerto': round((questoes_certas / (questoes_certas + questoes_erradas)) * 100, 2) if (questoes_certas + questoes_erradas) > 0 else 0,
             }
 
-            # Calcular taxa de acerto apenas se houver questões respondidas
-            if num_questoes_disciplina > 0 and (dados_disciplina['questoes_certas'] + dados_disciplina['questoes_erradas']) > 0:
-                dados_disciplina['taxa_acerto'] = round((dados_disciplina['questoes_certas'] / (dados_disciplina['questoes_certas'] + dados_disciplina['questoes_erradas'])) * 100, 2)
-
             dados_disciplinas.append(dados_disciplina)
-
-    # Adicione prints para debug
-    print(dados_usuario)
-    print(dados_disciplinas)
 
     # Envie os dados para o template
     data = {
@@ -60,9 +73,6 @@ def estatisticas(request):
     }
 
     return render(request, 'questoes/pages/estatisticas.html', data)
-
-# No seu arquivo views.py
-
 
 @login_required
 def lista_questoes(request):
@@ -133,18 +143,19 @@ def obter_assuntos(request):
 
 
 
-
 @login_required
 def verificar_resposta(request, questao_id):
     questao = get_object_or_404(Questao, pk=questao_id)
     user_profile, created = UserProfile.objects.get_or_create(user=request.user)
 
-
     if request.method == 'POST':
         alternativa_id = request.POST.get('alternativa')
         alternativa_selecionada = get_object_or_404(Alternativa, pk=alternativa_id)
 
+        # Crie uma instância de Resposta associada à alternativa selecionada e ao perfil do usuário
+        resposta = Resposta.objects.create(alternativa=alternativa_selecionada, user_profile=user_profile, certa=alternativa_selecionada.correta)
 
+        # Atualize o número de questões certas e erradas no perfil do usuário
         if alternativa_selecionada.correta:
             mensagem = 'acertou!'
             user_profile.questoes_certas += 1
@@ -152,27 +163,22 @@ def verificar_resposta(request, questao_id):
             mensagem = 'errou.'
             user_profile.questoes_erradas += 1
 
-
         questao.respondida = True
         questao.save()
         user_profile.save()
-
 
         # Retorne os dados atualizados para o gráfico
         data = {
             'questoes_certas': user_profile.questoes_certas,
             'questoes_erradas': user_profile.questoes_erradas,
-            'taxa_acerto': user_profile.taxa_acerto(),  # Adicione esse método ao seu modelo UserProfile
+            'taxa_acerto': user_profile.taxa_acerto(),
             'num_questoes': user_profile.num_questoes(),
         }
-
 
         # Se preferir, pode retornar a resposta como JSON
         return JsonResponse(data)
 
-
     return redirect('questoes', questao_id=questao_id)
-   
 
 
 def indexquestoes(request):
@@ -197,4 +203,39 @@ def grafico(request, usuario_id):
         })
 
 
-    return render(request, 'questoes/partials/s.html', {'dados_disciplinas': dados_disciplinas})
+    return render(request, 'questoes/pages/estatisticas.html', {'dados_disciplinas': dados_disciplinas})
+
+
+
+
+
+@user_passes_test(superuser)
+def questao_criar(request):
+    if request.method == 'POST':
+        form = QuestaoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Questão criada com sucesso!')
+            form = QuestaoForm()
+    else:
+        form = QuestaoForm()
+
+    return render(request, "questoes/forms/formsquestoes.html", {'form': form})
+
+def questao_remover(request, id):
+    questao = get_object_or_404(Questao, id=id)
+    questao.delete()
+    messages.success(request, 'Questão excluído com sucesso!')
+    return redirect('arearestrita')
+
+
+def questao_editar(request, id):
+    questao = get_object_or_404(Questao, id=id)
+    if request.method == 'POST':
+        form = QuestaoForm(request.POST, request.FILES, instance=questao)
+        if form.is_valid():
+            form.save()
+            return redirect('arearestrita')
+    else:
+        form = QuestaoForm(instance=questao)
+    return render(request, 'questoes/forms/formsquestoes.html', {'form': form})

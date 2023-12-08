@@ -10,6 +10,9 @@ urlpatterns = [
     path('indexquestoes', views.indexquestoes, name='indexquestoes'),
     path('grafico/<int:usuario_id>/', views.grafico, name='grafico'),
     path('obter_assuntos/', views.obter_assuntos, name='obter_assuntos'),
+    path('questoes/editar/<int:id>/', views.questao_editar, name='questao_editar'),
+    path('questoes/criar/', views.questao_criar, name='questao_criar'),
+    path('questoes/remover/<int:id>/', views.questao_remover, name='questao_remover'),
 ]
 
 

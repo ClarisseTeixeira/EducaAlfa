@@ -27,7 +27,7 @@
             <div class="estatisticas-gerais">
                 <div class="row">
                     <div class="num-acertos">
-                        <h2>{{ dados_usuario.questoes_certas }} <br> certas</h2>
+                        <h2>{{ dados_usuario.questoes_certas }} <br> Certas</h2>
                     </div>
                     <div class="num-erradas">
                         <h2>{{ dados_usuario.questoes_erradas }} <br>Erradas</h2>
@@ -62,15 +62,16 @@
                 <th class="item">Taxa de acerto</th>
             </tr>
             {% for dados_disciplina in dados_disciplinas %}
-            <tr class="valores-table">
-                <td class="item-1">{{ dados_disciplina.disciplina.nome }}</td>
-                <td class="item">{{ dados_disciplina.num_questoes_respondidas }}</td>
-                <td class="item">{{ dados_disciplina.questoes_certas }}</td>
-                <td class="item">{{ dados_disciplina.questoes_erradas }}</td>
-                <td class="item">{{ dados_disciplina.taxa_acerto }}%</td>
-            </tr>
+                <tr class="valores-table">
+                    <td class="item-1">{{ dados_disciplina.disciplina.nome }}</td>
+                    <td class="item">{{ dados_disciplina.num_questoes_respondidas }}</td>
+                    <td class="item">{{ dados_disciplina.questoes_certas }}</td>
+                    <td class="item">{{ dados_disciplina.questoes_erradas }}</td>
+                    <td class="item">{{ dados_disciplina.taxa_acerto }}%</td>
+                </tr>
             {% endfor %}
         </table>
+        
         
 
     </div>

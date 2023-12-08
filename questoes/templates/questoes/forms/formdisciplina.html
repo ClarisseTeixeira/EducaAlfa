@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head%}
+<link rel="stylesheet" href="{% static 'questoes\css\style.css' %}">
+
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+    <section class="py-3 text-center container">
+        <div class="row py-lg-3">
+            <div class="col-lg-6 col-md-8 mx-auto">
+                <h1 class="fw-light">Formulário de Disciplina</h1>
+            </div>
+        </div>
+    </section>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <div class="mb-3">
+            <label for="nome" class="form-label">Nome</label>
+            {{ form.nome }}
+        </div>
+        
+
+        <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
+</div>
+
+        
+
+{% endblock %}
