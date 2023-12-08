@@ -1,0 +1,39 @@
+{% extends 'core/partials/base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+
+<div class="d-flex mt-3">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            {{ form.email }}
+        </div>
+    
+        <div class="mb-3">
+            <label for="telefone" class="form-label">Telefone</label>
+            {{ form.telefone }}
+        </div>
+    
+        
+        <div class="mb-3">
+            <label for="endereco" class="form-label">Endereço</label>
+            {{ form.endereco }}
+        </div>
+    
+        
+        <div class="mb-3">
+            <label for="foto" class="form-label">Foto</label>
+            {{ form.foto }}
+        </div>
+    <button type="submit">Salvar</button>
+
+    </form>
+    
+</div>
+
+
+{% endblock %}
