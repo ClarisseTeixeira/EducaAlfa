@@ -1,22 +1,24 @@
 .username {
     color: #001B48;
-    font-size: 25px;
     display: flex;
     justify-content: flex-end;
     margin: 15px;
     max-width: 95%;
-    font-family: 'Merriweather';
-
 }
 
 .username p {
-    margin-right: 20px;
-    font-family: 'Merriweather';
-
+    margin: 5px;
+    font-size: 30px;
+    font-weight: 400;
+    line-height: normal;
+    
 }
 
-.username svg {
-    fill: rgba(2, 69, 119, 0.20);
+.imguser {
+    width: 45px !important;
+    height: 45px !important;
+    border-radius: 45px ;
+
 }
 
 .headerdash {
@@ -25,10 +27,8 @@
     width: 100%;
 
 }
-
-
-body {
-    background-color: #F8F8FF;
+body{
+    background-color: #FCFDFD;
 }
 
 nav.menu-lateral {
@@ -65,7 +65,7 @@ nav.menu-lateral {
 }
 
 .ativo {
-    background-color: #F8F8FF;
+    background-color: #FCFDFD;
     border-radius: 16.5px;
     width: 80px;
     height: 45px;
@@ -218,7 +218,9 @@ ul .sair{
     margin: auto;
     max-width: 90%;
 }
-
+.maincentro{
+    padding-left: 70px;
+}
 .msgbv {
     width: 670px;
     height: 170px;
@@ -414,4 +416,16 @@ p img{
 
 .ql-indent-8 {
     margin-left: 24rem;
+}
+
+
+
+.imgperfil{
+    width: 320px  !important;
+    height: 320px !important;
+}
+
+
+.sumir{
+    display: none;
 }

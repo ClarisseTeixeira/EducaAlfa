@@ -7,3 +7,4 @@ class FlashcardForm(forms.ModelForm):
         fields = (
             'titulo', 'content',
         )
+

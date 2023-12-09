@@ -9,10 +9,9 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth.decorators import user_passes_test
 from core.views.auth import superuser
 from materiais.models import *
-from core.models import Perfil
-from core.forms import PerfilForm
 from django.contrib.auth.models import User
 from django.contrib import messages
+from core.models import Profile
 
 
 
@@ -26,7 +25,7 @@ def home(request):
 @login_required
 def dashboard(request):
     user = request.user
-
+    created = Profile.objects.get_or_create(user=user)
     todas_revisoes = get_revisions(user, concluida=False, data_agendada__gte=date.today()).order_by('data_agendada')
     revisoes_do_dia = get_revisions(user, data_agendada=date.today(), concluida=False)
     revisoes_pendentes = get_revisions(user, data_agendada__lt=date.today(), concluida=False)
@@ -85,32 +84,3 @@ def arearestrita(request):
     }
 
     return render(request, 'core/pages/arearestrita.html', context)
-
-@login_required
-def perfil(request):
-    user = request.user
-    try:
-        perfil = Perfil.objects.get(user=user)
-    except Perfil.DoesNotExist:
-        perfil = None
-    return render(request, 'core/pages/perfil.html', {'perfil': perfil})
-
-@login_required
-def perfiledit(request):
-    try:
-        perfil = Perfil.objects.get(user=request.user)
-    except Perfil.DoesNotExist:
-        perfil = None
-        
-    if request.method == 'POST':
-        form = PerfilForm(request.POST, request.FILES, instance=perfil)
-        if form.is_valid():
-            perfil = form.save()
-            perfil.user = request.user
-            perfil.save()
-            messages.success(request, 'As informações foram atualizadas com sucesso!')
-            return redirect('perfil')
-    else:
-        form = PerfilForm(instance=perfil)
-
-    return render(request, 'core/pages/perfilform.html', {'form': form})

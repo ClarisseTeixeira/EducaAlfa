@@ -1,13 +1,159 @@
 {% extends 'core/partials/base.html' %}
 {% load static %}
-
-
 {% block content %}
-<h1>Perfil do Usuário</h1>
-        <p>Email: {{ perfil.email }}</p>
-        <p>Telefone: {{ perfil.telefone }}</p>
-        <p>Endereço: {{ perfil.endereco }}</p>
-        <img src="{{ perfil.foto.url }}" alt="Foto do perfil">
-        <br>    
-        <a href="{% url 'perfiledit' %}">Editar informações</a>
+<div class="container" style="padding: 50px;">
+<div class="row bg-white d-flex align-items-center " style="min-width: 800px; padding: 30px;">
+        <div class="col">
+            <img class="imgperfil" src="{{ user.profile.image.url }}" alt="{{ user.username }}">
+        </div>
+    
+        <div class="col m-auto infos" id="infosSection">
+            <p class="fw-semibold m-0"> Nome:</p>
+            <p class="fw-lighter"> {{user.username}}</p>
+    
+            <p class="fw-semibold m-0"> Email:</p>
+            <p class="fw-lighter"> {{user.profile.email}}</p>
+    
+            <p class="fw-semibold m-0"> Endereço:</p>
+            <p class="fw-lighter">{{user.profile.endereco}}</p>
+    
+            <p class="fw-semibold m-0"> Telefone:</p>
+            <p class="fw-lighter">{{user.profile.telefone}}</p>
+            <a class="btn btn-outline-secondary" href="#"> <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512"> <path fill="#4e4e50" d="M362.7 19.3L314.3 67.7 444.3 197.7l48.4-48.4c25-25 25-65.5 0-90.5L453.3 19.3c-25-25-65.5-25-90.5 0zm-71 71L58.6 323.5c-10.4 10.4-18 23.3-22.2 37.4L1 481.2C-1.5 489.7 .8 498.8 7 505s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L421.7 220.3 291.7 90.3z" /> </svg> Editar Perfil</a>
+        </div>
+        
+        <div class="forms col m-auto  sumir" id="formsSection">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label" for="id_email">Email:  </label>
+                    <div class="col-sm-10">
+                        <input class="form-control" type="email" name="email" maxlength="254"
+                               value="{{user.profile.email}}" required="" id="id_email">
+                    </div>
+                </div>
+    
+                <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label" for="id_endereco">Endereço:  </label>
+                    <div class="col-sm-10">
+                        <input class="form-control" type="text" name="endereco" maxlength="200"
+                               required="" id="id_endereco" value="{{user.profile.endereco}}">
+                    </div>
+                </div>
+    
+                <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label" for="id_telefone">Telefone:  </label>
+                    <div class="col-sm-10">
+                        <input class="form-control" type="text" name="telefone" maxlength="11"
+                               required="" id="id_telefone" value="{{user.profile.telefone}}">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label" for="id_image">Foto:  </label>
+                    <div class="col-sm-10">
+                        <input class="form-control" type="file" name="image" accept="image/*"
+                               id="id_image">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Editar</button>
+            </form>
+        </div>
+    </div>
+</div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const infos = document.querySelector('.infos');
+            const form = document.querySelector('form');
+    
+            infos.addEventListener('click', function (event) {
+                event.preventDefault();
+                document.getElementById('infosSection').classList.add('sumir');
+                document.getElementById('formsSection').classList.remove('sumir');
+            });
+    
+            form.addEventListener('submit', function () {
+                document.getElementById('infosSection').classList.remove('sumir');
+                document.getElementById('formsSection').classList.add('sumir');
+            });
+        });
+    </script>
+
 {% endblock %}
+
+
+
+
+
+
+
+
+
+
+<button class="button" type="button">
+        <span class="button__text">Download</span>
+        <span class="button__icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 35" id="bdd05811-e15d-428c-bb53-8661459f9307" data-name="Layer 2" class="svg"><path d="M17.5,22.131a1.249,1.249,0,0,1-1.25-1.25V2.187a1.25,1.25,0,0,1,2.5,0V20.881A1.25,1.25,0,0,1,17.5,22.131Z"></path><path d="M17.5,22.693a3.189,3.189,0,0,1-2.262-.936L8.487,15.006a1.249,1.249,0,0,1,1.767-1.767l6.751,6.751a.7.7,0,0,0,.99,0l6.751-6.751a1.25,1.25,0,0,1,1.768,1.767l-6.752,6.751A3.191,3.191,0,0,1,17.5,22.693Z"></path><path d="M31.436,34.063H3.564A3.318,3.318,0,0,1,.25,30.749V22.011a1.25,1.25,0,0,1,2.5,0v8.738a.815.815,0,0,0,.814.814H31.436a.815.815,0,0,0,.814-.814V22.011a1.25,1.25,0,1,1,2.5,0v8.738A3.318,3.318,0,0,1,31.436,34.063Z"></path></svg></span>
+      </button>
+
+
+      .button {
+        --main-focus: #2d8cf0;
+        --font-color: #323232;
+        --bg-color-sub: #dedede;
+        --bg-color: #eee;
+        --main-color: #323232;
+        position: relative;
+        width: 150px;
+        height: 40px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        border: 2px solid var(--main-color);
+        box-shadow: 4px 4px var(--main-color);
+        background-color: var(--bg-color);
+        border-radius: 10px;
+        overflow: hidden;
+      }
+      
+      .button, .button__icon, .button__text {
+        transition: all 0.3s;
+      }
+      
+      .button .button__text {
+        transform: translateX(22px);
+        color: var(--font-color);
+        font-weight: 600;
+      }
+      
+      .button .button__icon {
+        position: absolute;
+        transform: translateX(109px);
+        height: 100%;
+        width: 39px;
+        background-color: var(--bg-color-sub);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      
+      .button .svg {
+        width: 20px;
+        fill: var(--main-color);
+      }
+      
+      .button:hover {
+        background: var(--bg-color);
+      }
+      
+      .button:hover .button__text {
+        color: transparent;
+      }
+      
+      .button:hover .button__icon {
+        width: 148px;
+        transform: translateX(0);
+      }
+      
+      .button:active {
+        transform: translate(3px, 3px);
+        box-shadow: 0px 0px var(--main-color);
+      }
