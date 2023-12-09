@@ -1,40 +1,18 @@
-<script>
-    $(document).ready(function () {
-        $('.btn-responder').click(function (event) {
-            event.preventDefault();
-            var form = $(this).closest('form');
-            var questaoId = $(this).data('questao-id');
 
-            $.ajax({
-                type: form.attr('method'),
-                url: form.attr('action'),
-                data: form.serialize(),
-                success: function (data) {
-                    // Manipule a resposta, se necessário
-                    console.log(data);
-
-                    // Altere a URL da página para a questão respondida
-                    var novaUrl = '/questoes/' + questaoId + '/';
-                    history.pushState(null, null, novaUrl);
-                }
-            });
-        });
-    });
-</script>
 
 <div class="questao">
     <ul class="questao">
         {% for questao in questoes %}
         <div class="container-azul">
             <div class="instituicao_ano">
-                <strong>{{ questao.instituicao_ano }}</strong>
+                <strong>{{ questao.disciplina}} - {{questao.assunto}}</strong>
             </div>
             <div class="central">
             <div class="container-branco">
                
                 <li class="questao_texto">
                    
-                    {{ questao.texto }}
+                    <strong>{{ questao.instituicao_ano }}</strong> - {{ questao.texto }}
                 </li>
                 <li class="questao_enunciado">{{ questao.enunciado }}</li>
                

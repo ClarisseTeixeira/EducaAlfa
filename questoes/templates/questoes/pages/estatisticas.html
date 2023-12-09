@@ -4,6 +4,7 @@
 {% block head %}
 <link rel="stylesheet" href="{% static 'questoes/css/estatisticas.css' %}">
 <script src="{% static 'questoes/js/questoes.js' %}"></script>
+
 {% endblock %}
 {% block linkq %} ativo {% endblock %}
 
@@ -85,4 +86,12 @@
     <br>
     <br>
     <br>
+
+    <script>
+        // Adicione esta parte no final do arquivo
+        const dadosUsuario = {
+          questoesCertas: {{ dados_usuario.questoes_certas }},
+          questoesErradas: {{ dados_usuario.questoes_erradas }},
+        };
+      </script>
 {% endblock %}
