@@ -159,7 +159,10 @@ nav {
 
 .messages p {
     font-size: 20px;
+}
 
-
-
+.imguser{
+    width: 45px !important;
+    height: 45px !important;
+    border-radius: 45px ;
 }
