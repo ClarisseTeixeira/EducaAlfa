@@ -17,7 +17,7 @@ Including another URLconf
 
 from django.urls import path
 from django.contrib.auth import views as auth_views 
-from .views.home import index, dashboard, revisoes, arearestrita, perfil, perfiledit
+from .views.home import index, dashboard, revisoes, arearestrita
 from .views.auth import *
 
 urlpatterns = [
@@ -28,8 +28,6 @@ urlpatterns = [
     path('dashboard', dashboard, name='dashboard'),
     path('revisoes', revisoes, name='revisoes'),
     path('arearestrita',arearestrita, name='arearestrita'),
-    path('perfil', perfil, name='perfil'),
-    path('perfiledit', perfiledit, name='perfiledit'),
-
+    path('profile/', profile, name='profile'),
 
 ] 

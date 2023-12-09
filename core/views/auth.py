@@ -4,6 +4,10 @@ from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
+from core.forms import  ProfileUpdateForm
+from django.contrib.auth.decorators import login_required
+from core.models import Profile
+
 
 def registro(request):
     if request.method == 'POST':
@@ -50,3 +54,22 @@ def user_logout(request):
 
 def superuser(user):
     return user.is_superuser
+
+@login_required
+def profile(request):
+    profile, created = Profile.objects.get_or_create(user=request.user)
+
+    if request.method == 'POST':
+        form = ProfileUpdateForm(request.POST, request.FILES, instance=profile)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Your profile has been updated!')
+            return redirect('profile')
+    else:
+        form = ProfileUpdateForm(instance=profile)
+
+    context = {
+        'form': form
+    }
+
+    return render(request, 'core/pages/perfil.html', context)
