@@ -18,12 +18,12 @@
   <div class="message">
     {% if messages %}
     <div class="messages">
-        {% for message in messages %}
-        <p {% if message.tags %} class="{{ message.tags }}" {% endif %}> {{ message }}</p>
-        {% endfor %}
+      {% for message in messages %}
+      <p {% if message.tags %} class="{{ message.tags }}" {% endif %}> {{ message }}</p>
+      {% endfor %}
     </div>
     {% endif %}
-</div>
+  </div>
 
 
 
@@ -36,15 +36,10 @@
             alt=""></a>
 
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+        
 
-
-
-
-        <div class=" basenav collapse navbar-collapse basenav nav justify-content-end " id="navbarSupportedContent">
+        <div class="basenav justify-content-end ">
+        <div class="  collapse navbar-collapse basenav nav " id="navbarSupportedContent">
           <ul class="navbar-nav navul justify-content-end">
             <li class="nav-item navli">
               <a class="nav-link" href="{% url 'indexrevisao' %}">Revisão</a>
@@ -58,11 +53,35 @@
             <li class="nav-item navli">
               <a class="nav-link" href="{% url 'indexpomodoro' %}">Pomodoro</a>
             </li>
-            <div class="entrar"><a href="{% url 'dashboard' %}">Entrar</a> </div>
-
           </ul>
 
         </div>
+
+        <div>
+
+          {% if user.is_authenticated %}
+          <div class="m-1">
+            <a href="{% url 'dashboard' %}">
+              <img class="imguser" src="{{ user.profile.image.url }}" alt="Foto do Usuário">
+            </a>
+          </div>
+          {% else %}
+          <div class="entrar m-1">
+            <a href="{% url 'dashboard' %}">Entrar</a>
+          </div>
+          {% endif %}
+
+        </div>
+        <div class="m-2">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+  
+      </div>
+
+
       </div>
     </nav>
   </header>
@@ -131,11 +150,11 @@
     integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
     crossorigin="anonymous"></script>
 
-    <script>
-      setTimeout(function() {
-          var tempomsg = document.querySelector('.message');
-          tempomsg.classList.add('hide-message');
-      }, 5000);
+  <script>
+    setTimeout(function () {
+      var tempomsg = document.querySelector('.message');
+      tempomsg.classList.add('hide-message');
+    }, 5000);
   </script>
 
 </body>
