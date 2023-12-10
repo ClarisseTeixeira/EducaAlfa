@@ -30,4 +30,4 @@ urlpatterns = [
     path('arearestrita',arearestrita, name='arearestrita'),
     path('profile/', profile, name='profile'),
 
-] 
+]  
