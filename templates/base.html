@@ -36,28 +36,36 @@
             alt=""></a>
 
 
-        
 
-        <div class="basenav justify-content-end ">
-        <div class="  collapse navbar-collapse basenav nav " id="navbarSupportedContent">
-          <ul class="navbar-nav navul justify-content-end">
-            <li class="nav-item navli">
-              <a class="nav-link" href="{% url 'indexrevisao' %}">Revisão</a>
-            </li>
-            <li class="nav-item navli">
-              <a class="nav-link" href="{% url 'index' %}#materiais">Materiais</a>
-            </li>
-            <li class="nav-item navli">
-              <a class="nav-link" href="{% url 'indexquestoes' %}">Questões</a>
-            </li>
-            <li class="nav-item navli">
-              <a class="nav-link" href="{% url 'indexpomodoro' %}">Pomodoro</a>
-            </li>
-          </ul>
 
-        </div>
+        <div class="d-flex justify-content-end ">
 
-        <div>
+          <div class="m-2">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+              aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          </div>
+
+          <div class="  collapse navbar-collapse basenav nav " id="navbarSupportedContent">
+            <ul class="navbar-nav navul justify-content-end">
+              <li class="nav-item navli">
+                <a class="nav-link" href="{% url 'indexrevisao' %}">Revisão</a>
+              </li>
+              <li class="nav-item navli">
+                <a class="nav-link" href="{% url 'index' %}#materiais">Materiais</a>
+              </li>
+              <li class="nav-item navli">
+                <a class="nav-link" href="{% url 'indexquestoes' %}">Questões</a>
+              </li>
+              <li class="nav-item navli">
+                <a class="nav-link" href="{% url 'indexpomodoro' %}">Pomodoro</a>
+              </li>
+            </ul>
+
+          </div>
+
 
           {% if user.is_authenticated %}
           <div class="m-1">
@@ -72,23 +80,11 @@
           {% endif %}
 
         </div>
-        <div class="m-2">
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-        </div>
-  
-      </div>
 
 
       </div>
     </nav>
   </header>
-
-
-
-
 
   <main>
     <div class=" container">
@@ -155,6 +151,7 @@
       var tempomsg = document.querySelector('.message');
       tempomsg.classList.add('hide-message');
     }, 5000);
+    
   </script>
 
 </body>
