@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Formulário de Questões</title>
+</head>
+<body>
+    <h1>Formulário de Questões</h1>
+    <form method="post" action="{% url 'lista_questoes' %}">
+        {% csrf_token %}
+        
+        {% for questao in questoes %}
+            <h2>{{ questao.enunciado }}</h2>
+            <input type="hidden" name="questao{{ questao.id }}" value="{{ questao.id }}">
+            {% for alternativa in questao.alternativas.all %}
+                <input type="radio" id="alternativa{{ alternativa.id }}" name="questao_{{ questao.id }}" value="{{ alternativa.id }}">
+                <label for="alternativa{{ alternativa.id }}">{{ alternativa.texto }}</label><br>
+            {% endfor %}
+            <br>
+        <input type="submit" value="Enviar Respostas">
+        {% endfor %}
+    </form>
+</body>
+</html>

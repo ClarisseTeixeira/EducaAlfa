@@ -98,3 +98,9 @@ button{
 .responder-questoes{
     text-align: center;
 }
+
+
+.alternativa-correta {
+    color: green; /* Muda a cor do texto para verde */
+    /* Outros estilos que você deseja aplicar */
+}

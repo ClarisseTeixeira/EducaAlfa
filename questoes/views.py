@@ -12,61 +12,111 @@ from core.views.auth import superuser
 from django.db.models import Sum, Count, Q, Case, When, F, IntegerField
 from .models import Disciplina, UserProfile, Questao, Resposta
 
+
+
+@login_required
+def processar_respostas(request):
+    if request.method == 'POST':
+        acertos = 0
+        erros = 0
+        for questao in Questao.objects.all():
+            resposta_id = request.POST.get(f'questao_{questao.id}')
+            if resposta_id:
+                alternativa = Alternativa.objects.filter(
+                    questao_id=questao.id,
+                    id=resposta_id
+                ).first()                
+                if alternativa and alternativa.correta:
+                    acertos += 1
+                else:
+                    erros += 1
+        
+        request.session['acertos'] = acertos
+        request.session['erros'] = erros
+        
+        messages.success(request, 'Respostas processadas com sucesso!')
+        return redirect('resultados')
+    return redirect('formulario_questoes')
+
+
+
+
+@login_required
+def formulario_questoes(request):
+    questoes = Questao.objects.all()
+    return render(request, 'questoes/formulario_questoes.html', {'questoes': questoes})
+
+
+@login_required
+def resultados(request):
+    acertos = request.session.get('acertos', 0)
+    erros = request.session.get('erros', 0)
+
+    contexto = {
+        'acertos': acertos,
+        'erros': erros
+    }
+    return render(request, 'questoes/resultados.html', contexto)
+
 @login_required
 def estatisticas(request):
-    # Obtém as disciplinas disponíveis
     disciplinas = Disciplina.objects.all()
-
-    # Inicializa uma lista para armazenar os dados de cada disciplina
     dados_disciplinas = []
 
-    # Se o usuário estiver autenticado, obtenha os dados reais do usuário
     if request.user.is_authenticated:
-        user_profile, created = UserProfile.objects.get_or_create(user=request.user)
+        user_profile = request.user.userprofile  # Assuming UserProfile is related to User via OneToOneField
+        
+        acertos = user_profile.acertos
+        erros = user_profile.erros
+        num_questoes = acertos + erros
+        if num_questoes > 0:
+            taxa_acerto = round((acertos / num_questoes) * 100, 2)
+        else:
+            taxa_acerto = 0
 
-        # Adiciona os dados do usuário à lista
         dados_usuario = {
-            'questoes_certas': user_profile.questoes_certas or 0,
-            'questoes_erradas': user_profile.questoes_erradas or 0,
-            'taxa_acerto': user_profile.taxa_acerto(),
-            'num_questoes': user_profile.num_questoes(),
+            'acertos': acertos,
+            'erros': erros,
+            'taxa_acerto': taxa_acerto,
+            'num_questoes': num_questoes,
         }
+        print(dados_usuario)
 
         for disciplina in disciplinas:
-            # Filtra as questões por disciplina
             questoes_disciplina = Questao.objects.filter(disciplina=disciplina)
-
-            # Obtém o número total de respostas do usuário para cada disciplina
+            
+            # Get the number of responses for each discipline by the current user
             num_questoes_disciplina = Resposta.objects.filter(
-                alternativa__questao__in=questoes_disciplina,
-                user_profile=user_profile
+                questao__in=questoes_disciplina,
+                user_profile=user_profile,
             ).count()
 
-            # Obtém o número de respostas certas e erradas do usuário para cada disciplina
-            questoes_certas = Resposta.objects.filter(
-                alternativa__questao__in=questoes_disciplina,
+            # Get the number of correct and incorrect responses for each discipline by the current user
+            acertos = Resposta.objects.filter(
+                questao__in=questoes_disciplina,
                 user_profile=user_profile,
                 certa=True
             ).count()
 
-            questoes_erradas = Resposta.objects.filter(
-                alternativa__questao__in=questoes_disciplina,
+            erros = Resposta.objects.filter(
+                questao__in=questoes_disciplina,
                 user_profile=user_profile,
                 certa=False
             ).count()
 
-            # Adiciona os dados da disciplina à lista
+            # Add discipline data to the list
             dados_disciplina = {
                 'disciplina': disciplina,
-                'questoes_certas': questoes_certas,
-                'questoes_erradas': questoes_erradas,
+                'acertos': acertos,
+                'erros': erros,
                 'num_questoes_respondidas': num_questoes_disciplina,
-                'taxa_acerto': round((questoes_certas / (questoes_certas + questoes_erradas)) * 100, 2) if (questoes_certas + questoes_erradas) > 0 else 0,
+                'taxa_acerto': round((acertos / (acertos + erros)) * 100, 2) if (acertos + erros) > 0 else 0,
             }
 
             dados_disciplinas.append(dados_disciplina)
 
-    # Envie os dados para o template
+
+    # Send data to the template
     data = {
         'dados_usuario': dados_usuario,
         'dados_disciplinas': dados_disciplinas,
@@ -77,28 +127,6 @@ def estatisticas(request):
 @login_required
 def lista_questoes(request):
     disciplinas = Disciplina.objects.all()
-    questoes = Questao.objects.all()
-
-
-    # Adicione a lógica de paginação aqui
-    questoes_por_pagina = 5
-    paginator = Paginator(questoes, questoes_por_pagina)
-    page_number = request.GET.get('page')
-    page = paginator.get_page(page_number)
-
-
-    context = {
-        'disciplinas': disciplinas,
-        'questoes': page,
-    }
-    return render(request, 'questoes/pages/lista_questoes.html', context)
-
-
-@login_required
-def filtro_questoes(request):
-    disciplinas = Disciplina.objects.all()
-
-
     disciplina_id = request.GET.get('disciplina')
 
 
@@ -139,73 +167,51 @@ def obter_assuntos(request):
     disciplina_id = request.GET.get('disciplina_id')
     assuntos = Assunto.objects.filter(disciplina_id=disciplina_id).values('id', 'assunto')
     return JsonResponse(list(assuntos), safe=False)
-# Restante do seu código...
-
+    # Restante do seu código...
 
 
 @login_required
-def verificar_resposta(request, questao_id):
-    questao = get_object_or_404(Questao, pk=questao_id)
-    user_profile, created = UserProfile.objects.get_or_create(user=request.user)
-
+def verificar_resposta(request):
     if request.method == 'POST':
-        alternativa_id = request.POST.get('alternativa')
-        alternativa_selecionada = get_object_or_404(Alternativa, pk=alternativa_id)
+        acertos = 0
+        erros = 0
+        user = request.user
+        perfil_usuario = user.userprofile
 
-        # Crie uma instância de Resposta associada à alternativa selecionada e ao perfil do usuário
-        resposta = Resposta.objects.create(alternativa=alternativa_selecionada, user_profile=user_profile, certa=alternativa_selecionada.correta)
+        for questao in Questao.objects.all():
+            resposta_id = request.POST.get(f'questao_{questao.id}')
+            if resposta_id:
+                alternativa = Alternativa.objects.filter(
+                    questao_id=questao.id,
+                    id=resposta_id
+                ).first()
 
-        # Atualize o número de questões certas e erradas no perfil do usuário
-        if alternativa_selecionada.correta:
-            mensagem = 'acertou!'
-            user_profile.questoes_certas += 1
-        else:
-            mensagem = 'errou.'
-            user_profile.questoes_erradas += 1
+                if alternativa and alternativa.correta:
+                    acertos += 1
+                    Resposta.objects.create(
+                        questao=questao,
+                        alternativa=alternativa,
+                        user_profile=perfil_usuario,
+                        certa=True)
+                else:
+                    erros += 1
+                    Resposta.objects.create(
+                        questao=questao,
+                        alternativa=alternativa,
+                        user_profile=perfil_usuario,
+                        certa=False)
+                
 
-        questao.respondida = True
-        questao.save()
-        user_profile.save()
+        perfil_usuario.acertos += acertos
+        perfil_usuario.erros += erros
+        perfil_usuario.save()
+        
+    return redirect('lista_questoes')
 
-        # Retorne os dados atualizados para o gráfico
-        data = {
-            'questoes_certas': user_profile.questoes_certas,
-            'questoes_erradas': user_profile.questoes_erradas,
-            'taxa_acerto': user_profile.taxa_acerto(),
-            'num_questoes': user_profile.num_questoes(),
-        }
-
-        # Se preferir, pode retornar a resposta como JSON
-        return JsonResponse(data)
-
-    return redirect('questoes', questao_id=questao_id)
 
 
 def indexquestoes(request):
     return render(request, 'questoes/pages/indexquestoes.html')
-
-
-def grafico(request, usuario_id):
-    user = User.objects.get(id=usuario_id)
-    disciplinas = Disciplina.objects.all()
-
-
-    dados_disciplinas = []
-    for disciplina in disciplinas:
-        questoes_certas = user.questoes.filter(disciplina=disciplina, correta=True).count()
-        questoes_erradas = user.questoes.filter(disciplina=disciplina, correta=False).count()
-
-
-        dados_disciplinas.append({
-            'disciplina_nome': disciplina.nome,
-            'questoes_certas': questoes_certas,
-            'questoes_erradas': questoes_erradas,
-        })
-
-
-    return render(request, 'questoes/pages/estatisticas.html', {'dados_disciplinas': dados_disciplinas})
-
-
 
 
 

@@ -28,10 +28,10 @@
             <div class="estatisticas-gerais">
                 <div class="row">
                     <div class="num-acertos">
-                        <h2>{{ dados_usuario.questoes_certas }} <br> Certas</h2>
+                        <h2>{{ dados_usuario.acertos }} <br> Certas</h2>
                     </div>
                     <div class="num-erradas">
-                        <h2>{{ dados_usuario.questoes_erradas }} <br>Erradas</h2>
+                        <h2>{{ dados_usuario.erros }} <br>Erradas</h2>
                     </div>
                 </div>
                 <div class="row">
@@ -66,8 +66,8 @@
                 <tr class="valores-table">
                     <td class="item-1">{{ dados_disciplina.disciplina.nome }}</td>
                     <td class="item">{{ dados_disciplina.num_questoes_respondidas }}</td>
-                    <td class="item">{{ dados_disciplina.questoes_certas }}</td>
-                    <td class="item">{{ dados_disciplina.questoes_erradas }}</td>
+                    <td class="item">{{ dados_disciplina.acertos }}</td>
+                    <td class="item">{{ dados_disciplina.erros }}</td>
                     <td class="item">{{ dados_disciplina.taxa_acerto }}%</td>
                 </tr>
             {% endfor %}
@@ -90,8 +90,8 @@
     <script>
         // Adicione esta parte no final do arquivo
         const dadosUsuario = {
-          questoesCertas: {{ dados_usuario.questoes_certas }},
-          questoesErradas: {{ dados_usuario.questoes_erradas }},
+          questoesCertas: {{ dados_usuario.acertos }},
+          questoesErradas: {{ dados_usuario.erros }},
         };
       </script>
 {% endblock %}

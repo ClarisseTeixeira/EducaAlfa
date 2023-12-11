@@ -287,3 +287,8 @@ p {
     transition: 1s;
     background-color: #024477e3;
 }
+
+.verde {
+    color: green; /* Muda a cor do texto para verde */
+    /* Outros estilos que você deseja aplicar */
+}
