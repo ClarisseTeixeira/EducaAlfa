@@ -100,6 +100,7 @@ button{
 }
 
 
+<<<<<<< HEAD
 
 @media screen and (max-width: 1200px) {
     .imgquestoes {
@@ -181,4 +182,9 @@ button{
     .etapasconteudo{
         
     }
+=======
+.alternativa-correta {
+    color: green; /* Muda a cor do texto para verde */
+    /* Outros estilos que você deseja aplicar */
+>>>>>>> 644326e778c3cfa8c10662caa923bb23ed3092f2
 }

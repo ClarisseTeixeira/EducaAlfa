@@ -78,7 +78,7 @@ def detalhes_flashcard(request, id):
         if revisao:
             revisao.concluida = True
             revisao.data_agendada = timezone.now().date()
-            revisao.save()
+            revisao.save() 
 
             nova_data_revisao = proxima_revisao(revisao)
             Revisao.objects.create(flashcard=detalhes, user=user, data_agendada=nova_data_revisao)

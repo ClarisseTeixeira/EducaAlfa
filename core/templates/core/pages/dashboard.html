@@ -9,7 +9,7 @@
 
 {% block content %} 
 <br>
-<div class="d-flex mt-3 container">
+<div class="d-flex mt-3 container  mainc" style="max-width: 100%;">
     <div class="">
         <div class="d-flex msgbv">
             <div>
@@ -44,14 +44,14 @@
                     <p>Não há nenhuma revisão no dia de hoje. Além disso, sua taxa de acerto nas questões é de 60%.</p>
                 {% endif %}
             </div>
-                        <div>
+            <div class="msgimg">
                 <img src="{% static 'core/img/image 3.png' %}" alt="">
             </div>
         </div>
 
-        <div class="d-flex mt-5">
-            <div style="width: 290px;">
-                {% include 'questoes/partials/grafico.html' %}
+        <div class="d-flex mt-5 graficos">
+            <div>
+                <!--- {% include 'questoes/partials/grafico.html' %}-->
             </div>
 
             <div class="grevisao">
@@ -65,7 +65,7 @@
             <h1 class="d-flex justify-content-center">Flashcards Agendados</h1>
         </div>
 
-        <div class="d-flex" style="width: 440px; margin: auto;">
+        <div class="d-flex mainfatri">
             <div class="fatri">
                 <h1>{{todas_revisoes.count}}</h1>
                 <p>Atribuídos</p>
@@ -80,7 +80,7 @@
 
 
         <div class="tabelare">
-            <div class="d-flex p-3">
+            <div class="d-flex p-3 titabelare">
                 <h3 style="margin: auto;">Próximas Revisões</h3>
                 <a class="lta" href="{% url 'calendario' %}">Veja mais &#8594;</a>
             </div>
@@ -103,16 +103,28 @@
                 </tr>
                 {% endfor %}
 
+                
+                {% if  revisoes_pendentes.count < 1 %}
+                    {% for revisao in revisoes_do_dia|slice:":5" %}
+                        <tr class="ftr">
+                            <td class="ftd"> <a
+                                    href="{% url 'detalhes_flashcard' id=revisao.flashcard.id %}">{{revisao.flashcard.titulo}}</a>
+                            </td>
+                            <td class="ftd" id="atribuídas">{{ revisao.data_agendada|date:"d/m/Y" }}</td>
+                        </tr>
+                    {% endfor %}
 
-                {% for revisao in revisoes_do_dia|slice:":5" %}
-                <tr class="ftr">
-                    <td class="ftd"> <a
-                            href="{% url 'detalhes_flashcard' id=revisao.flashcard.id %}">{{revisao.flashcard.titulo}}</a>
-                    </td>
-                    <td class="ftd" id="atribuídas">{{ revisao.data_agendada|date:"d/m/Y" }}</td>
-                </tr>
-                {% endfor %}
-
+                    {% elif revisoes_pendentes.count < 4 %}
+                        {% for revisao in revisoes_do_dia|slice:":3" %}
+                            <tr class="ftr">
+                                <td class="ftd"> <a
+                                        href="{% url 'detalhes_flashcard' id=revisao.flashcard.id %}">{{revisao.flashcard.titulo}}</a>
+                                </td>
+                                <td class="ftd" id="atribuídas">{{ revisao.data_agendada|date:"d/m/Y" }}</td>
+                            </tr>
+                        {% endfor %}                        
+                {% endif %}               
+                
             </table>
 
 
@@ -130,8 +142,9 @@
 
 
         </div>
+
+        <br>
     </div>
-    <br>
 
 
     {% endblock %}

@@ -9,31 +9,8 @@ class Disciplina(models.Model):
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    questoes_certas = models.PositiveIntegerField(default=0)
-    questoes_erradas = models.PositiveIntegerField(default=0)
-
-    def taxa_acerto(self):
-        num_questoes = self.num_questoes()
-        if num_questoes > 0:
-            return round((self.questoes_certas / num_questoes) * 100, 2)
-        return 0
-
-    def num_questoes(self):
-        return self.questoes_certas + self.questoes_erradas
-    
-    def questoes_certas_disciplina(self, disciplina):
-        return Resposta.objects.filter(
-            alternativa__questao__disciplina=disciplina,
-            user_profile=self,
-            certa=True
-        ).count()
-
-    def questoes_erradas_disciplina(self, disciplina):
-        return Resposta.objects.filter(
-            alternativa__questao__disciplina=disciplina,
-            user_profile=self,
-            certa=False
-        ).count()
+    acertos = models.IntegerField(default=0)
+    erros = models.IntegerField(default=0)
 
 class Assunto(models.Model):
     disciplina = models.ForeignKey(Disciplina, on_delete=models.CASCADE)

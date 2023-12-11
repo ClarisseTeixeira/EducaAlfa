@@ -1,3 +1,8 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
 .username {
     color: #001B48;
     display: flex;
@@ -35,7 +40,7 @@ nav.menu-lateral {
     width: 70px;
     height: 95vh;
     background-color: #024577;
-    margin: 20px;
+    margin: 20px 0px 20px 20px;
     position: fixed;
     border-radius: 15px;
 }
@@ -219,7 +224,7 @@ ul .sair{
     width: 100%;
 }
 .maincentro{
-    padding-left: 70px;
+    padding-left: 90px;
 }
 .msgbv {
     width: 670px;
@@ -228,6 +233,7 @@ ul .sair{
     background: #FFF;
     box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.25);
     padding: 10px;
+    margin: auto;
 }
 
 .msgbv img {
@@ -247,7 +253,7 @@ ul .sair{
     border-radius: 10px;
     background: #FFF;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.05));
-
+    margin: auto;
 
 }
 
@@ -303,7 +309,6 @@ ul .sair{
 }
 
 .grevisao {
-    width: 380px;
     margin: auto;
 }
 
@@ -311,7 +316,10 @@ ul .sair{
     margin-left: 30px;
 }
 
-
+.mainfatri{
+    width: 440px; 
+    margin: auto;
+}
 .bcomecarev {
     width: 170px;
     height: 40px;
@@ -339,6 +347,7 @@ ul .sair{
  .ftd, .fth{
     width: 100px;
     margin: 0px 50px;
+    font-size: 20px;
 }
  .ftr{
     justify-content: center;
@@ -428,4 +437,161 @@ p img{
 
 .sumir{
     display: none;
+}
+
+
+@media (max-width: 1300px) {
+    .mainc {
+        display: block !important;
+    }
+    .lado2{
+        margin-left: 0px;
+    }
+}
+
+
+@media (max-width: 800px) {
+    .graficos {
+        display: block !important;
+    }
+    .msgbv{
+        width: 100%;
+        height: auto;
+    }
+    
+    .fage{
+        width: 100%;
+    }
+}
+
+
+@media (max-width: 600px) {
+    .msgbv{
+        flex-direction: column-reverse;
+    }
+    .msgimg{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .fage h1{
+        font-size: 20px;
+    }
+    .mainfatri{
+        flex-direction: column;        
+        width: 200px;
+        align-items: center;
+        
+    }
+    .tabelare{
+        width: 90%;
+    }
+    .titabelare{
+        flex-direction: column-reverse;
+    }
+    .ftr{
+        display: block;
+    }
+    .bcomecarev{
+        width: 130px;
+    }
+    
+    .fc-toolbar .fc-left {
+        float: none;
+    }
+    .fc .fc-toolbar > * > *{
+        float: none;
+        margin: 5px;
+    }
+    .fc-toolbar .fc-right {
+        float: none;
+    }
+    .fc-view {
+        font-size: 0.8em;
+    }
+    .fc-day-grid-container{
+        height: 300px !important;
+    }
+    .fc-header-toolbar{
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    .fc-left{
+        display: flex;
+        flex-direction: column;
+        width: 150px;
+        margin: auto;
+        align-items: center;
+    }
+
+}
+
+
+@media (max-width: 350px) {
+    .msgbv img{
+        height: 110px;
+    }
+    .fage h1{
+        font-size: 16px;
+    }
+    .fage{
+        width: 160px;
+    }
+    .fatri h1{
+        font-size: 26px;
+    }
+    .fatri p{
+        font-size: 22px;
+    }
+    .fatri{
+        width: 140px;
+    }
+    .tabelare{
+        width: 150px;
+    }
+    .titabelare a{
+        font-size: 12px;
+    }
+    canvas#Chart{
+        width: 150px !important;
+        height: 250px !important;
+    }
+    .mainfatri{
+        align-items: normal;
+    }
+    .flashcards{
+        width: 100%;
+        margin-left: 50px;
+        margin-right: 15px;
+    }
+    .buttonf{
+        height: auto;
+        width: 110px;
+        border-radius: 5px;
+        font-size: 12px;
+        margin-left: 10px;
+    }
+
+    .tflash h1{
+        font-size: 20px;
+    }
+    .mais{
+        margin-right: 50px;
+    }
+    .fc-month-button, .fc-agendaDay-button {
+        width: 30px;
+        padding: 0px !important;
+    }
+    .fc-agendaWeek-button {
+        width: 60px;
+        padding: 0px !important;
+    }
+    .fc-widget-header{
+        font-size: 8px;
+    }
+    
+    .fc-toolbar .fc-right {
+        width: 125%;
+    }
 }

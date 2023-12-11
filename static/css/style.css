@@ -113,6 +113,7 @@ nav {
 }
 
 .entrar a {
+    text-decoration: none;
     color: white;
     position: absolute;
     top: 50%;
@@ -165,4 +166,75 @@ nav {
     width: 45px !important;
     height: 45px !important;
     border-radius: 45px ;
+}
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 0;
+
+}
+
+
+@media (max-width: 991px) {
+    .basenav {
+        position: relative;
+        display: inline-block;
+    }
+
+    .basenav ul.show {
+        display: none;
+    }
+
+    .basenav ul {
+        width: 120px;
+        position: absolute;
+        top: 30px;
+        right: -35px;
+        padding: 10px 18px;
+        box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.15);
+        border-radius: 3px;
+        background: #ECEFF1;
+    }
+
+    .basenav ul:after {
+        width: 0px;
+        height: 0px;
+        position: absolute;
+        top: 0%;
+        left: 22px;
+        content: '';
+        transform: translate(0%, -100%);
+        border-left: 7px solid transparent;
+        border-right: 7px solid transparent;
+        border-bottom: 7px solid #303030;
+    }
+
+    .basenav li {
+        margin: 5px 0px 5px 0px;
+        float: none;
+        display: block;
+    }
+
+    .basenav a {
+        display: block;
+        color: #001B48;
+    }
+
+}
+
+
+@media (max-width: 500px) {
+    .navbar-toggler-icon{
+        width: 15px !important;
+    }
+    .navbar-toggler{
+        padding: 0px !important;
+        width: 30px;
+    }
+    .entrar{
+        width: 70px;
+    }
+    .logo{
+        max-height: 50px;
+    }
+    
 }

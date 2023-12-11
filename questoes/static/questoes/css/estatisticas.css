@@ -166,3 +166,8 @@
 table, tr, th, td{
     border: solid 1px;
 }
+
+.alternativa-correta {
+    color: green; /* Muda a cor do texto para verde */
+    /* Outros estilos que você deseja aplicar */
+}

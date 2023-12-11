@@ -1,6 +1,6 @@
 
     <div>
-        <canvas id="Chart"></canvas>
+        <canvas id="Chart" width="380" height="300"></canvas>
     </div>
 
 
@@ -13,7 +13,7 @@
             data: {
                 labels: date.weekdays,
                 datasets: [{
-                    label: 'Revisões Concluídas por Dia da Semana',
+                    label: 'Revisões Concluídas',
                     data: date.revisoes,
                     backgroundColor: 'rgba(2, 69, 119, 0.7)',
                     borderColor: 'rgba(2, 69, 119, 1)',
@@ -29,10 +29,6 @@
                     },
                     y: {
                         beginAtZero: true,
-                        title: {
-                            display: true,
-                            text: 'Revisões Concluídas',
-                        },
                         ticks: {
                             precision: 0,
                         },

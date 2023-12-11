@@ -47,7 +47,7 @@ def dashboard(request):
 def get_revisions(user, **kwargs):
     return Revisao.objects.filter(user=user, **kwargs)
 
-def revisoes(user):
+def revisoes(user): 
     start_of_week, end_of_week = semana_atual()
     data = get_revisions(user, concluida=True, data_agendada__range=[start_of_week, end_of_week]) \
         .values('data_agendada').annotate(revisoes=Count('id')).order_by('data_agendada')
