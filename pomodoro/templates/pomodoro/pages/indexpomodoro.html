@@ -33,6 +33,11 @@
 
 </div>
 
+
+
+
+
+
 <br>
 <br>
 
@@ -74,8 +79,101 @@
         <div class="timer" id="timer">25:00</div>
         <div id="counter">1/4</div>
         <button class="iniciar" id="toggleButton">Iniciar</button>
+        <audio id="audio" src="{% static 'pomodoro/audio/alarm-clock_0mrZdkcf.mp3' %}" preload="auto"></audio>
     </div>
 </div>
 <br>
 <br>
+
+
+<script>
+    var isPomodoro = true;
+    var isRunning = false;
+    var interval;
+    var pomodoroCount = 1;
+
+    function playAudio() {
+        var audio = document.getElementById('audio');
+        audio.play();
+    }
+
+    function startTimer(duration) {
+        var timerDisplay = document.getElementById('timer');
+        var counterDisplay = document.getElementById('counter');
+        var pomodoro = document.querySelector('.pomodoro');
+        var descanso = document.querySelector('.descanso');
+        var toggleButton = document.getElementById('toggleButton');
+
+        var minutes, seconds;
+
+        interval = setInterval(function () {
+            minutes = parseInt(duration / 60, 10);
+            seconds = parseInt(duration % 60, 10);
+
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+            timerDisplay.innerHTML = minutes + ":" + seconds;
+
+            if (--duration < 0) {
+                clearInterval(interval);
+                playAudio();
+
+                isPomodoro = !isPomodoro;
+
+                pomodoro.style.backgroundColor = isPomodoro ? 'rgba(2, 69, 119, 0.7)' : 'rgba(45, 130, 181, 0.44)';
+                descanso.style.backgroundColor = isPomodoro ? 'rgba(45, 130, 181, 0.44)' : 'rgba(2, 69, 119, 0.7)';
+
+                if (isPomodoro) {
+                    pomodoroCount++;
+
+                    if (pomodoroCount <= 4) {
+                        counterDisplay.innerHTML = pomodoroCount + "/4";
+                        startTimer(0.1 * 60);
+                    } else {
+                        pomodoroCount = 1;
+                        counterDisplay.innerHTML = '';
+                        toggleButton.innerHTML = "Reiniciar";
+                        timerDisplay.innerHTML = "25:00";
+                    }
+                } else {
+                    startTimer(0.1 * 60);
+                }
+            }
+        }, 1000);
+    }
+
+    document.getElementById('toggleButton').addEventListener('click', function () {
+        var counterDisplay = document.getElementById('counter');
+
+        if (isRunning) {
+            clearInterval(interval);
+            isRunning = false;
+            this.innerHTML = "Iniciar";
+        } else {
+            if (isPomodoro) {
+                startTimer(0.1 * 60);
+            } else {
+                pomodoroCount = 1;
+                counterDisplay.innerHTML = '';
+                toggleButton.innerHTML = "Reiniciar";
+            }
+
+            isRunning = true;
+            this.innerHTML = "Pausar";
+            counterDisplay.style.display = 'block';
+        }
+    });
+</script>
+</body>
+</html>
+
+<style>
+    .pomodoro {
+        background-color: rgba(2, 69, 119, 0.7);
+        transition: background-color 0.5s ease;
+    }
+</style>
+
 {% endblock %}
+

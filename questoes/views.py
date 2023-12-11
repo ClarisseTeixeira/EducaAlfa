@@ -142,7 +142,6 @@ def obter_assuntos(request):
 # Restante do seu código...
 
 
-
 @login_required
 def verificar_resposta(request, questao_id):
     questao = get_object_or_404(Questao, pk=questao_id)
@@ -167,16 +166,24 @@ def verificar_resposta(request, questao_id):
         questao.save()
         user_profile.save()
 
-        # Retorne os dados atualizados para o gráfico
+        # Informações sobre as alternativas para destaque no HTML
+        alternativas_info = [{
+            'id': alternativa.id,
+            'is_correta': alternativa.correta,
+            'is_selecionada': alternativa == alternativa_selecionada,
+        } for alternativa in questao.alternativas.all()]
+
+        # Retorne os dados atualizados e informações sobre as alternativas
         data = {
             'questoes_certas': user_profile.questoes_certas,
             'questoes_erradas': user_profile.questoes_erradas,
             'taxa_acerto': user_profile.taxa_acerto(),
             'num_questoes': user_profile.num_questoes(),
+            'alternativas_info': alternativas_info,
         }
 
         # Se preferir, pode retornar a resposta como JSON
-        return JsonResponse(data)
+        return render(request, 'questoes/pages/lista_questoes.html')
 
     return redirect('questoes', questao_id=questao_id)
 

@@ -18,14 +18,14 @@
                
                 <form method="post" action="{% url 'verificar_resposta' questao.id %}">
                     {% csrf_token %}
-                    <ul  class="alternativas-container">
+                    <ul class="alternativas-container">
                         {% for alternativa in questao.alternativas.all %}
-                        <li id="alternativa" >                                
-                            <label>
-                                <input type="radio" name="alternativa" value="{{ alternativa.id }}">
-                                {{ alternativa.texto }}
-                            </label>
-                        </li>
+                            <li id="alternativa" {% if alternativa.is_correta %}class="correta"{% endif %} {% if alternativa.is_selecionada %}class="selecionada"{% endif %}>
+                                <label>
+                                    <input type="radio" name="alternativa" value="{{ alternativa.id }}">
+                                    {{ alternativa.texto }}
+                                </label>
+                            </li>
                         {% endfor %}
                     </ul>
                                       
@@ -33,7 +33,7 @@
                 </div>
             </div>
                 <div class="responder">
-                    <button type="submit" class="btn-responder" data-questao-id="{{ questao.id }}">Responder</button>
+                    <button type="submit" class="btn-responder">Responder</button>
                 </div>
             </div>
        
@@ -45,3 +45,29 @@
 
     
 </div>
+<script>
+$(document).ready(function () {
+    $('.btn-responder').click(function (event) {
+        event.preventDefault();
+        var form = $(this).closest('form');
+        var questaoId = $(this).data('questao-id');
+
+        $.ajax({
+            type: form.attr('method'),
+            url: form.attr('action'),
+            data: form.serialize(),
+            success: function (data) {
+                // Manipule a resposta, se necessário
+                console.log(data);
+
+                // Atualize o gráfico com os dados recebidos
+                atualizarGrafico(data.questoes_certas, data.questoes_erradas);
+            }
+        });
+    });
+});
+
+
+
+
+</script>
