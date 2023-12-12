@@ -292,3 +292,7 @@ p {
     color: green; /* Muda a cor do texto para verde */
     /* Outros estilos que você deseja aplicar */
 }
+
+.vermelho{
+    color: red;
+}
