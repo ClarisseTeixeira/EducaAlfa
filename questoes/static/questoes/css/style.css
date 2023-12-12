@@ -186,7 +186,6 @@ ul{
     width: 0;
 }
 
-
 button{
     border-radius: 100px;
     border: 5px solid #001B48;
@@ -196,7 +195,17 @@ button{
     margin: auto;
     display:block;
 }
-.responder button{
+
+.btn-responder{
+    border-radius: 100px;
+    border: 5px solid #001B48;
+    background: rgba(217, 217, 217, 0);
+    width: 150px;
+    height: 50px;
+    margin: auto;
+    display:block;
+}
+.responder input{
     margin: auto;
     text-decoration: none;
     color: #001B48;

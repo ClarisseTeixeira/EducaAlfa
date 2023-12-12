@@ -12,8 +12,6 @@ from core.views.auth import superuser
 from django.db.models import Sum, Count, Q, Case, When, F, IntegerField
 from .models import Disciplina, UserProfile, Questao, Resposta
 
-
-
 @login_required
 def processar_respostas(request):
     if request.method == 'POST':
@@ -65,7 +63,7 @@ def estatisticas(request):
 
     if request.user.is_authenticated:
         user_profile = request.user.userprofile  # Assuming UserProfile is related to User via OneToOneField
-        
+
         acertos = user_profile.acertos
         erros = user_profile.erros
         num_questoes = acertos + erros
