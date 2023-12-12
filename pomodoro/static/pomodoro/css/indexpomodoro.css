@@ -53,6 +53,7 @@ h1{
     margin-right: 0;
 }
 
+
 @media screen and (max-width: 1200px) {
     .imgpomodoro {
         width: 300px;
@@ -104,7 +105,7 @@ h1{
 
 @media screen and (max-width: 800px) {
     .imgpomodoro {
-        width: 250px;
+        width: 350px;
     }
 
     .col{
@@ -112,7 +113,8 @@ h1{
     }
 
     .textpomodoro {
-        width: 600px;
+        width: 400px;
+        margin: auto;
     }
 
     .h1pomodoro {
@@ -134,23 +136,35 @@ h1{
     }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 500px) {
     .imgpomodoro {
         width: 300px;
     }
 
+    .col{
+        text-align: center;
+    }
+
     .textpomodoro {
-        width: 400px;
+        width: 280px;
+        margin: auto;
     }
 
     .h1pomodoro {
         font-size: 24px;
     }
 
-    .etapa{
-        width: 355px;
-        height: 306px;
+   .etapa{
+        width: 280px;
+        height: 260px;
         padding: 20px;
     }
 
+    .titlepasso{
+
+    }
+    
+    .etapasconteudo{
+       
+    }
 }

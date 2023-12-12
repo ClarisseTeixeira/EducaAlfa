@@ -200,11 +200,14 @@ def verificar_resposta(request):
                         alternativa=alternativa,
                         user_profile=perfil_usuario,
                         certa=False)
+                    
+                print(acertos + erros)
                 
 
         perfil_usuario.acertos += acertos
         perfil_usuario.erros += erros
         perfil_usuario.save()
+        
         
     return redirect('lista_questoes')
 

@@ -100,6 +100,126 @@ button{
 }
 
 
+
+@media screen and (max-width: 1200px) {
+    .imgquestoes {
+        width: 300px;
+    }
+
+    .textquestoes {
+        width: 450px;
+    }
+
+    .h1questoes {
+        font-size: 24px;
+    }
+
+    .etapa{
+        width: 355px;
+        height: 306px;
+        padding: 20px;
+    }
+
+    .etapaspomodoro .etapa:nth-last-child(2n){
+        margin-right: 0;
+    }
+
+}
+
+@media screen and (max-width: 1000px) {
+    .imgquestoes {
+        width: 250px;
+    }
+
+    .textquestoes {
+        width: 400px;
+    }
+
+    .h1questoes {
+        font-size: 24px;
+    }
+
+    .etapa{
+        width: 355px;
+        height: 306px;
+        padding: 20px;
+    }
+
+    .etapaspomodoro .etapa{
+        margin-right: 0px
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .imgquestoes {
+        width: 350px;
+    }
+
+    .col{
+        text-align: center;
+    }
+
+    .textquestoes {
+        width: 400px;
+        margin: auto;
+    }
+
+    .h1questoes {
+        font-size: 24px;
+    }
+
+   .etapa{
+        width: 355px;
+        height: 306px;
+        padding: 20px;
+    }
+
+    .mbsr {
+        flex-direction: column-reverse;
+    }
+
+
+    .titlepasso{
+
+    }
+    
+    .etapasconteudo{
+        
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .imgquestoes {
+        width: 300px;
+    }
+
+    .col{
+        text-align: center;
+    }
+
+    .textquestoes {
+        width: 350px;
+        margin: auto;
+    }
+
+    .h1questoes {
+        font-size: 24px;
+    }
+
+   .etapa{
+        width: 355px;
+        height: 306px;
+        padding: 20px;
+    }
+
+    .titlepasso{
+
+    }
+    
+    .etapasconteudo{
+        
+    }
+}
 .alternativa-correta {
     color: green; /* Muda a cor do texto para verde */
     /* Outros estilos que você deseja aplicar */

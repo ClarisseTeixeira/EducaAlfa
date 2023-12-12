@@ -1,9 +1,6 @@
 from django import forms
 from .models import Questao, Alternativa
 
-from django import forms
-from .models import Questao, Alternativa
-
 class QuestaoForm(forms.ModelForm):
     alternativa1 = forms.CharField(max_length=255, label='Alternativa 1', widget=forms.TextInput(attrs={'class': 'form-control'}))
     alternativa2 = forms.CharField(max_length=255, label='Alternativa 2', widget=forms.TextInput(attrs={'class': 'form-control'}))
