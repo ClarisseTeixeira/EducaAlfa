@@ -169,6 +169,7 @@ def obter_assuntos(request):
     return JsonResponse(list(assuntos), safe=False)
     # Restante do seu código...
 
+
 @login_required
 def verificar_resposta(request):
     if request.method == 'POST':
@@ -199,37 +200,17 @@ def verificar_resposta(request):
                         alternativa=alternativa,
                         user_profile=perfil_usuario,
                         certa=False)
+                    
+                print(acertos + erros)
                 
 
         perfil_usuario.acertos += acertos
         perfil_usuario.erros += erros
         perfil_usuario.save()
         
+        
     return redirect('lista_questoes')
 
-<<<<<<< HEAD
-        # Informações sobre as alternativas para destaque no HTML
-        alternativas_info = [{
-            'id': alternativa.id,
-            'is_correta': alternativa.correta,
-            'is_selecionada': alternativa == alternativa_selecionada,
-        } for alternativa in questao.alternativas.all()]
-
-        # Retorne os dados atualizados e informações sobre as alternativas
-        data = {
-            'questoes_certas': user_profile.questoes_certas,
-            'questoes_erradas': user_profile.questoes_erradas,
-            'taxa_acerto': user_profile.taxa_acerto(),
-            'num_questoes': user_profile.num_questoes(),
-            'alternativas_info': alternativas_info,
-        }
-
-        # Se preferir, pode retornar a resposta como JSON
-        return render(request, 'questoes/pages/lista_questoes.html')
-
-    return redirect('questoes', questao_id=questao_id)
-=======
->>>>>>> 644326e778c3cfa8c10662caa923bb23ed3092f2
 
 
 def indexquestoes(request):

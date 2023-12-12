@@ -135,3 +135,36 @@ h1{
         
     }
 }
+
+@media screen and (max-width: 500px) {
+    .imgpomodoro {
+        width: 300px;
+    }
+
+    .col{
+        text-align: center;
+    }
+
+    .textpomodoro {
+        width: 280px;
+        margin: auto;
+    }
+
+    .h1pomodoro {
+        font-size: 24px;
+    }
+
+   .etapa{
+        width: 280px;
+        height: 260px;
+        padding: 20px;
+    }
+
+    .titlepasso{
+
+    }
+    
+    .etapasconteudo{
+       
+    }
+}

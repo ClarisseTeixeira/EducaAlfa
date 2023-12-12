@@ -269,11 +269,45 @@
     #counter {
         top: calc(63%);
         transform: translateX(-50%);
-        font-size: 20px;    }
-    
-
+        font-size: 20px;    
+    }
 }
 
+@media screen and (max-width: 470px) {
+    .form-container {
+        max-width: 300px;
+        height: 350px;
+        padding: 10px;
+        border-radius: ;
+    }
+    #timer {
+        font-size: 70px;
+    }
+    .pomodoro, .descanso {
+        font-size: 15px;
+        max-width: 200px;
+        height: 35px;
+        flex: 1;
+        line-height: 15px;
+        font-size: 20px;
+    }
 
+    .containeres{
+        text-align: center;
+    }
+    .iniciar {
+        width: 120px;
+        height: 40px;
+        font-size: 20px;
+        line-height: 15px;
+
+    }
+
+    #counter {
+        top: calc(75%);
+        transform: translateX(-50%);
+        font-size: 20px;    
+    }
+}
 
 

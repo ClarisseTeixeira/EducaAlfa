@@ -1,119 +1,48 @@
-<<<<<<< HEAD
-
-
 <div class="questao">
-    <ul class="questao">
+    <form method="post" action="{% url 'verificar_resposta' %}" onsubmit="return false;">
+        {% csrf_token %}
         {% for questao in questoes %}
         <div class="container-azul">
             <div class="instituicao_ano">
                 <strong>{{ questao.disciplina}} - {{questao.assunto}}</strong>
             </div>
             <div class="central">
-            <div class="container-branco">
-               
-                <li class="questao_texto">
-                   
-                    <strong>{{ questao.instituicao_ano }}</strong> - {{ questao.texto }}
-                </li>
-                <li class="questao_enunciado">{{ questao.enunciado }}</li>
-               
-                <form method="post" action="{% url 'verificar_resposta' questao.id %}">
-                    {% csrf_token %}
+                <div class="container-branco">
+                    <h2>{{ questao.enunciado }}</h2>
+                    <input type="hidden" name="questao{{ questao.id }}" value="{{ questao.id }}">
                     <ul class="alternativas-container">
                         {% for alternativa in questao.alternativas.all %}
-                            <li id="alternativa" {% if alternativa.is_correta %}class="correta"{% endif %} {% if alternativa.is_selecionada %}class="selecionada"{% endif %}>
-                                <label>
-                                    <input type="radio" name="alternativa" value="{{ alternativa.id }}">
-                                    {{ alternativa.texto }}
-                                </label>
-                            </li>
+                        <li id="alternativa">
+                            <input type="radio" id="alternativa{{ alternativa.id }}" name="questao_{{ questao.id }}" value="{{ alternativa.id }}">
+                            <label for="alternativa{{ alternativa.id }}" {% if alternativa.correta %} class="alternativacorreta" {% endif %}>{{ alternativa.texto }}</label><br>
+                        </li>
                         {% endfor %}
                     </ul>
-                                      
-                    
                 </div>
-            </div>
-                <div class="responder">
-                    <button type="submit" class="btn-responder">Responder</button>
-=======
-    <div class="questao">
-        <form method="post" action="{% url 'verificar_resposta' %}">
-            {% csrf_token %}
-            {% for questao in questoes %}
-            <div class="container-azul">
-                <div class="instituicao_ano">
-                    <strong>{{ questao.disciplina}} - {{questao.assunto}}</strong>
-                </div>
-                <div class="central">
-                    <div class="container-branco">
-                        <h2>{{ questao.enunciado }}</h2>
-                        <input type="hidden" name="questao{{ questao.id }}" value="{{ questao.id }}">
-                        <ul class="alternativas-container">
-                            {% for alternativa in questao.alternativas.all %}
-                            <li id="alternativa">
-                                <input type="radio" id="alternativa{{ alternativa.id }}" name="questao_{{ questao.id }}" value="{{ alternativa.id }}">
-                                <label for="alternativa{{ alternativa.id }}" {% if alternativa.correta %} class="alternativacorreta" {% endif %}>{{ alternativa.texto }}</label><br>
-                            </li>
-                            {% endfor %}
-                        </ul>
-                    </div>
->>>>>>> 644326e778c3cfa8c10662caa923bb23ed3092f2
-                </div>
-                
-            <div class="responder">
-                <input type="submit" value="Enviar Respostas">
-            </div>
             </div>
             
-            {% endfor %}
-        </form>
+        <div class="responder">
+            <input type="submit" value="Enviar Respostas">
+        </div>
+        </div>
         
-    </div>
-
-
-<<<<<<< HEAD
+        {% endfor %}
+    </form>
     
 </div>
+
+
 <script>
-$(document).ready(function () {
-    $('.btn-responder').click(function (event) {
-        event.preventDefault();
-        var form = $(this).closest('form');
-        var questaoId = $(this).data('questao-id');
+    document.addEventListener("DOMContentLoaded", function () {
+        const form = document.querySelector('form');
 
-        $.ajax({
-            type: form.attr('method'),
-            url: form.attr('action'),
-            data: form.serialize(),
-            success: function (data) {
-                // Manipule a resposta, se necessário
-                console.log(data);
+        form.addEventListener('submit', function (event) {
+fetch('/verificar-re...')
+            const alternativasCorretas = document.querySelectorAll('.alternativacorreta');
 
-                // Atualize o gráfico com os dados recebidos
-                atualizarGrafico(data.questoes_certas, data.questoes_erradas);
-            }
-        });
-    });
-});
-
-
-
-
-</script>
-=======
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const form = document.querySelector('form');
-
-            form.addEventListener('submit', function (event) {
-                event.preventDefault(); // Evita o envio do formulário para testar o código
-
-                const alternativasCorretas = document.querySelectorAll('.alternativacorreta');
-
-                alternativasCorretas.forEach(function (alternativa) {
-                    alternativa.classList.add('verde'); // Adiciona a classe 'verde' às alternativas corretas
-                });
+            alternativasCorretas.forEach(function (alternativa) {
+                alternativa.classList.add('verde'); // Adiciona a classe 'verde' 
             });
         });
-    </script>
->>>>>>> 644326e778c3cfa8c10662caa923bb23ed3092f2
+    });
+</script>
