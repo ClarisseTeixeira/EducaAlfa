@@ -19,7 +19,7 @@ from core.views.home import dashboard
 def flashcards(request):
     flashcards = Flashcard.objects.all().filter(user=request.user).order_by('-data')
     form = FlashcardForm()
- 
+
     if request.method == 'POST':
         form = FlashcardForm(request.POST)
         if form.is_valid():
