@@ -50,3 +50,7 @@ p {
     transition: 1s;
     background-color: #024477e3;
 }
+
+.texto{
+    max-width: 90%;
+}
