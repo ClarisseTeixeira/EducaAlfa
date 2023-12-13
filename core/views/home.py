@@ -61,7 +61,7 @@ def revisoes(user):
         data_agendada = item['data_agendada'] + timedelta(days=1)
         dia_da_semana = data_agendada.weekday()
         revisoes_por_dia[dia_da_semana] = item['revisoes']
-
+ 
     data_to_serialize = {
         'weekdays': weekdays,  
         'revisoes': revisoes_por_dia
