@@ -13,7 +13,7 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from core.models import Profile
 
-
+ 
 def index(request):
     return render(request, "index.html")
 
