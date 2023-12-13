@@ -63,7 +63,7 @@ def revisoes(user):
         revisoes_por_dia[dia_da_semana] = item['revisoes']
 
     data_to_serialize = {
-        'weekdays': weekdays, 
+        'weekdays': weekdays,  
         'revisoes': revisoes_por_dia
         }
     return json.dumps(data_to_serialize)
