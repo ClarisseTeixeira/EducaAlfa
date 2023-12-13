@@ -348,6 +348,9 @@ ul .sair{
     width: 100px;
     margin: 0px 50px;
     font-size: 20px;
+    min-width: 130px;
+    white-space: nowrap;
+    overflow: hidden;
 }
  .ftr{
     justify-content: center;
