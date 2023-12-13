@@ -3,7 +3,7 @@
         <canvas id="Chart" width="380" height="300"></canvas>
     </div>
 
-
+ 
     <script>
         var ctz = document.getElementById('Chart').getContext('2d');
         var date = JSON.parse('{{ serialized_data|safe|escapejs }}');
@@ -35,5 +35,8 @@
                     },
                 },
             },
+            
         });
+        
     </script>
+

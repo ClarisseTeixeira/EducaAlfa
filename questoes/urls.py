@@ -11,6 +11,7 @@ urlpatterns = [
     path('questoes/editar/<int:id>/', views.questao_editar, name='questao_editar'),
     path('questoes/criar/', views.questao_criar, name='questao_criar'),
     path('questoes/remover/<int:id>/', views.questao_remover, name='questao_remover'),
+    path('grafico', views.grafico, name='grafico'),
 
 
 

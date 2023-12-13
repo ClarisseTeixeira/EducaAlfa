@@ -7,7 +7,7 @@ class Disciplina(models.Model):
 
     def __str__(self):
         return self.nome
-
+ 
 class UserProfile(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     acertos = models.IntegerField(default=0)

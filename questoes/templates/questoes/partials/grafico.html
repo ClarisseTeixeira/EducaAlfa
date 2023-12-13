@@ -6,75 +6,29 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 {% block script %}
+
 <script>
-  const ctx = document.getElementById('myDoughnutChart').getContext('2d');
+  const ctxq = document.getElementById('myDoughnutChart').getContext('2d');
+  var dateq = JSON.parse('{{ serialized_dataq|safe|escapejs }}');
 
-  // Função para inicializar o gráfico com os valores iniciais
   function inicializarGrafico() {
-  const data = {
-    labels: ['Questões Certas', 'Questões Erradas'],
-    datasets: [{
-      data: [dadosUsuario.questoesCertas, dadosUsuario.questoesErradas],
-      backgroundColor: ['rgb(54, 162, 235)', 'rgb(255, 99, 132)'],
-      hoverOffset: 4
-    }], 
-  };
+    const data = {
+      labels: ['Questões Certas', 'Questões Erradas'],
+      datasets: [{
+        data: dateq.grafico,
+        backgroundColor: ['rgb(54, 162, 235)', 'rgb(255, 99, 132)'],
+        hoverOffset: 4
+      }],
+    };
 
-  const config = {
-    type: 'doughnut',
-    data: data,
-  };
+    const config = {
+      type: 'doughnut',
+      data: data,
+    };
 
-  window.myDoughnutChart = new Chart(ctx, config);
-}
-
-  // Função para atualizar o gráfico com base nos dados
-  function atualizarGrafico(questoes_certas, questoes_erradas) {
-    // Atualize o gráfico com os novos dados
-    window.myDoughnutChart.data.datasets[0].data = [questoes_certas, questoes_erradas];
-    window.myDoughnutChart.update(); // Atualize o gráfico
+    window.myDoughnutChart = new Chart(ctxq, config);
   }
 
-  // Função para chamar a verificação de resposta
-  function verificarResposta(questao_id) {
-  console.log('Clicou em Verificar Resposta');
-
-  fetch('/verificar_resposta/' + questao_id + '/', {
-      method: 'POST',
-      headers: {
-          'Content-Type': 'application/json',
-          'X-CSRFToken': getCookie('csrftoken'),
-      },
-      body: JSON.stringify({
-          alternativa: 'id_da_alternativa_selecionada',
-      }),
-  })
-  .then(response => response.json())
-  .then(data => {
-      console.log('Dados recebidos:', data);
-
-      // Atualize o gráfico com os novos dados
-      atualizarGrafico(data.questoes_certas, data.questoes_erradas);
-  });
-}
-
-  // Encapsule a lógica de obtenção do token CSRF em uma função
-  function getCookie(name) {
-    let cookieValue = null;
-    if (document.cookie && document.cookie !== '') {
-      const cookies = document.cookie.split(';');
-      for (let i = 0; i < cookies.length; i++) {
-        const cookie = cookies[i].trim();
-        if (cookie.startsWith(name + '=')) {
-          cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-          break;
-        }
-      }
-    }
-    return cookieValue;
-  }
-
-  // Chame a função de inicialização assim que a página for carregada
   document.addEventListener('DOMContentLoaded', inicializarGrafico);
 
 </script>
@@ -83,5 +37,3 @@
 
 
 {% endblock %}
-
-
