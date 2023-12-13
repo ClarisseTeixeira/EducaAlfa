@@ -60,6 +60,7 @@ def resultados(request):
 def estatisticas(request):
     disciplinas = Disciplina.objects.all()
     dados_disciplinas = []
+
     if request.user.is_authenticated:
         user_profile, created = UserProfile.objects.get_or_create(user=request.user)
 
@@ -77,7 +78,6 @@ def estatisticas(request):
             'taxa_acerto': taxa_acerto,
             'num_questoes': num_questoes,
         }
-        print(dados_usuario)
 
         for disciplina in disciplinas:
             questoes_disciplina = Questao.objects.filter(disciplina=disciplina)
@@ -112,11 +112,13 @@ def estatisticas(request):
 
             dados_disciplinas.append(dados_disciplina)
 
+    serialized_dataq = grafico(request)
 
     # Send data to the template
     data = {
         'dados_usuario': dados_usuario,
         'dados_disciplinas': dados_disciplinas,
+        'serialized_dataq': serialized_dataq,
     }
 
     return render(request, 'questoes/pages/estatisticas.html', data)
@@ -197,9 +199,7 @@ def verificar_resposta(request):
                         alternativa=alternativa,
                         user_profile=user_profile,
                         certa=False)
-                    
-                print(acertos + erros)
-                
+                                    
 
         user_profile.acertos += acertos
         user_profile.erros += erros
@@ -208,7 +208,19 @@ def verificar_resposta(request):
         
     return redirect('lista_questoes')
 
+def grafico(request):
+    serialize = {'grafico': []}
+    if request.user.is_authenticated:
+        user = request.user
+        data = UserProfile.objects.filter(user=user).first()
 
+        if data:
+            acertos = data.acertos
+            erros = data.erros
+
+            serialize['grafico'] = [acertos, erros]
+        return json.dumps(serialize)
+    
 
 def indexquestoes(request):
     return render(request, 'questoes/pages/indexquestoes.html')
@@ -233,7 +245,7 @@ def questao_remover(request, id):
     questao.delete()
     messages.success(request, 'Questão excluído com sucesso!')
     return redirect('arearestrita')
-
+ 
 
 def questao_editar(request, id):
     questao = get_object_or_404(Questao, id=id)

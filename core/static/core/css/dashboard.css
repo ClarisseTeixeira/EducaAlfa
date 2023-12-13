@@ -598,3 +598,7 @@ p img{
         width: 125%;
     }
 }
+
+.fc-toolbar .fc-center h2{
+    text-transform: capitalize;
+}

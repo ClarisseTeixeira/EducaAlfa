@@ -51,7 +51,7 @@ def disciplina_criar(request):
         form = DisciplinaForm()
 
     return render(request, "materiais/forms/formdisciplina.html", {'form': form})
-
+ 
 
 @user_passes_test(superuser)
 def assunto_criar(request):

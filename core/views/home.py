@@ -12,6 +12,8 @@ from materiais.models import *
 from django.contrib.auth.models import User
 from django.contrib import messages
 from core.models import Profile
+from questoes.views import grafico
+from questoes.models import UserProfile
 
  
 def index(request):
@@ -30,6 +32,8 @@ def dashboard(request):
     revisao = Revisao.objects.filter(user=user, concluida=False, data_agendada__lte=date.today()).order_by('data_agendada').first()
 
     serialized_data = revisoes(user) 
+    serialized_dataq = grafico(request)
+
 
     context = {
         'todas_revisoes': todas_revisoes,
@@ -37,6 +41,7 @@ def dashboard(request):
         'revisoes_pendentes': revisoes_pendentes,
         'serialized_data': serialized_data,
         'revisao':revisao,
+        'serialized_dataq': serialized_dataq,
         }
     return render(request, "core/pages/dashboard.html", context)
 
@@ -67,7 +72,7 @@ def revisoes(user):
         'revisoes': revisoes_por_dia
         }
     return json.dumps(data_to_serialize)
-
+ 
 
 @user_passes_test(superuser)
 def arearestrita(request):
