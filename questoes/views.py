@@ -62,7 +62,7 @@ def estatisticas(request):
     dados_disciplinas = []
     if request.user.is_authenticated:
         user_profile, created = UserProfile.objects.get_or_create(user=request.user)
-        
+
         acertos = user_profile.acertos
         erros = user_profile.erros
         num_questoes = acertos + erros
@@ -172,8 +172,8 @@ def verificar_resposta(request):
     if request.method == 'POST':
         acertos = 0
         erros = 0
-        user = request.user
-        perfil_usuario = user.userprofile
+        user_profile, created = UserProfile.objects.get_or_create(user=request.user)
+
 
         for questao in Questao.objects.all():
             resposta_id = request.POST.get(f'questao_{questao.id}')
@@ -188,22 +188,22 @@ def verificar_resposta(request):
                     Resposta.objects.create(
                         questao=questao,
                         alternativa=alternativa,
-                        user_profile=perfil_usuario,
+                        user_profile=user_profile,
                         certa=True)
                 else:
                     erros += 1
                     Resposta.objects.create(
                         questao=questao,
                         alternativa=alternativa,
-                        user_profile=perfil_usuario,
+                        user_profile=user_profile,
                         certa=False)
                     
                 print(acertos + erros)
                 
 
-        perfil_usuario.acertos += acertos
-        perfil_usuario.erros += erros
-        perfil_usuario.save()
+        user_profile.acertos += acertos
+        user_profile.erros += erros
+        user_profile.save()
         
         
     return redirect('lista_questoes')
