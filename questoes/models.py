@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 class Disciplina(models.Model):
     nome = models.CharField(max_length=100, default="")
 
@@ -8,7 +9,7 @@ class Disciplina(models.Model):
         return self.nome
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     acertos = models.IntegerField(default=0)
     erros = models.IntegerField(default=0)
 

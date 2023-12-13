@@ -60,10 +60,9 @@ def resultados(request):
 def estatisticas(request):
     disciplinas = Disciplina.objects.all()
     dados_disciplinas = []
-
     if request.user.is_authenticated:
-        user_profile = request.user.userprofile  # Assuming UserProfile is related to User via OneToOneField
-
+        user_profile, created = UserProfile.objects.get_or_create(user=request.user)
+        
         acertos = user_profile.acertos
         erros = user_profile.erros
         num_questoes = acertos + erros
