@@ -9,7 +9,7 @@
         <div class="col-12 text-center">
             <p class="filtro-nome">Disciplina:</p>
             <select class="form-select" id="disciplina" name="disciplina">
-                <option class="filtros-font" value="">Disciplinas...</option>
+                <option  value="">Disciplinas...</option>
                 {% for disciplina in disciplinas %}
                     <option value="{{ disciplina.id }}" {% if disciplina.id == disciplina_selecionada %}selected{% endif %}>
                         {{ disciplina.nome }}
