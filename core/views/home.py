@@ -32,7 +32,6 @@ def dashboard(request):
 
     revisao = Revisao.objects.filter(user=user, concluida=False, data_agendada__lte=date.today()).order_by('data_agendada').first()
 
-
     serialized_data = revisoes(user) 
 
     context = {
