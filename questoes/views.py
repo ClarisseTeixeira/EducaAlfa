@@ -82,13 +82,11 @@ def estatisticas(request):
         for disciplina in disciplinas:
             questoes_disciplina = Questao.objects.filter(disciplina=disciplina)
             
-            # Get the number of responses for each discipline by the current user
             num_questoes_disciplina = Resposta.objects.filter(
                 questao__in=questoes_disciplina,
                 user_profile=user_profile,
             ).count()
 
-            # Get the number of correct and incorrect responses for each discipline by the current user
             acertos = Resposta.objects.filter(
                 questao__in=questoes_disciplina,
                 user_profile=user_profile,
@@ -101,7 +99,6 @@ def estatisticas(request):
                 certa=False
             ).count()
 
-            # Add discipline data to the list
             dados_disciplina = {
                 'disciplina': disciplina,
                 'acertos': acertos,
@@ -112,8 +109,6 @@ def estatisticas(request):
 
             dados_disciplinas.append(dados_disciplina)
 
-
-    # Send data to the template
     data = {
         'dados_usuario': dados_usuario,
         'dados_disciplinas': dados_disciplinas,
@@ -126,15 +121,11 @@ def lista_questoes(request):
     disciplinas = Disciplina.objects.all()
     disciplina_id = request.GET.get('disciplina')
 
-
     assuntos = []
     if disciplina_id:
-        # Recupere apenas os assuntos relacionados à disciplina selecionada
         assuntos = Assunto.objects.filter(disciplina_id=disciplina_id)
 
-
     assunto_id = request.GET.get('assunto')
-
 
     questoes = Questao.objects.all()
     if disciplina_id:
@@ -142,14 +133,11 @@ def lista_questoes(request):
     if assunto_id:
         questoes = questoes.filter(assunto_id=assunto_id)
 
-
     questoes_por_pagina = 5
     paginator = Paginator(questoes, questoes_por_pagina)
 
-
     page_number = request.GET.get('page')
     page = paginator.get_page(page_number)
-
 
     return render(request, 'questoes/pages/lista_questoes.html', {
         'disciplinas': disciplinas,
@@ -159,13 +147,10 @@ def lista_questoes(request):
         'assunto_selecionado': int(assunto_id) if assunto_id else None,
     })
 
-
 def obter_assuntos(request):
     disciplina_id = request.GET.get('disciplina_id')
     assuntos = Assunto.objects.filter(disciplina_id=disciplina_id).values('id', 'assunto')
     return JsonResponse(list(assuntos), safe=False)
-    # Restante do seu código...
-
 
 @login_required
 def verificar_resposta(request):
@@ -200,20 +185,14 @@ def verificar_resposta(request):
                     
                 print(acertos + erros)
                 
-
         user_profile.acertos += acertos
         user_profile.erros += erros
         user_profile.save()
         
-        
     return redirect('lista_questoes')
-
-
 
 def indexquestoes(request):
     return render(request, 'questoes/pages/indexquestoes.html')
-
-
 
 @user_passes_test(superuser)
 def questao_criar(request):
