@@ -12,49 +12,6 @@ from core.views.auth import superuser
 from django.db.models import Sum, Count, Q, Case, When, F, IntegerField
 from .models import Disciplina, UserProfile, Questao, Resposta
 
-@login_required
-def processar_respostas(request):
-    if request.method == 'POST':
-        acertos = 0
-        erros = 0
-        for questao in Questao.objects.all():
-            resposta_id = request.POST.get(f'questao_{questao.id}')
-            if resposta_id:
-                alternativa = Alternativa.objects.filter(
-                    questao_id=questao.id,
-                    id=resposta_id
-                ).first()                
-                if alternativa and alternativa.correta:
-                    acertos += 1
-                else:
-                    erros += 1
-        
-        request.session['acertos'] = acertos
-        request.session['erros'] = erros
-        
-        messages.success(request, 'Respostas processadas com sucesso!')
-        return redirect('resultados')
-    return redirect('formulario_questoes')
-
-
-
-
-@login_required
-def formulario_questoes(request):
-    questoes = Questao.objects.all()
-    return render(request, 'questoes/formulario_questoes.html', {'questoes': questoes})
-
-
-@login_required
-def resultados(request):
-    acertos = request.session.get('acertos', 0)
-    erros = request.session.get('erros', 0)
-
-    contexto = {
-        'acertos': acertos,
-        'erros': erros
-    }
-    return render(request, 'questoes/resultados.html', contexto)
 
 @login_required
 def estatisticas(request):
@@ -210,34 +167,3 @@ def grafico(request):
 
 def indexquestoes(request):
     return render(request, 'questoes/pages/indexquestoes.html')
-
-@user_passes_test(superuser)
-def questao_criar(request):
-    if request.method == 'POST':
-        form = QuestaoForm(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Questão criada com sucesso!')
-            form = QuestaoForm()
-    else:
-        form = QuestaoForm()
-
-    return render(request, "questoes/forms/formsquestoes.html", {'form': form})
-
-def questao_remover(request, id):
-    questao = get_object_or_404(Questao, id=id)
-    questao.delete()
-    messages.success(request, 'Questão excluído com sucesso!')
-    return redirect('arearestrita')
- 
-
-def questao_editar(request, id):
-    questao = get_object_or_404(Questao, id=id)
-    if request.method == 'POST':
-        form = QuestaoForm(request.POST, request.FILES, instance=questao)
-        if form.is_valid():
-            form.save()
-            return redirect('arearestrita')
-    else:
-        form = QuestaoForm(instance=questao)
-    return render(request, 'questoes/forms/formsquestoes.html', {'form': form})

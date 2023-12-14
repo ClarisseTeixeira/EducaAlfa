@@ -19,31 +19,31 @@
                 {% if revisoes_do_dia.count > 0 and revisoes_pendentes.count > 0 %}
                     {% if revisoes_do_dia.count == 1 %}
                         {% if revisoes_pendentes.count == 1 %}
-                            <p>No dia de hoje, está disponível 1 flashcard para revisão, mas não se esqueça do flashcard atrasado. Eles estão na beira da curva do esquecimento. Além disso, sua taxa de acerto nas questões é de {{ estatisticas.taxa_acerto }}%.</p>
+                            <p>No dia de hoje, está disponível 1 flashcard para revisão, mas não se esqueça do flashcard atrasado. Eles estão na beira da curva do esquecimento. Além disso, sua taxa de acerto nas questões é de {{ taxa_acerto }}%.</p>
                         {% else %}
-                            <p>No dia de hoje, está disponível 1 flashcard para revisão, mas não se esqueça dos {{ revisoes_pendentes.count }} flashcards atrasados. Eles estão na beira da curva do esquecimento. Além disso, sua taxa de acerto nas questões é de {{ estatisticas.taxa_acerto }}%.</p>
+                            <p>No dia de hoje, está disponível 1 flashcard para revisão, mas não se esqueça dos {{ revisoes_pendentes.count }} flashcards atrasados. Eles estão na beira da curva do esquecimento. Além disso, sua taxa de acerto nas questões é de {{ taxa_acerto }}%.</p>
                         {% endif %}
                     {% else %}
                         {% if revisoes_pendentes.count == 1 %}
-                            <p>No dia de hoje, estão disponíveis {{ revisoes_do_dia.count }} flashcards para revisão, mas não podemos esquecer do flashcard atrasado. Ele está na beira da curva do esquecimento. Além disso, sua taxa de acerto nas questões é de {{ estatisticas.taxa_acerto }}%.</p>
+                            <p>No dia de hoje, estão disponíveis {{ revisoes_do_dia.count }} flashcards para revisão, mas não podemos esquecer do flashcard atrasado. Ele está na beira da curva do esquecimento. Além disso, sua taxa de acerto nas questões é de {{ taxa_acerto }}%.</p>
                         {% else %}
-                            <p>No dia de hoje, estão disponíveis {{ revisoes_do_dia.count }} flashcards para revisão, mas não podemos esquecer dos {{ revisoes_pendentes.count }} flashcards atrasados. Eles estão na beira da curva do esquecimento. Além disso, sua taxa de acerto nas questões é de {{ estatisticas.taxa_acerto }}%.</p>
+                            <p>No dia de hoje, estão disponíveis {{ revisoes_do_dia.count }} flashcards para revisão, mas não podemos esquecer dos {{ revisoes_pendentes.count }} flashcards atrasados. Eles estão na beira da curva do esquecimento. Além disso, sua taxa de acerto nas questões é de {{ taxa_acerto }}%.</p>
                         {% endif %}
                     {% endif %}
                 {% elif revisoes_do_dia.count == 0 and revisoes_pendentes.count > 0 %}
                     {% if revisoes_pendentes.count == 1 %}
-                        <p>Você possui 1 flashcard atrasado. Ele está na beira da curva do esquecimento. Além disso, sua taxa de acerto nas questões é de {{ dados_usuario.taxa_acerto }}%.</p>
+                        <p>Você possui 1 flashcard atrasado. Ele está na beira da curva do esquecimento. Além disso, sua taxa de acerto nas questões é de {{ taxa_acerto }}%.</p>
                     {% else %}
-                        <p>Você possui {{ revisoes_pendentes.count }} flashcards atrasados. Eles estão na beira da curva do esquecimento. Além disso, sua taxa de acerto nas questões é de {{ dados_usuario.taxa_acerto }}%.</p>
+                        <p>Você possui {{ revisoes_pendentes.count }} flashcards atrasados. Eles estão na beira da curva do esquecimento. Além disso, sua taxa de acerto nas questões é de {{ taxa_acerto }}%.</p>
                     {% endif %}
                 {% elif revisoes_do_dia.count > 0 and revisoes_pendentes.count == 0 %}
                     {% if revisoes_do_dia.count == 1 %}
-                        <p>No dia de hoje, está disponível 1 flashcard para revisão. Além disso, sua taxa de acerto nas questões é de {{ dados_usuario.taxa_acerto }}%.</p>
+                        <p>No dia de hoje, está disponível 1 flashcard para revisão. Além disso, sua taxa de acerto nas questões é de {{ taxa_acerto }}%.</p>
                     {% else %}
-                        <p>No dia de hoje, estão disponíveis {{ revisoes_do_dia.count }} flashcards para revisão. Além disso, sua taxa de acerto nas questões é de {{ dados_usuario.taxa_acerto }}%.</p>
+                        <p>No dia de hoje, estão disponíveis {{ revisoes_do_dia.count }} flashcards para revisão. Além disso, sua taxa de acerto nas questões é de {{ taxa_acerto }}%.</p>
                     {% endif %}
                 {% else %}
-                    <p>Não há nenhuma revisão no dia de hoje. Além disso, sua taxa de acerto nas questões é de {{ taxa_acerto }}%.</p>
+                    <p>Não há nenhuma revisão no dia de hoje. Além disso, sua taxa de acerto nas questões é de {{ taxa_acerto }}%.</p>
                 {% endif %}
             </div>
             <div class="msgimg">

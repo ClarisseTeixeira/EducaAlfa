@@ -12,7 +12,7 @@ from materiais.models import *
 from django.contrib.auth.models import User
 from django.contrib import messages
 from core.models import Profile
-from questoes.views import grafico
+from questoes.views import grafico, estatisticas
 from questoes.models import UserProfile
 
  
@@ -31,18 +31,30 @@ def dashboard(request):
     revisoes_pendentes = Revisao.objects.filter(user=user, data_agendada__lt=date.today(), concluida=False)
     revisao = Revisao.objects.filter(user=user, concluida=False, data_agendada__lte=date.today()).order_by('data_agendada').first()
 
+    if request.user.is_authenticated:
+        user_profile, created = UserProfile.objects.get_or_create(user=request.user)
+
+    acertos = user_profile.acertos
+    erros = user_profile.erros
+
+    if acertos + erros > 0:
+        taxa_acerto = round((acertos / (acertos + erros)) * 100, 2)
+    else:
+       taxa_acerto = 0
+
     serialized_data = revisoes(user) 
     serialized_dataq = grafico(request)
-
 
     context = {
         'todas_revisoes': todas_revisoes,
         'revisoes_do_dia': revisoes_do_dia,
         'revisoes_pendentes': revisoes_pendentes,
         'serialized_data': serialized_data,
-        'revisao':revisao,
+        'revisao': revisao,
         'serialized_dataq': serialized_dataq,
-        }
+        'taxa_acerto': taxa_acerto,
+    }
+
     return render(request, "core/pages/dashboard.html", context)
 
 

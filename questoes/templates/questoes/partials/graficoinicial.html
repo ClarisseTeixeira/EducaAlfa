@@ -2,14 +2,12 @@
     <canvas id="myDoughnutChart"></canvas>
   </div>
   
-  <!-- Inclua a biblioteca Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   
   {% block script %}
   <script>
     const ctx = document.getElementById('myDoughnutChart').getContext('2d');
   
-    // Função para inicializar o gráfico com os valores iniciais
     function inicializarGrafico() {
     const data = {
       labels: ['Questões Certas', 'Questões Erradas'],
@@ -24,7 +22,7 @@
       type: 'doughnut',
       data: data,
     };
-  
+
     window.myDoughnutChart = new Chart(ctx, config);
   }
   

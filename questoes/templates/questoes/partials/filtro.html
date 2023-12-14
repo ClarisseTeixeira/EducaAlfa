@@ -36,20 +36,16 @@
 
     <script>
         $(document).ready(function () {
-            // Quando o valor da disciplina é alterado
             $('#disciplina').change(function () {
                 var disciplinaId = $(this).val();
    
-                // Requisição AJAX para obter os assuntos relacionados à disciplina selecionada
                 $.ajax({
-                    url: '/obter_assuntos/',  // Substitua pela URL correta em sua aplicação
+                    url: '/obter_assuntos/',  
                     data: { 'disciplina_id': disciplinaId },
                     dataType: 'json',
                     success: function (data) {
-                        // Limpa as opções atuais de assuntos
                         $('#assunto').empty();
    
-                        // Adiciona as novas opções de assuntos
                         $('#assunto').append('<option value="">Assuntos...</option>');
                         $.each(data, function (key, value) {
                             $('#assunto').append('<option value="' + value.id + '">' + value.assunto + '</option>');

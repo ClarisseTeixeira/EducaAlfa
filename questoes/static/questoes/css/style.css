@@ -9,7 +9,6 @@
 
 
 .container-azul{
-    
     background: rgba(45, 130, 181, 0.30);
     width: 950px;
     border-radius: 50px;
@@ -236,13 +235,13 @@ button{
 }
 
 .selecionada {
-    background-color: #ff0000; /* Cor de fundo para alternativa errada */
-    color: #ffffff; /* Cor do texto para alternativa errada */
+    background-color: #ff0000; 
+    color: #ffffff;
 }
 
 .correta {
-    background-color: #00ff00; /* Cor de fundo para alternativa correta */
-    color: #ffffff; /* Cor do texto para alternativa correta */
+    background-color: #00ff00;
+    color: #ffffff; 
 }
 
 .linhaassunto {
@@ -299,12 +298,9 @@ p {
 }
 
 .verde {
-    color: green; /* Muda a cor do texto para verde */
-    /* Outros estilos que você deseja aplicar */
+    color: green;
 }
 
 .vermelho{
     color: red;
 }
-
-.pagina
