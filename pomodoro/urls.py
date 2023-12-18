@@ -1,7 +1,7 @@
 from django.urls import path
-from . import views
+from .views import pomodoro, indexpomodoro
 
 urlpatterns = [
-    path('pomodoro', views.pomodoro, name='pomodoro'),
-    path('indexpomodoro', views.indexpomodoro, name='indexpomodoro'),
+    path('pomodoro', pomodoro, name='pomodoro'),
+    path('indexpomodoro', indexpomodoro, name='indexpomodoro'),
 ]

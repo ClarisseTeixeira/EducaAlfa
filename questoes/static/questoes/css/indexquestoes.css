@@ -190,7 +190,7 @@ button{
 
 @media screen and (max-width: 450px) {
     .imgquestoes {
-        width: 300px;
+        width: 250px;
     }
 
     .col{
@@ -198,8 +198,12 @@ button{
     }
 
     .textquestoes {
-        width: 350px;
+        width: 280px;
         margin: auto;
+    }
+
+    .geral, .disciplina{
+        font-size: 20px;
     }
 
     .h1questoes {

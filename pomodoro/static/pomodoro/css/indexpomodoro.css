@@ -15,8 +15,6 @@ h1{
     font-weight: 400;
 }
 
-
-
 .titlepasso{
     color: #001B48;
 }
@@ -126,29 +124,21 @@ h1{
         height: 306px;
         padding: 20px;
     }
-
-    .titlepasso{
-
-    }
-    
-    .etapasconteudo{
-        
-    }
 }
 
 @media screen and (max-width: 500px) {
     .imgpomodoro {
-        width: 300px;
+        width: 250px;
     }
 
     .col{
         text-align: center;
     }
-
     .textpomodoro {
         width: 280px;
         margin: auto;
     }
+
 
     .h1pomodoro {
         font-size: 24px;
@@ -158,13 +148,5 @@ h1{
         width: 280px;
         height: 260px;
         padding: 20px;
-    }
-
-    .titlepasso{
-
-    }
-    
-    .etapasconteudo{
-       
     }
 }

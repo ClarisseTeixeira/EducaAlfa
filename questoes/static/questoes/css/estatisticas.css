@@ -24,13 +24,18 @@
     height: 107px;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     border-radius: 10px;
-    padding: 10px;
-    font-size: 20px;
+    padding: 20px;
     font-weight: bold;
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
+    line-height: 35px;
+}
+
+.font-dados{
+    font-size: 30px;
+    padding: 10px;
 }
 
 .num-acertos {
@@ -54,11 +59,11 @@
 
 
 .subtitulo-disciplina{
-    margin-right: 950px;
+    text-align: center;
 }
 
 .subtitulo-desempenho{
-    margin-right: 900px;
+    text-align: center;
 }
 
 
@@ -172,57 +177,60 @@ table{
 }
 
 
-@media screen and (max-width: 1200px) { 
+@media screen and (max-width: 1220px) { 
     .num-acertos,
     .num-erradas,
     .taxa-acerto,
     .num-questoes {
-        width: 200px;
+        width: 250px;
         height: 107px;
         font-size: 15px;
     }
-
-    
+    .grafico{
+        margin-right: 20px;
+    }
 }
-@media screen and (max-width: 1000px) { 
-    .num-acertos,
-    .num-erradas,
-    .taxa-acerto,
-    .num-questoes {
-        width: 200px;
-        height: 107px;
-        font-size: 10px;
-        margin-bottom: 15px;
+
+    @media (max-width: 1140px) {
+        .dados {
+            flex-wrap: wrap;
+        }
+
+        .num-acertos,
+        .num-erradas,
+        .taxa-acerto,
+        .num-questoes {
+            width: 250px;
+            height: 107px;
+            padding: 10px;
+            font-size: 20px;
+        }
+
+        .grafico{
+            margin-right: 0px;
+            margin-bottom: 50px;
+        }
+
     }
 
-
-    
-}
 @media screen and (max-width: 800px) { 
     .num-acertos,
     .num-erradas,
     .taxa-acerto,
     .num-questoes {
-        width: 180px;
+        width: 200px;
         height: 90px;
-        font-size: 100px;
+        padding: 10px;
+    }
+
+    .font-dados{
+        font-size: 25px;
     }
 
     .grafico{
-        width: 370px;
-        height: 326px;
-        margin-right: 60px;
-        margin-left:10px;
-    }
-
-    .mbsr {
-        flex-direction: column-reverse;
-    }
-
-    .title-table{
-        border-radius: var(--Number, 0px);
-        background: rgba(2, 69, 119, 0.50);
-        box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
+        width: 320px;
+        height: 276px;
+        margin-bottom: 40px;
     }
     
     .item{
@@ -246,5 +254,81 @@ table{
         width: 200px;
         height: 90px;
         font-size: 100px;
+        margin: 0px;
+        margin-bottom: 10px;
+    }
+
+    .estatisticas-gerais .row {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .subtitulo-disciplina{
+        text-align: center;
+        font-size: 25px;
+
+    }
+    
+    .subtitulo-desempenho{
+        text-align: center;
+        font-size: 25px;
+    }
+
+    .item{
+        padding: 1px 1px 1px 1px;
+        text-align: center;
+        font-size: 10px;
+    }
+    
+    .item-1{
+        padding: 1px 1px 1px 1px;
+        text-align: justify;
+        font-size: 10px;
+    }
+    
+}
+
+
+@media (max-width: 400px) {
+    .estatisticas-gerais .row {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .num-acertos,
+    .num-erradas,
+    .taxa-acerto,
+    .num-questoes {
+        width: 150px;
+        height: 85px;
+        margin: 0px;
+        margin-bottom: 10px;
+    }
+    
+    .num-questoes {
+        margin-bottom: 0px;
+    }
+
+    .font-dados{
+        font-size: 18px;
+    }
+
+    .grafico{
+        width: 250px;
+        height: 250px;
+        margin-right: 0px;
+        margin-left:0px;
+    }
+
+    .item{
+        padding: 1px 1px 1px 1px;
+        text-align: center;
+        font-size: 8px;
+    }
+    
+    .item-1{
+        padding: 1px 1px 1px 1px;
+        text-align: justify;
+        font-size: 8px;
     }
 }

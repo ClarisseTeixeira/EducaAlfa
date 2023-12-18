@@ -3,13 +3,7 @@ from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from .models import Disciplina, Assunto, Questao, Alternativa, UserProfile
-from django.contrib.auth.models import User
 import json
-from django.contrib import messages
-from .forms import QuestaoForm
-from django.contrib.auth.decorators import user_passes_test
-from core.views.auth import superuser
-from django.db.models import Sum, Count, Q, Case, When, F, IntegerField
 from .models import Disciplina, UserProfile, Questao, Resposta
 
 
@@ -68,14 +62,13 @@ def estatisticas(request):
 
     serialized_dataq = grafico(request)
 
-    # Send data to the template
-    data = {
+    context = {
         'dados_usuario': dados_usuario,
         'dados_disciplinas': dados_disciplinas,
         'serialized_dataq': serialized_dataq,
     }
 
-    return render(request, 'questoes/pages/estatisticas.html', data)
+    return render(request, 'questoes/pages/estatisticas.html', context)
 
 @login_required
 def lista_questoes(request):
@@ -160,6 +153,7 @@ def grafico(request):
         if data:
             acertos = data.acertos
             erros = data.erros
+            
 
             serialize['grafico'] = [acertos, erros]
         return json.dumps(serialize)

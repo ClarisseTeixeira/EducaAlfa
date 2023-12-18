@@ -128,6 +128,250 @@ p{
     align-items: center;
 }
 
+
+
+
+
+
+:root {
+    --cor-1: #001B48;
+    --cor-2: #024577;
+    --cor-3: #015C92;
+    --cor-4: #2d82B5;
+    --cor-5: #018ABE;
+    --cor-6: #97C4D8;
+    --cor-7: #88CDF6;
+    --cor-8: #B6E6FF;
+    --cor-9: #D6E8EE;
+    --cor-10: #ECEFF1;
+}
+
+@font-face {
+    font-family: 'Merriweather';
+    src: url('/static/fonts/Merriweather-Light.ttf') format('ttf');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Merriweather';
+    src: url('/static/fonts/Merriweather-LightItalic.ttf') format('ttf');
+    font-weight: 300;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Merriweather';
+    src: url('/static/fonts/Merriweather-Regular.ttf') format('ttf');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Merriweather';
+    src: url('/static/fonts/Merriweather-Italic.ttf') format('ttf');
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Merriweather';
+    src: url('/static/fonts/Merriweather-Bold.ttf') format('ttf');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Merriweather';
+    src: url('/static/fonts/Merriweather-BoldItalic.ttf') format('ttf');
+    font-weight: 700;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Merriweather';
+    src: url('/static/fonts/Merriweather-Black.ttf') format('ttf');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Merriweather';
+    src: url('/static/fonts/Merriweather-BlackItalic.ttf') format('ttf');
+    font-weight: 900;
+    font-style: italic;
+}
+
+
+
+* {
+    font-family: 'Merriweather';
+}
+
+main {
+    background-color: #FCFDFD;
+}
+
+
+
+p {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+nav {
+    width: 100%;
+}
+
+.basenav .navli {
+    margin-right: 50px;
+}
+
+.basenav a {
+    text-decoration: none;
+    color: white;
+}
+
+.logo {
+    max-height: 140px;
+}
+
+.entrar {
+    background-color: white;
+    border-radius: 20px;
+    width: 100px;
+    height: 35px;
+    position: relative;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+
+.entrar a {
+    text-decoration: none;
+    color: #024577;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.basenav {
+    display: flex;
+    align-items: center;
+}
+
+.logo-footer {
+    margin-right: 50px;
+}
+
+.text-muted {
+    fill: #015C92;
+}
+
+.hide-message {
+    display: none;
+}
+
+.messages {
+    width: 320px;
+    min-height: 60px;
+    z-index: 2;
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translate(-50%);
+    background-color: #2D82B5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-left: 3px solid white;
+}
+
+.messages p {
+    font-size: 20px;
+}
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 0;
+
+}
+
+
+@media (max-width: 991px) {
+    .basenav {
+        position: relative;
+        display: inline-block;
+    }
+
+    .basenav ul.show {
+        display: none;
+    }
+
+    .entrar{
+        background-color: #2D82B5;
+        border: 1px solid white;
+        height: 30px;
+    }
+
+    .basenav ul {
+        width: 120px;
+        position: absolute;
+        top: 30px;
+        right: -35px;
+        padding: 10px 18px;
+        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.15);
+        border-radius: 3px;
+        background: #2D82B5;
+        opacity: 90%;
+    }
+
+    .basenav ul:after {
+        width: 0px;
+        height: 0px;
+        position: absolute;
+        top: 0%;
+        left: 22px;
+        content: '';
+        transform: translate(0%, -100%);
+        border-left: 7px solid transparent;
+        border-right: 7px solid transparent;
+        border-bottom: 7px solid #ffffff;
+    }
+
+    .basenav li {
+        margin: 5px 0px 5px 0px;
+        float: none;
+        display: block;
+    }
+
+    .basenav a {
+        display: block;
+        color: white;
+    }
+}
+
+
+@media (max-width: 500px) {
+    .navbar-toggler-icon{
+        width: 15px !important;
+    }
+    .navbar-toggler{
+        padding: 0px !important;
+        width: 30px;
+    }
+    .entrar{
+        width: 70px;
+    }
+    .logo{
+        max-height: 50px;
+    }
+    
+}
+
+
 .container1 {
     background: linear-gradient(180deg, #2D82B5 53.61%, rgba(45, 130, 181, 0.60) 72.92%, rgba(45, 130, 181, 0.38) 84.24%, rgba(45, 130, 181, 0.00) 96.05%, rgba(255, 255, 255, 0.00) 96.68%);    
     height: 760px;
@@ -146,6 +390,7 @@ p{
     font-weight: 700;
     line-height: normal;
     width: 523px;
+    margin-top: 80px;
 }
 
 .subtitulo{
@@ -168,6 +413,14 @@ p{
     display: flex;
     flex-direction: column;
     width: 523px;
+    margin-top: 70px;
+}
+
+.col2{
+    display: flex;
+    flex-direction: column;
+    width: 523px;
+    margin-top: 200px;
 }
 
 .col1{
@@ -182,15 +435,19 @@ h1{
 
 
 .tecnica{
-text-align: left;
+    text-align: left;
 }
 
 .conteudotecnica{
-text-align: justify;
+    text-align: justify;
 }
 
 .textconteudo{
     text-align: center;
+}
+
+#materiais{
+    margin-top: 150px;
 }
 
 .conteudo{
@@ -226,6 +483,8 @@ text-align: center;
     background: #F6F6F6;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     padding: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
 }
 
 .branca .quadro {
@@ -270,7 +529,6 @@ background: #FFF;
     background: white;
     border-radius: 20px;
     text-align: center;
-    
     padding: 20px;
     text-align: center;
 }
@@ -297,7 +555,262 @@ background: #FFF;
     text-decoration: none;
 }
 
+@media (max-width: 1100px) {
+    .educaalfa{
+        font-size: 36px;
+        font-weight: 700;
+        width: 400px;
+    }
+    
+    .subtitulo{
+        font-size: 16px;
+        font-weight: 400;
+        width: 400px;
+    }
+    
+    .imgindex{
+        width: 350px;
+    }
+
+    .col{
+        width: 450px;
+    }
+
+    .col2{
+        width: 450px;
+    }
+
+    .container-carrossel{
+        width: 700px;
+    }
+    
+    .retangulo{
+        width: 403px;
+        height: 350px;
+    }
+    
+    .imgcarrossel{
+        width: 250px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 988px) {
+
+    .col{
+        width: 400px;
+    }
+
+    .col2{
+        width: 400px;
+    }
+    .col1{
+        width: 300px;
+    }
+  
+    .retangulo{
+        width: 352px;
+        height: 350px;
+    }
+
+    .quadro, .quadro1{
+        margin: 0%;
+        width: 250px;
+    }
+
+    .branca .quadro {
+        display: inline-block;
+        margin-right: 30px; 
+    }
+
+    .conteudo{
+        text-align: justify;
+    }
+    
+    .col-tecnicas{
+        width: 400px;
+    }
+
+}
 
 
+@media (max-width: 850px) {
 
+
+    .row {
+        flex-direction: column;
+    }
+
+    .col{
+        width: 400px;
+        text-align: center;
+        margin-top: 20px;
+        padding: 0%;
+    }
+
+    .col2{
+        width: 400px;
+        text-align: center;
+        margin-top: 20px;
+        padding: 0%;
+    }
+
+    .imgindex{
+        margin-left: 25px;
+    }
+
+    .educaalfa{
+        margin-top: 0%;
+    }
+
+    .col1{
+        width: 300px;
+    }
+  
+    .retangulo{
+        width: 376px;
+        height: 350px;
+        border-radius:20px;
+    }
+
+    .quadro1{
+        margin-top: 10px;
+    }
+
+    .quadro, .quadro1{
+        margin: 1%;
+        width: 260px;
+    }
+
+    #espaco{
+        margin-right: 1%;
+    }
+
+    #espaco1{
+        margin-right: 0%;
+    }
+
+    .branca .quadro {
+        display: inline-block;
+        margin-right: 30px; 
+    }
+
+    .conteudo{
+        text-align: justify;
+    }
+    
+    .col-tecnicas{
+        width: 400px;
+    }
+
+    .container1{
+        height: 900px;
+    }
+
+    .container2{
+        height: 975px;
+    }
+
+    .container{
+        margin-bottom: 0%;
+    }
+
+    .materiais{
+        width: 380px;
+        text-align: justify;
+        margin-left: 0%;
+    }
+        
+    .text-materiais{
+        width: 380px;
+        text-align: justify;
+        margin-bottom: 30px;
+    }
+
+}
+
+@media (max-width: 465px) {
+
+    .col{
+        width: 295px;
+        text-align: center;
+    }
+
+    .col2{
+        width: 295px;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .imgindex{
+        width: 270px;
+        margin-left: 10px;
+
+    }
+
+    .educaalfa{
+        margin-left: 10px;
+        margin-top: 0%;
+        font-size: 25px;
+        width: 260px;
+    }
+    
+    .subtitulo{
+        margin-left: 10px;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        width: 270px;
+    }
+
+    .col1{
+        width: 300px;
+        align-items: center;
+    }
+  
+    .retangulo{
+        width: 271px;
+        height: 350px;
+        border-radius:20px;
+    }
+    
+    .col-tecnicas{
+        width: 270px;
+    }
+
+    .container1{
+        height: 900px;
+    }
+
+    .container2{
+        height: 1050px;
+        margin-bottom: 0%;
+
+    }
+
+    .container{
+        margin-bottom: 0%;
+    }
+
+    .materiais{
+        width: 270px;
+        text-align: justify;
+        margin-left: 10px;
+
+    }
+        
+    .text-materiais{
+        width: 270px;
+        text-align: justify;
+        margin-bottom: 30px;
+        margin-left: 10px;
+    }
+
+    .imgcarrossel{
+        width: 200px;
+        margin-top: 30px;
+    }
+
+}
 

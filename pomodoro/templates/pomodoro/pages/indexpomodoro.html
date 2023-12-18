@@ -89,35 +89,35 @@
 <script>
     var isPomodoro = true;
     var isRunning = false;
-    var interval;
-    var pomodoroCount = 1;
+    var intervalo;
+    var contadorPomodoro = 1;
 
-    function playAudio() {
+    function reproduzirAudio() {
         var audio = document.getElementById('audio');
         audio.play();
     }
 
-    function startTimer(duration) {
-        var timerDisplay = document.getElementById('timer');
-        var counterDisplay = document.getElementById('counter');
+    function iniciarTemporizador(duracao) {
+        var visorTemporizador = document.getElementById('timer');
+        var visorContador = document.getElementById('counter');
         var pomodoro = document.querySelector('.pomodoro');
         var descanso = document.querySelector('.descanso');
-        var toggleButton = document.getElementById('toggleButton');
+        var botaoAlternar = document.getElementById('toggleButton');
 
-        var minutes, seconds;
+        var minutos, segundos;
 
-        interval = setInterval(function () {
-            minutes = parseInt(duration / 60, 10);
-            seconds = parseInt(duration % 60, 10);
+        intervalo = setInterval(function () {
+            minutos = parseInt(duracao / 60, 10);
+            segundos = parseInt(duracao % 60, 10);
 
-            minutes = minutes < 10 ? "0" + minutes : minutes;
-            seconds = seconds < 10 ? "0" + seconds : seconds;
+            minutos = minutos < 10 ? "0" + minutos : minutos;
+            segundos = segundos < 10 ? "0" + segundos : segundos;
 
-            timerDisplay.innerHTML = minutes + ":" + seconds;
+            visorTemporizador.innerHTML = minutos + ":" + segundos;
 
-            if (--duration < 0) {
-                clearInterval(interval);
-                playAudio();
+            if (--duracao < 0) {
+                clearInterval(intervalo);
+                reproduzirAudio();
 
                 isPomodoro = !isPomodoro;
 
@@ -125,48 +125,46 @@
                 descanso.style.backgroundColor = isPomodoro ? 'rgba(45, 130, 181, 0.44)' : 'rgba(2, 69, 119, 0.7)';
 
                 if (isPomodoro) {
-                    pomodoroCount++;
+                    contadorPomodoro++;
 
-                    if (pomodoroCount <= 4) {
-                        counterDisplay.innerHTML = pomodoroCount + "/4";
-                        startTimer(0.1 * 60);
+                    if (contadorPomodoro <= 4) {
+                        visorContador.innerHTML = contadorPomodoro + "/4";
+                        iniciarTemporizador(0.1 * 60);
                     } else {
-                        pomodoroCount = 1;
-                        counterDisplay.innerHTML = '';
-                        toggleButton.innerHTML = "Reiniciar";
-                        timerDisplay.innerHTML = "25:00";
+                        contadorPomodoro = 1;
+                        visorContador.innerHTML = '';
+                        botaoAlternar.innerHTML = "Reiniciar";
+                        visorTemporizador.innerHTML = "25:00";
                     }
                 } else {
-                    startTimer(0.1 * 60);
+                    iniciarTemporizador(0.1 * 60);
                 }
             }
         }, 1000);
     }
 
     document.getElementById('toggleButton').addEventListener('click', function () {
-        var counterDisplay = document.getElementById('counter');
+        var visorContador = document.getElementById('counter');
 
         if (isRunning) {
-            clearInterval(interval);
+            clearInterval(intervalo);
             isRunning = false;
             this.innerHTML = "Iniciar";
         } else {
             if (isPomodoro) {
-                startTimer(0.1 * 60);
+                iniciarTemporizador(0.1 * 60);
             } else {
-                pomodoroCount = 1;
-                counterDisplay.innerHTML = '';
-                toggleButton.innerHTML = "Reiniciar";
+                contadorPomodoro = 1;
+                visorContador.innerHTML = '';
+                botaoAlternar.innerHTML = "Reiniciar";
             }
 
             isRunning = true;
             this.innerHTML = "Pausar";
-            counterDisplay.style.display = 'block';
+            visorContador.style.display = 'block';
         }
     });
 </script>
-</body>
-</html>
 
 <style>
     .pomodoro {
