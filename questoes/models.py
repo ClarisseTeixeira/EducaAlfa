@@ -26,10 +26,6 @@ class Questao(models.Model):
     instituicao_ano = models.CharField(max_length=150, default="")
     texto = models.TextField(default="")
     enunciado = models.TextField(default="")
-    ordem = models.PositiveIntegerField(default=0) 
-    respondida = models.BooleanField(default=False)
-    questoes_certas = models.PositiveIntegerField(default=0)
-    questoes_erradas = models.PositiveIntegerField(default=0)
 
     def __str__(self):
         return f"Questão {self.id} - {self.disciplina.nome}"

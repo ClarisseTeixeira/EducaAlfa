@@ -77,52 +77,6 @@
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
 }
 
-.accordion-item {
-    position: relative; 
-    border: none;
-}
-
-.accordion-button {
-    border: none !important;
-    height: 20px;
-    width: 400px;
-    z-index: 0;
-    background-color: transparent;
-    font-size: 20px;
-}
-
-.accordion-item::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 5px;
-    background-color: #d6e8ee;
-    z-index: 1;
-    transition: background-color 0.3s ease; 
-}
-
-.accordion-item.open::before {
-    background-color: #001b48;
-}
-
-.accordion-item:not(.open)::before {
-    background-color: #d6e8ee;
-}
-
-.accordion-button:focus,
-.accordion-button:hover,
-.accordion-button:not(.collapsed) {
-    border: none; 
-    outline: none;
-    box-shadow: none; 
-    background-color: transparent;
-}
-
-.accordion-button::after {
-    width: 0;
-}
 
 #responder-questoes{
     border-radius: 100px;

@@ -153,11 +153,13 @@ def grafico(request):
         if data:
             acertos = data.acertos
             erros = data.erros
-            
 
-            serialize['grafico'] = [acertos, erros]
+            if acertos == 0 and erros == 0:
+                serialize['grafico'] = [0, 0, 1] 
+            else:
+                serialize['grafico'] = [acertos, erros]
+
         return json.dumps(serialize)
-    
 
 def indexquestoes(request):
     return render(request, 'questoes/pages/indexquestoes.html')

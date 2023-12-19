@@ -8,25 +8,29 @@
 
 <script>
   const ctxq = document.getElementById('myDoughnutChart').getContext('2d');
-  var dateq = JSON.parse('{{ serialized_dataq|safe|escapejs }}');
 
   function inicializarGrafico() {
-    const data = {
-      labels: ['Questões Certas', 'Questões Erradas'],
-      datasets: [{
-        data: dateq.grafico,
-        backgroundColor: ['rgb(54, 162, 235)', 'rgb(255, 99, 132)'],
-        hoverOffset: 4
-      }],
-    };
+  const dataq = JSON.parse('{{ serialized_dataq|safe|escapejs }}');
 
-    const config = {
-      type: 'doughnut',
-      data: data,
-    };
+  const labels = (dataq.grafico && dataq.grafico.length === 2) ? ['Questões Certas', 'Questões Erradas'] : ['Questões Certas', 'Questões Erradas', '0 Questões respondidas'];
 
-    window.myDoughnutChart = new Chart(ctxq, config);
-  }
+  const data = {
+    labels: labels,
+    datasets: [{
+      data: dataq.grafico || [],
+      backgroundColor: ['rgb(54, 162, 235)', 'rgb(255, 99, 132)', 'rgb(169, 169, 169)'],
+      hoverOffset: 4
+    }],
+  };
+
+  const config = {
+    type: 'doughnut',
+    data: data,
+  };
+
+  window.myDoughnutChart = new Chart(ctxq, config);
+}
+
 
   document.addEventListener('DOMContentLoaded', inicializarGrafico);
 </script>
