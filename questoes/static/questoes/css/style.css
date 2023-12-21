@@ -60,6 +60,12 @@
     text-align: justify;
     padding: 10px; 
     height: auto;
+    display: flex;
+    align-items: center;
+}
+
+#alternativa label {
+    margin-left: 5px; 
 }
 
 
@@ -497,6 +503,9 @@ p {
     
     #alternativa{
         width: 120px;
+        padding: 10px;
+        font-size: 10px;
+        text-align: left;
     }
     
 
