@@ -3,3 +3,5 @@ pillow
 django-quill-editor
 django-quill
 django-chartjs
+gunicorn
+psycopg2

@@ -86,7 +86,7 @@ def materiais_criar(request):
         form = MateriaisForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Materiais criados com sucesso!')
+            messages.success(request, 'Material criado com sucesso!')
             form = MateriaisForm()
     else:
         form = MateriaisForm()

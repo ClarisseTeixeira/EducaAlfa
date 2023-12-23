@@ -1,0 +1,37 @@
+version: '3'
+
+volumes:
+  static_volume: {}
+  data_volume: {}
+  media_volume: {}
+
+services:
+  django: &django
+    build:
+      context: .
+      dockerfile: ./compose/django/Dockerfile
+    volumes:
+      - static_volume:/home/app/staticfiles
+      - media_volume:/home/app/media
+    command: /start
+    depends_on:
+      - postgres
+
+  nginx:
+    build:
+      context: .
+      dockerfile: ./compose/nginx/Dockerfile
+    volumes:
+      - static_volume:/home/app/staticfiles
+      - media_volume:/home/app/media
+    ports:
+      - 83:80
+    depends_on:
+      - django
+
+  postgres:
+    image: postgres:16.1
+    volumes:
+      - data_volume:/var/lib/postgresql/data/
+    env_file:
+      - ./.env.postgres

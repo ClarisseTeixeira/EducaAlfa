@@ -1,0 +1,15 @@
+#!/bin/bash
+
+set -o errexit
+set -o pipefail
+set -o nounset
+
+python manage.py collectstatic --noinput
+
+#npm ci
+
+python manage.py migrate
+
+
+
+exec /usr/local/bin/gunicorn main.wsgi --bind 0.0.0.0:8000 --chdir=/home/app

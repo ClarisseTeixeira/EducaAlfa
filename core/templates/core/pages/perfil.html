@@ -1,8 +1,9 @@
 {% extends 'core/partials/base.html' %}
 {% load static %}
+{% block title%} Perfil {% endblock %}
 {% block content %}
-<div class="container" style="padding: 50px;">
-<div class="row bg-white d-flex align-items-center " style="width: 80%; padding: 30px;">
+<div class="container" style="padding: 50px; width: 80%;">
+<div class="row bg-white d-flex align-items-center " style=" padding: 30px;">
         <div class="col">
             <img class="imgperfil" src="{{ user.profile.image.url }}" alt="{{ user.username }}">
         </div>
