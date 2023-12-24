@@ -50,7 +50,9 @@
             {% if revisao %} 
               <form method="post" class="p-3">
                 {% csrf_token %}
-                <button class="bconcluida" type="submit">Revisão Concluída</button>
+                <button class="bconcluida" type="submit" name="revisao_concluida">Revisão Concluída</button>
+                <button class="bnaolembrou" type="submit" name="nao_lembrou">Não lembrou</button>
+
               </form>
             {% endif %}
           {% endif %}
