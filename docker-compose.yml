@@ -35,3 +35,6 @@ services:
       - data_volume:/var/lib/postgresql/data/
     env_file:
       - ./.env.postgres
+      
+      
+      
