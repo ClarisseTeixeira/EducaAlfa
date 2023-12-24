@@ -34,4 +34,8 @@ services:
     volumes:
       - data_volume:/var/lib/postgresql/data/
     env_file:
-      - ./.env.postgres
+      - .env.postgres
+    environment:           
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=123456
+      - POSTGRES_DB=educaalfa
