@@ -75,26 +75,21 @@ def detalhes_flashcard(request, id):
     anterior_id = anterior.id if anterior else dashboard
 
     if request.method == 'POST':
-        if 'revisao_concluida' in request.POST:
-            if revisao:
-                revisao.concluida = True
-                revisao.data_agendada = timezone.now().date()
-                revisao.save() 
+        if revisao:
+            revisao.concluida = True
+            revisao.data_agendada = timezone.now().date()
+            revisao.save() 
 
-                nova_data_revisao = proxima_revisao(revisao)
-                Revisao.objects.create(flashcard=detalhes, user=user, data_agendada=nova_data_revisao)
+            nova_data_revisao = proxima_revisao(revisao)
+            Revisao.objects.create(flashcard=detalhes, user=user, data_agendada=nova_data_revisao)
 
-                proximo_flashcard = Revisao.objects.filter(user=user, concluida=False, data_agendada__lte=timezone.now().date()).order_by('data_agendada').first()
+            proximo_flashcard = Revisao.objects.filter(user=user, concluida=False, data_agendada__lte=timezone.now().date()).order_by('data_agendada').first()
 
-                
-                if proximo_flashcard:
-                    return redirect('detalhes_flashcard', id=proximo_flashcard.flashcard.id)
-                else:
-                    return redirect('dashboard')
-        elif 'nao_lembrou' in request.POST:  
-            revisao.data_agendada = timezone.now().date() + timedelta(days=1)
-            revisao.save()
             
+            if proximo_flashcard:
+                return redirect('detalhes_flashcard', id=proximo_flashcard.flashcard.id)
+            else:
+                return redirect('dashboard')
     context = {
         'detalhes': detalhes,
         'revisao': revisao,
@@ -103,7 +98,6 @@ def detalhes_flashcard(request, id):
         'data': data
     }
     return render(request,'revisao/flashcard_detail.html', context)
-
 
 
 
