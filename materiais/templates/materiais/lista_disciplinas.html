@@ -1,18 +1,27 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block head%}
+<link rel="stylesheet" href="{% static 'materiais\css\style.css' %}">
+
+
+{% endblock %}
 
 {% block title%} Materiais de Estudo{% endblock %}
 
 
 {% block content %}
 
-<div class="d-flex justify-content-center m-5">
+<div class="grupodisc"  style="height: 55vh;">
   {% for disciplina in disciplinas %}
-  <div class="p-3">
-    <a href="{% url 'lista_assuntos' disciplina.id %}">
-      {{ disciplina.nome }}
-    </a>
+  <div class="grupimgea">
+      <div class="fundo">
+          <a href="{% url 'lista_assuntos' disciplina.id %}" >
+              <img width="50px" height="50px" src="{{ disciplina.imagem.url }}" alt="" >
+          </a>
+      </div>
+      <p class="d-flex justify-content-center">{{ disciplina.nome }}</p>
   </div>
+
   {% endfor %}
 </div>
 {% endblock %}

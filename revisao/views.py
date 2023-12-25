@@ -2,12 +2,10 @@ from django.http import HttpResponse, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render    
 from .models import Flashcard, Revisao
 from .forms import FlashcardForm
-from datetime import date, timedelta, datetime
+from datetime import timedelta
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.contrib.auth.decorators import login_required
-from django.db.models import Count
-from django.db.models.functions import ExtractWeekDay
 from django.utils import timezone
 from django.contrib import messages
 from core.views.home import dashboard
@@ -26,6 +24,7 @@ def flashcards(request):
             flashcard = form.save(commit=False)
             flashcard.user = request.user
             flashcard.save()
+            messages.success(request, 'Flashcard criado com sucesso!')
             return redirect('flashcards')
     context = {
         "flashcards": flashcards,
@@ -33,14 +32,11 @@ def flashcards(request):
     }
     return render(request, 'revisao/flashcard.html', context)
 
-
-
 @receiver(post_save, sender=Flashcard)
 def revisao_inicial(sender, instance, created, **kwargs):
     if created:
         data_agendada = instance.data + timedelta(days=1)
         Revisao.objects.create(flashcard=instance, user=instance.user, data_agendada=data_agendada)
- 
 
 def proxima_revisao(revisao):
     if revisao.concluida:
@@ -54,9 +50,6 @@ def proxima_revisao(revisao):
             return revisao.data_agendada + timedelta(days=30)
     else:
         return revisao.data_agendada
-    
-
-
     
 @login_required
 def detalhes_flashcard(request, id):
@@ -72,7 +65,7 @@ def detalhes_flashcard(request, id):
     proximo_id = proximo.id if proximo else dashboard
 
     anterior = Flashcard.objects.filter(user = user, id__lt=id).order_by('-id').first()
-    anterior_id = anterior.id if anterior else dashboard
+    anterior_id = anterior.id if anterior else dashboard    
 
     if request.method == 'POST':
         if revisao:
@@ -100,7 +93,6 @@ def detalhes_flashcard(request, id):
     return render(request,'revisao/flashcard_detail.html', context)
 
 
-
 @login_required
 def calendar(request):
     user = request.user
@@ -113,8 +105,6 @@ def calendar(request):
         })
 
     return JsonResponse(eventos, safe=False)
-
-
 
 @login_required
 def calendario(request):  
@@ -129,20 +119,20 @@ def calendario(request):
 def remover(request, id):
     flashcard = get_object_or_404(Flashcard, id=id)
     flashcard.delete()
+    messages.success(request, 'Flashcard excluído com sucesso!')
     return redirect('flashcards') 
 
 def flashcard_editar(request, id):
     flashcard = get_object_or_404(Flashcard, id=id)
-
     if request.method == 'POST':
         form = FlashcardForm(request.POST, instance=flashcard)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Flashcard editado com sucesso!')
             return redirect('flashcards')
     else:
         form = FlashcardForm(instance=flashcard)
     return render(request, 'revisao/flashcardform.html', {'form': form})
-
 
 
 def indexrevisao(request):

@@ -11,22 +11,23 @@ def lista_disciplinas(request):
 
     context = {
         'disciplinas': disciplinas
-        }
+    }
 
     return render(request, 'materiais/lista_disciplinas.html', context)
 
-def lista_assuntos(request, id):    
+def lista_assuntos(request, id): 
+    disciplinas = Disciplina.objects.all()
     disciplina = get_object_or_404(Disciplina, pk=id)
     assuntos = Assunto.objects.filter(disciplina=disciplina)
     conteudos = Conteudo.objects.filter(disciplina=disciplina)
     context = {
+        'disciplinas': disciplinas,
         'disciplina': disciplina, 
         'assuntos': assuntos,
         'conteudos': conteudos
-        }
+    }
     
     return render(request, 'materiais/lista_assuntos.html', context) 
-
 
 def lista_materiais(request, id):
     conteudo = get_object_or_404(Conteudo, pk=id)
@@ -35,14 +36,13 @@ def lista_materiais(request, id):
     context = {
         'conteudo': conteudo, 
         'materiais': materiais
-        }
+    }
     return render(request, 'materiais/conteudos.html', context )
-
 
 @user_passes_test(superuser)
 def disciplina_criar(request):
     if request.method == 'POST':
-        form = DisciplinaForm(request.POST)
+        form = DisciplinaForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             messages.success(request, 'Disciplina criada com sucesso!')
@@ -51,7 +51,6 @@ def disciplina_criar(request):
         form = DisciplinaForm()
 
     return render(request, "materiais/forms/formdisciplina.html", {'form': form})
- 
 
 @user_passes_test(superuser)
 def assunto_criar(request):
@@ -79,7 +78,6 @@ def conteudo_criar(request):
 
     return render(request, "materiais/forms/formconteudo.html", {'form': form})
 
-
 @user_passes_test(superuser)
 def materiais_criar(request):
     if request.method == 'POST':
@@ -92,7 +90,6 @@ def materiais_criar(request):
         form = MateriaisForm()
 
     return render(request, "materiais/forms/formmateriais.html", {'form': form})
-
 
 def materiais_remover(request, id):
     material = get_object_or_404(Materiais, id=id)
@@ -116,14 +113,13 @@ def conteudo_remover(request, id):
     conteudo.delete()
     return redirect('arearestrita')
 
-
-
 def materiais_editar(request, id):
     material = get_object_or_404(Materiais, id=id)
     if request.method == 'POST':
         form = MateriaisForm(request.POST, request.FILES, instance=material)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Materiais editado com sucesso!')
             return redirect('arearestrita')
     else:
         form = MateriaisForm(instance=material)
@@ -135,6 +131,7 @@ def assunto_editar(request, id):
         form = AssuntoForm(request.POST, instance=assunto)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Assunto editado com sucesso!')
             return redirect('arearestrita')
     else:
         form = AssuntoForm(instance=assunto)
@@ -146,11 +143,11 @@ def disciplina_editar(request, id):
         form = DisciplinaForm(request.POST, instance=disciplina)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Disciplina editada com sucesso!')
             return redirect('arearestrita')
     else:
         form = DisciplinaForm(instance=disciplina)
     return render(request, 'materiais/forms/formdisciplina.html', {'form': form})
-
 
 def conteudo_editar(request, id):
     conteudo = get_object_or_404(Conteudo, id=id)
@@ -158,6 +155,7 @@ def conteudo_editar(request, id):
         form = ConteudoForm(request.POST, instance=conteudo)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Conteúdo editado com sucesso!')
             return redirect('arearestrita')
     else:
         form = ConteudoForm(instance=conteudo)

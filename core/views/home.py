@@ -42,14 +42,14 @@ def dashboard(request):
     else:
        taxa_acerto = 0
 
-    serialized_data = revisoes(user) 
+    dados_revisões = revisoes(user) 
     serialized_dataq = grafico(request)
 
     context = {
         'todas_revisoes': todas_revisoes,
         'revisoes_do_dia': revisoes_do_dia,
         'revisoes_pendentes': revisoes_pendentes,
-        'serialized_data': serialized_data,
+        'dados_revisões': dados_revisões,
         'revisao': revisao,
         'serialized_dataq': serialized_dataq,
         'taxa_acerto': taxa_acerto,
@@ -71,19 +71,19 @@ def revisoes(user):
         .order_by('data_agendada')
     )
 
-    weekdays = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb']
-    revisoes_por_dia = [0] * len(weekdays)
+    dias = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb']
+    revisoes_por_dia = [0] * len(dias)
 
     for item in data:
         data_agendada = item['data_agendada'] + timedelta(days=1)
         dia_da_semana = data_agendada.weekday()
         revisoes_por_dia[dia_da_semana] = item['revisoes']
  
-    data_to_serialize = {
-        'weekdays': weekdays,  
+    dados = {
+        'dias': dias,  
         'revisoes': revisoes_por_dia
         }
-    return json.dumps(data_to_serialize)
+    return json.dumps(dados)
  
 
 @user_passes_test(superuser)

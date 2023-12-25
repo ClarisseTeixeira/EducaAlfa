@@ -3,7 +3,6 @@
 
 {% block head%}
 <link rel="stylesheet" href="{% static 'revisao\css\revisao.css' %}">
-<script src="{% static 'revisao/js/revisao.js' %}"></script>
 {% endblock %}
 
 {% block title%} Revisão {% endblock %}
@@ -162,5 +161,24 @@
     <a class="align-items-center" href="{% url 'flashcards' %}"> Criar flashcard</a>
 </div>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+    const accordionItems = document.querySelectorAll('.accordion-item');
+
+    accordionItems.forEach(function (item) {
+        const button = item.querySelector('.accordion-button');
+        const collapse = item.querySelector('.accordion-collapse');
+
+        collapse.addEventListener('show.bs.collapse', function () {
+            item.classList.add('open');
+        });
+
+        collapse.addEventListener('hide.bs.collapse', function () {
+            item.classList.remove('open');
+        });
+    });
+});
+
+</script>
 
 {% endblock %}

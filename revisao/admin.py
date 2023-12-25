@@ -10,6 +10,6 @@ class RevisaodAdmin(admin.ModelAdmin):
 
 @admin.register(Flashcard)
 class FlashcardAdmin(admin.ModelAdmin):
-    list_display=['id','titulo', 'content',]
+    list_display=['id','titulo', 'data']
     pass
 

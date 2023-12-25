@@ -72,15 +72,15 @@ nav.menu-lateral {
 
 .ativo {
     background-color: #FCFDFD;
-    border-radius: 16.5px;
-    width: 80px;
+    border-radius: 16px 0 0 16px;
+    width: 70px;
     height: 45px;
-    margin-left: 20px;
     padding: 10px 15px;
 }
 
 .ativo svg {
     fill: #024577;
+    margin-left: 5px;
 }
 
 
@@ -451,11 +451,12 @@ p img {
 .sumir {
     display: none;
 }
-@media (max-width: 1400px) {
-    .maincentro {
-        padding-left: 70px;
-    }
+
+.pcontainer{
+    padding-top: 40px;
+    width: 80%;
 }
+
 
 @media (max-width: 1300px) {
     .mainc {
@@ -465,7 +466,23 @@ p img {
     .lado2 {
         margin-left: 0px;
     }
-
+    .titulof{
+        width: 80%;
+    }
+    
+    
+}
+@media (max-width: 950px) {
+   .quebrar{
+    flex-direction: column;
+   }
+   .infos, .forms{
+    
+    margin-top: 40px;
+   }
+   .imgperfil {
+    margin-right: 0px !important;
+}
     
 }
 
@@ -483,6 +500,15 @@ p img {
     .fage {
         width: 100%;
     }
+    
+    nav.menu-lateral {
+        width: 50px;
+        margin: 20px 0px 20px 10px;
+    }
+    .maincentro {
+        padding-left: 60px;
+    }
+
 }
 
 
@@ -557,6 +583,11 @@ p img {
         margin: auto;
         align-items: center;
     }
+    .imgperfil {
+        width: 290px !important;
+        height: 290px !important;
+        
+    }
 
 }
 
@@ -604,9 +635,7 @@ p img {
     }
 
     .flashcards {
-        width: 100%;
-        margin-left: 50px;
-        margin-right: 15px;
+        width: 90%;
     }
 
     .buttonf {
@@ -643,6 +672,11 @@ p img {
     .fc-toolbar .fc-right {
         width: 125%;
     }
+    
+    .imgperfil {
+    width: 200px !important;
+    height: 260px !important;
+}
 }
 
 .fc-toolbar .fc-center h2 {

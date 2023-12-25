@@ -145,6 +145,7 @@ h1 {
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 2;
+    scroll-behavior: auto;
 }
 
 .rmodal {
@@ -168,7 +169,6 @@ h1 {
     border-color: #001a4825 !important ;
 }
 .bcpa{
-    position: absolute;
     bottom: 0;
     left: 0px;
     display: flex;
@@ -179,7 +179,6 @@ h1 {
     box-sizing: border-box;
     margin-top: 10px;
     margin-bottom: 15px;
-
 }
 
 .bconcluida{
@@ -224,6 +223,9 @@ h1 {
         flex-direction: column-reverse;
     }
 
+    .rmodal{
+        width: 100%;
+    }
     .h1revisao {
         text-align: center;
     }

@@ -8,6 +8,7 @@ class DisciplinaForm(ModelForm):
         fields = '__all__'
         widgets = {
             'nome': forms.TextInput(attrs={'class': 'form-control'}),
+            'imagem': forms.FileInput(attrs={'class': 'form-control'}),
         }
 
 class AssuntoForm(ModelForm):

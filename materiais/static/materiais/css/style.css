@@ -54,3 +54,33 @@ p {
 .texto{
     max-width: 90%;
 }
+
+.grupodisc{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 5px;
+}
+.grupimgea{
+    padding: 15px;
+    text-align: center;
+}
+.fundo{
+    background-color: #fff;
+    filter: drop-shadow(2px 4px 4px rgba(0, 0, 0, 0.25));
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 60px ;
+}
+
+#corfundo{
+    background-color: #024577 !important;
+}
+#corfundo img{
+    filter: invert(100%);
+    
+
+}

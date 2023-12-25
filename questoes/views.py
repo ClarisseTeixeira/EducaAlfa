@@ -162,4 +162,4 @@ def grafico(request):
         return json.dumps(serialize)
 
 def indexquestoes(request):
-    return render(request, 'questoes/pages/indexquestoes.html')
+    return render(request, 'questoes/pages/indexquestoes.html') 

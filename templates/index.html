@@ -25,7 +25,7 @@
       {% for message in messages %}
       <p {% if message.tags %} class="{{ message.tags }}" {% endif %}> {{ message }}</p>
       {% endfor %}
-    </div>
+    </div> 
     {% endif %}
   </div>
 
@@ -33,8 +33,7 @@
   <header class="container">
     <nav class="navbar navbar-expand-lg">
       <div class="container-fluid">
-        <a class="navbar-brand" href="{% url 'index' %}"><img class="logo" src="{% static 'img\logooficialindex.svg'  %}"
-            alt=""></a>
+        <a class="navbar-brand" href="{% url 'index' %}"><img class="logo" src="{% static 'img\logooficialindex.svg'  %}" alt=""></a>
 
 
 
@@ -55,7 +54,7 @@
                 <a class="nav-link" href="{% url 'indexrevisao' %}">Revisão</a>
               </li>
               <li class="nav-item navli">
-                <a class="nav-link" href="{% url 'index' %}#materiais">Materiais</a>
+                <a class="nav-link" href="{% url 'lista_disciplinas' %}">Materiais</a>
               </li>
               <li class="nav-item navli">
                 <a class="nav-link" href="{% url 'indexquestoes' %}">Questões</a>
@@ -64,8 +63,19 @@
                 <a class="nav-link" href="{% url 'indexpomodoro' %}">Pomodoro</a>
               </li>
             </ul>
-            <div class="entrar"><a  href="{% url 'dashboard' %}">Entrar</a> </div>
           </div>
+          {% if user.is_authenticated %}
+          <div class="m-1">
+            <a href="{% url 'dashboard' %}">
+              <img class="imguser" src="{{ user.profile.image.url }}" alt="Foto do Usuário">
+            </a>
+          </div>
+          {% else %}
+          <div class="entrar m-1">
+            <a href="{% url 'dashboard' %}">Entrar</a>
+          </div>
+          {% endif %}
+
 
 
         </div>
@@ -384,14 +394,6 @@
       crossorigin="anonymous"></script>
     
     <script>
-
-      setTimeout(function () {
-        var tempomsg = document.querySelector('.message');
-        tempomsg.classList.add('hide-message');
-      }, 5000);
-
-
-
         var TrandingSlider = new Swiper('.tranding-slider', {
           effect: 'coverflow',
           grabCursor: true,

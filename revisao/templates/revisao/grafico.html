@@ -6,12 +6,12 @@
  
     <script>
         var ctz = document.getElementById('Chart').getContext('2d');
-        var date = JSON.parse('{{ serialized_data|safe|escapejs }}');
+        var date = JSON.parse('{{ dados_revisões|safe|escapejs }}');
 
         var chart = new Chart(ctz, {
             type: 'line',
             data: {
-                labels: date.weekdays,
+                labels: date.dias,
                 datasets: [{
                     label: 'Revisões Concluídas',
                     data: date.revisoes,

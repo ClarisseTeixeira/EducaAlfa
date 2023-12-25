@@ -2,13 +2,13 @@
 {% load static %}
 {% block title%} Perfil {% endblock %}
 {% block content %}
-<div class="container" style="padding: 50px; width: 80%;">
-<div class="row bg-white d-flex align-items-center " style=" padding: 30px;">
-        <div class="col">
-            <img class="imgperfil" src="{{ user.profile.image.url }}" alt="{{ user.username }}">
+<div class="container pcontainer" >
+<div class=" bg-white d-flex align-items-center quebrar" >
+        <div class="" >
+            <img style="margin-right: 20px;" class="imgperfil" src="{{ user.profile.image.url }}" alt="{{ user.username }}">
         </div>
     
-        <div class="col m-auto infos" id="infosSection">
+        <div class="infos" id="infosSection">
             <p class="fw-semibold m-0"> Nome:</p>
             <p class="fw-lighter"> {{user.username}}</p>
     
@@ -23,7 +23,7 @@
             <a class="btn btn-outline-secondary" href="#"> <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512"> <path fill="#4e4e50" d="M362.7 19.3L314.3 67.7 444.3 197.7l48.4-48.4c25-25 25-65.5 0-90.5L453.3 19.3c-25-25-65.5-25-90.5 0zm-71 71L58.6 323.5c-10.4 10.4-18 23.3-22.2 37.4L1 481.2C-1.5 489.7 .8 498.8 7 505s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L421.7 220.3 291.7 90.3z" /> </svg> Editar Perfil</a>
         </div>
         
-        <div class="forms col m-auto  sumir" id="formsSection">
+        <div class="forms sumir" id="formsSection">
             <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="row mb-3">
@@ -61,6 +61,11 @@
         </div>
     </div>
 </div>
+
+<br>
+<br>
+<br>
+<br>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const infos = document.querySelector('.infos');

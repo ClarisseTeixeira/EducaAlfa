@@ -69,5 +69,26 @@
     </div>
   </div>
 </body>
+<script>
+  // Aguarda o carregamento completo da página
+  document.addEventListener('DOMContentLoaded', function() {
+    const rmodal = document.querySelector('.rmodal');
+
+    if (rmodal.clientHeight > 514) {
+      const bcpa = document.querySelector('.bcpa');
+      const rmodalcontainer = document.querySelector('.rmodal-container');
+      rmodalcontainer.style.height = '90%';
+      rmodalcontainer.style.overflowY = 'scroll';
+      bcpa.style.position = 'relative';
+
+      
+    } else {
+      const bcpa = document.querySelector('.bcpa');
+      bcpa.style.position = 'absolute';
+    }
+  });
+</script>
+
+
 
 </html>

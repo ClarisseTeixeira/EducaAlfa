@@ -21,9 +21,9 @@ def registro(request):
                 messages.success(request, 'Usuário registrado com sucesso.')
                 return redirect('login')
             except:
-                messages.error(request, 'Erro ao criar usuário.')
+                messages.success(request, 'Erro ao criar usuário.')
         else:
-            messages.error(request, 'As senhas não coincidem.')
+            messages.success(request, 'As senhas não coincidem.')
 
     return render(request, 'registration/registro.html')
 
