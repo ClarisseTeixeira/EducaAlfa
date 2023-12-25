@@ -45,7 +45,7 @@ def revisao_inicial(sender, instance, created, **kwargs):
 def proxima_revisao(revisao):
     if revisao.concluida:
         if revisao.flashcard.revisao_set.count() == 1:
-            return revisao.data_agendada + timedelta(days=7)
+            return revisao.data_agendada + timedelta(days=7) 
         elif revisao.flashcard.revisao_set.count() == 2:
             return revisao.data_agendada + timedelta(days=8)
         elif revisao.flashcard.revisao_set.count() == 3:
@@ -97,10 +97,25 @@ def detalhes_flashcard(request, id):
                     return redirect('detalhes_flashcard', id=proximo_flashcard.flashcard.id)
                 else:
                     return redirect('dashboard')
+                
         elif 'nao_lembrou' in request.POST:  
+            Revisao.objects.filter(flashcard=revisao.flashcard).delete()
+            
             revisao.data_agendada = timezone.now().date() + timedelta(days=1)
             revisao.save()
-           
+            
+            nova_data_revisao = proxima_revisao(revisao)
+            Revisao.objects.create(flashcard=detalhes, user=user, data_agendada=nova_data_revisao)
+            
+            
+            proximo_flashcard = Revisao.objects.filter(user=user, concluida=False, data_agendada__lte=timezone.now().date()).order_by('data_agendada').first()
+
+            
+            if proximo_flashcard:
+                    return redirect('detalhes_flashcard', id=proximo_flashcard.flashcard.id)
+            else:
+                    return redirect('dashboard')
+
     context = {
         'detalhes': detalhes,
         'revisao': revisao,
