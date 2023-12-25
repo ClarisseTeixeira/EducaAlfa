@@ -42,14 +42,14 @@ def dashboard(request):
     else:
        taxa_acerto = 0
 
-    dados_revisões = revisoes(user) 
+    dados_revisoes = revisoes(user) 
     serialized_dataq = grafico(request)
 
     context = {
         'todas_revisoes': todas_revisoes,
         'revisoes_do_dia': revisoes_do_dia,
         'revisoes_pendentes': revisoes_pendentes,
-        'dados_revisões': dados_revisões,
+        'dados_revisoes': dados_revisoes,
         'revisao': revisao,
         'serialized_dataq': serialized_dataq,
         'taxa_acerto': taxa_acerto,

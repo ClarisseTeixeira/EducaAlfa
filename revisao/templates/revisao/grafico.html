@@ -6,7 +6,7 @@
  
     <script>
         var ctz = document.getElementById('Chart').getContext('2d');
-        var date = JSON.parse('{{ dados_revisões|safe|escapejs }}');
+        var date = JSON.parse('{{ dados_revisoes|safe|escapejs }}');
 
         var chart = new Chart(ctz, {
             type: 'line',
