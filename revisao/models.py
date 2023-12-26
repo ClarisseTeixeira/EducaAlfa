@@ -15,5 +15,3 @@ class Revisao(models.Model):
     flashcard = models.ForeignKey(Flashcard, on_delete=models.CASCADE)
     data_agendada = models.DateField()
     concluida = models.BooleanField(default=False)
-    def __str__(self):
-        return self.flashcard

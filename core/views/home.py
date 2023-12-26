@@ -14,6 +14,8 @@ from django.contrib import messages
 from core.models import Profile
 from questoes.views import grafico, estatisticas
 from questoes.models import UserProfile
+from django.db.models import Count
+from django.db.models.functions import ExtractWeekDay
 
  
 def index(request):
@@ -83,6 +85,7 @@ def revisoes(user):
         'dias': dias,  
         'revisoes': revisoes_por_dia
         }
+    print(dados)
     return json.dumps(dados)
  
 

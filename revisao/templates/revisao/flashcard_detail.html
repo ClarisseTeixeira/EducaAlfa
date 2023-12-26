@@ -45,8 +45,8 @@
         </div>
 
 
-        <div class="rconcluida">
-          {% if revisao.data_agendada <= data%} 
+          <div class="rconcluida">
+            {% if revisao.data_agendada <= data%} 
             {% if revisao %} 
               <form method="post" class="p-3">
                 {% csrf_token %}
