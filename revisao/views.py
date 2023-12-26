@@ -105,8 +105,7 @@ def detalhes_flashcard(request, id):
             revisao.save()
             
             nova_data_revisao = proxima_revisao(revisao)
-            Revisao.objects.create(flashcard=detalhes, user=user, data_agendada=nova_data_revisao)
-            
+
             
             proximo_flashcard = Revisao.objects.filter(user=user, concluida=False, data_agendada__lte=timezone.now().date()).order_by('data_agendada').first()
 
