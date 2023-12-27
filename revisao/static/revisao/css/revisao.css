@@ -12,7 +12,7 @@
 .mbsr {
     max-width: 90%;
 }
-
+ 
 .h1revisao {
     font-size: 36px;
 }
@@ -122,7 +122,14 @@ h1 {
     color: #001B48;
     font-size: 20px;
 }
+.criarflashcard:hover{
+    transition: 0.5s;
+    background-color: #001B48;
+}
 
+.criarflashcard a:hover{
+    color: #fff;
+}
 .rfade {
     position: fixed;
     top: 0;
