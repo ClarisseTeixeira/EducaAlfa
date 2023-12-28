@@ -28,11 +28,19 @@
 
   <div class="rmodal-container">
     <div class="rmodal">
+      <a href="#" class="versof">
+        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z"/>
+          <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466"/>
+        </svg>
+      </a>
+
       <h1>{{ detalhes.titulo }}</h1>
       <hr>
 
 
-      <p>{{ detalhes.content.html|safe }}</p>
+        <div class="content">{{ detalhes.content.html|safe }}</div>
+        <div class="verso" style="display: none;">{{ detalhes.verso.html|safe }}</div>
 
       <div class="bcpa">
 
@@ -50,8 +58,8 @@
             {% if revisao %} 
               <form method="post" class="p-3">
                 {% csrf_token %}
-                <button class="bconcluida" type="submit" name="revisao_concluida">Revisão Concluída</button>
-                <button class="bnaolembrou" type="submit" name="nao_lembrou">Não lembrou</button>
+                <button class="bconcluida" type="submit" name="revisao_concluida">Concluir Revisão</button>
+                <button class="bnaolembrou" type="submit" name="nao_lembrou">Não lembro</button>
 
               </form>
             {% endif %}
@@ -69,6 +77,37 @@
       </div>
     </div>
   </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const versofElements = document.querySelectorAll('.versof');
+
+    if (versofElements) {
+        versofElements.forEach(function(versof) {
+            versof.addEventListener('click', function(event) {
+                event.preventDefault();
+
+                const parentModal = this.closest('.rmodal');
+
+                if (parentModal) {
+                    const verso = parentModal.querySelector('.verso');
+                    const content = parentModal.querySelector('.content');
+
+                    if (verso && content) {
+                        if (verso.style.display === 'none') {
+                            verso.style.display = 'block';
+                            content.style.display = 'none';
+                        } else {
+                            verso.style.display = 'none';
+                            content.style.display = 'block';
+                        }
+                    }
+                }
+            });
+        });
+    }
+});
+  </script>
 </body>
 
 </html>

@@ -28,18 +28,28 @@
                     {% csrf_token %}
                     {{ form.media }}
 
-                    <div class="d-flex">
+                    <div class="d-flex" style="position: relative;">
                         <input class="titulof" placeholder="Título" type="text" name="titulo" maxlength="150"
                             id="id_titulo">
+
+                            <a href="#" id="mostrar-verso" class="d-flex" >
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22   " fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z"/>
+                                    <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466"/>
+                                  </svg>
+                                  <span id="versotexto">Adicionar verso</span>
+                            </a>
                     </div>
-
-                    {{ form.content }}
-
-
+                    <div class="flashcard-field content-field">
+                        {{ form.content }}
+                    </div>
+                    <div class="flashcard-field verso-field" style="display: none;">
+                        {{ form.verso }}
+                    </div>
                     <div class="d-flex justify-content-center divsalvar">
                         <button class="salvar" type="submit">Enviar</button>
                     </div>
-
+                    
                 </form>
  
             </div>
@@ -104,19 +114,89 @@
         <div class="modal fade" id="flashcardModal{{ flashcards.id }}" tabindex="-1"
             aria-labelledby="flashcardLabel{{ flashcards.id }}" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modalform">
+
+
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="flashcardLabel{{ flashcards.id }}">{{ flashcards.titulo }}</h5>
-                    </div>
-                    <div class="modal-body">
-                        <div>{{ flashcards.content.html|safe }}</div>
 
+                        <a href="#" class="versof"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z"/>
+                            <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466"/>
+                          </svg></a>
+
+                        <h5 class="modal-title" id="flashcardLabel{{ flashcards.id }}">{{ flashcards.titulo }}</h5>
+                        
+                    </div>                    
+                    <div class="modal-body">
+                        <div class="content">{{ flashcards.content.html|safe }}</div>
+                        <div class="verso" style="display: none;">{{ flashcards.verso.html|safe }}</div>
                     </div>
                 </div>
+
             </div>
         </div>
         {% endfor %}
 
     </div>
 </div>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        
+        const mostrarVersoLink = document.getElementById('mostrar-verso');
+        const versoField = document.querySelector('.verso-field');
+        const contentField = document.querySelector('.content-field');
+        const VersoTexto = document.getElementById('versotexto');
+
+        mostrarVersoLink.addEventListener('click', function(event) {
+            event.preventDefault();
+
+            if (versoField.style.display === 'none') {
+                versoField.style.display = 'block';
+                contentField.style.display = 'none';
+                VersoTexto.style.display = 'none';
+            } else {
+                versoField.style.display = 'none';
+                contentField.style.display = 'block';
+                VersoTexto.style.display = 'block';
+            }
+        });
+    });
+    document.addEventListener('DOMContentLoaded', function() {
+    const versofElements = document.querySelectorAll('.versof');
+
+    if (versofElements) {
+        versofElements.forEach(function(versof) {
+            versof.addEventListener('click', function(event) {
+                event.preventDefault();
+
+                const parentModal = this.closest('.modal');
+
+                if (parentModal) {
+                    const verso = parentModal.querySelector('.verso');
+                    const content = parentModal.querySelector('.content');
+
+                    if (verso && content) {
+                        if (verso.style.display === 'none') {
+                            verso.style.display = 'block';
+                            content.style.display = 'none';
+                        } else {
+                            verso.style.display = 'none';
+                            content.style.display = 'block';
+                        }
+                    }
+                }
+            });
+        });
+    }
+});
+
+
+
+
+</script>
+
+
+
 {% endblock %}

@@ -8,6 +8,7 @@ class Flashcard(models.Model):
     titulo = models.CharField(max_length=150)
     content = QuillField()
     data = models.DateField(default=timezone.now)
+    verso = QuillField(blank=True, null=True)
  
 class Revisao(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)

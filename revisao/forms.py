@@ -5,6 +5,6 @@ class FlashcardForm(forms.ModelForm):
     class Meta:
         model = Flashcard
         fields = (
-            'titulo', 'content',
+            'titulo', 'content', 'verso'
         )
 

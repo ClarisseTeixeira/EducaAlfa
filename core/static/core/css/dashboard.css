@@ -648,3 +648,31 @@ p img {
 .fc-toolbar .fc-center h2 {
     text-transform: capitalize;
 }
+
+
+.versof{
+    text-decoration: none;
+    color: #000;
+    position: absolute;
+    top: 0;
+    margin: 20px;
+    right: 0;
+
+}
+
+.modal-header{
+    position: relative;
+}
+
+.modal-header h5 {
+    text-align: center; 
+}
+#mostrar-verso{
+    font-size: 18px;
+    text-decoration: none;
+    color: #000;
+    margin: 10px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
