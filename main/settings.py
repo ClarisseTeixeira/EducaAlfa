@@ -24,9 +24,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-#b06pf!g^gfmbk4x(il*x!jaz8a3)g1wkt@^&b2**h-jq!27jn"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
+ALLOWED_HOSTS = ['*']
 
+CSRF_TRUSTED_ORIGINS = ['http://localhost:83']
 
 # Application definition
 
@@ -83,11 +85,16 @@ WSGI_APPLICATION = "main.wsgi.application"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
+     "default": {
+         "ENGINE": "django.db.backends.postgresql_psycopg2",
+         "NAME": 'educaalfa',
+         "USER": 'postgres',
+         "PASSWORD": '123456',
+         "HOST": "postgres",
+         "PORT":  "5432",
+     }  
 }
+    
 
 
 # Password validation

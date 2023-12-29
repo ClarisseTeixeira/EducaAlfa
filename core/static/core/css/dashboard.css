@@ -222,7 +222,6 @@ ul .sair {
 .centro {
     margin: auto;
     max-width: 90%;
-    width: 100%;
 }
 
 .maincentro {
@@ -459,6 +458,11 @@ p img {
 }
 
 
+
+
+
+
+
 @media (max-width: 1300px) {
     .mainc {
         display: block !important;
@@ -470,7 +474,10 @@ p img {
     .titulof{
         width: 80%;
     }
-    
+    .centro {
+        width: 100%;
+    }
+        
      
 }
 @media (max-width: 950px) {
