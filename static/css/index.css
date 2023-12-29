@@ -162,8 +162,9 @@ nav {
     .basenav ul {
         width: 120px;
         position: absolute;
+        z-index: 2;
         top: 30px;
-        right: -35px;
+        right: -30px;
         padding: 10px 18px;
         box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.15);
         border-radius: 3px;
@@ -171,7 +172,7 @@ nav {
     }
 
     .basenav li {
-        margin: 5px 0px 5px 20px;
+        margin: 5px 0px 5px 0px;
         float: none;
         display: block;
     }

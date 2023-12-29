@@ -144,11 +144,7 @@
                 <div class="col-tecnicas">
                     
                     <h1 class="textconteudo">O que são Técnicas de Estudo</h1>
-                    <p class="conteudo">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi ut aliquip ex ea commodo Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                        exercitation ullamco laboris nisi ut aliquip ex ea commodo </p>
+                    <p class="conteudo">As técnicas de estudos não apenas aprimoram a compreensão, memória e aplicação do conhecimento, mas também se adaptam aos diferentes estilos de aprendizagem. Desde a leitura ativa e a organização visual até o uso de flashcards e a prática ativa, essas abordagens diversificadas promovem um aprendizado mais eficiente. A técnica Pomodoro, com seus intervalos curtos e focados, e a criação de um ambiente de estudo adequado complementam esse conjunto.</p>
                 </div>
             </div>        
         </div>
@@ -174,10 +170,10 @@
                     
                     
                     <h1 class="materiais">Acesso a diferentes materiais de estudo</h1>
-                    <p class="text-materiais">loremLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <p class="text-materiais">Os materiais de estudos contam com material didático e vídeo aulas que servem como suporte essencial para o aprendizado.</p>
                 </div>
 
-                <div class="col2"">
+                <div class="col2">
                     <section id="tranding">
                         
                         <div class="container">
@@ -186,7 +182,7 @@
                               <!-- Slide-start -->
                               <!-- Slide-end -->
                               <!-- Slide-start -->
-                              
+                              <a href="{% url 'lista_assuntos' id=2 %}" style="text-decoration: none; color:black ;">
                               <div class="swiper-slide tranding-slide">
                                 <div class="retangulo">
                                 <div class="tranding-slide-content">
@@ -199,6 +195,7 @@
                                 </div>
                               </div>
                             </div>
+                          </a>
                               <!-- Slide-end -->
                               <!-- Slide-start -->
 
@@ -218,6 +215,7 @@
                             </a>
                               <!-- Slide-end -->
                               <!-- Slide-start -->
+                              <a href="{% url 'lista_assuntos' id=10 %}" style="text-decoration: none; color:black ;">
                               <div class="swiper-slide tranding-slide">
                                 <div class="retangulo">
                                 <div class="tranding-slide-content">
@@ -230,8 +228,10 @@
                                 </div>
                               </div>
                             </div>
+                            </a>
                               <!-- Slide-end -->
                               <!-- Slide-start -->
+                              <a href="{% url 'lista_assuntos' id=3 %}" style="text-decoration: none; color:black ;">
                               <div class="swiper-slide tranding-slide">
                                 <div class="retangulo">
                                 <div class="tranding-slide-content">
@@ -244,8 +244,10 @@
                                 </div>
                               </div>
                             </div>
+                          </a>
                             <!-- Slide-end -->
                               <!-- Slide-start -->
+                              <a href="{% url 'lista_assuntos' id=4 %}" style="text-decoration: none; color:black ;">
                               <div class="swiper-slide tranding-slide">
                                 <div class="retangulo">
                                 <div class="tranding-slide-content">
@@ -258,8 +260,10 @@
                                 </div>
                               </div>
                             </div>
+                          </a>
                               <!-- Slide-end -->
                               <!-- Slide-start -->
+                            <a href="{% url 'lista_assuntos' id=6 %}" style="text-decoration: none; color:black ;">
                               <div class="swiper-slide tranding-slide">
                                 <div class="retangulo">
                                 <div class="tranding-slide-content">
@@ -272,8 +276,11 @@
                                 </div>
                               </div>
                             </div>
+                          </a>
                               <!-- Slide-end -->
                               <!-- Slide-start -->
+                              <a href="{% url 'lista_assuntos' id=9 %}" style="text-decoration: none; color:black ;">
+
                               <div class="swiper-slide tranding-slide">
                                 <div class="retangulo">
                                 <div class="tranding-slide-content">
@@ -286,8 +293,10 @@
                                 </div>
                               </div>
                             </div>
+                            </a>
                               <!-- Slide-end -->
                               <!-- Slide-start -->
+                              <a href="{% url 'lista_assuntos' id=7 %}" style="text-decoration: none; color:black ;">
                               <div class="swiper-slide tranding-slide">
                                 <div class="retangulo">
                                 <div class="tranding-slide-content">
@@ -300,34 +309,173 @@
                                 </div>
                               </div>
                             </div>
-                              
-                              <!-- Slide-end -->
-                              <!-- Slide-start -->
-                              <div class="swiper-slide tranding-slide">
-                                <div class="retangulo">
-                                <div class="tranding-slide-content">
-                                  <h1 class="food-price">Sociologia</h1>
-                                  <div class="tranding-slide-content-bottom">
-                                  </div>
-                                  <div class="tranding-slide-img">
-                                    <img class="imgcarrossel" src="{% static 'img\Think different-bro.svg' %}" alt="Tranding">
-                                </div>
-                                </div>
-                              </div>
-                            </div>
-
+                            </a>
+                            
+                            <a href="{% url 'lista_assuntos' id=8 %}" style="text-decoration: none; color:black ;">
                             <div class="swiper-slide tranding-slide">
                               <div class="retangulo">
                               <div class="tranding-slide-content">
-                                <h1 class="food-price">Português</h1>
+                                <h1 class="food-price">Sociologia</h1>
                                 <div class="tranding-slide-content-bottom">
+                                  <div class="tranding-slide-img">
+                                      <img class="imgcarrossel" src="{% static 'img\Think different-bro.svg' %}" alt="Tranding"> 
+                                  </div>
                                 </div>
-                                <div class="tranding-slide-img">
-                                  <img class="imgcarrossel" src="{% static 'img\Bibliophile-rafiki.svg' %}" alt="Tranding">
-                              </div>
                               </div>
                             </div>
                           </div>
+                        </a>
+
+                          <a href="{% url 'lista_assuntos' id=5 %}" style="text-decoration: none; color:black ;">
+                          <div class="swiper-slide tranding-slide">
+                            <div class="retangulo">
+                            <div class="tranding-slide-content">
+                              <h1 class="food-price">Artes</h1>
+                              <div class="tranding-slide-content-bottom">
+                              </div>
+                              <div class="tranding-slide-img">
+                                <img class="imgcarrossel" src="{% static 'img\Artist-bro.svg' %}" alt="Tranding">
+                            </div>
+                            </div>
+                          </div>
+                        </div>
+                      </a>
+                      
+                      <a href="{% url 'lista_assuntos' id=2 %}" style="text-decoration: none; color:black ;">
+                        <div class="swiper-slide tranding-slide">
+                          <div class="retangulo">
+                          <div class="tranding-slide-content">
+                            <h1 class="food-price">Português</h1>
+                            <div class="tranding-slide-content-bottom">
+                            </div>
+                            <div class="tranding-slide-img">
+                              <img class="imgcarrossel" src="{% static 'img\Bibliophile-rafiki.svg' %}" alt="Tranding">
+                          </div>
+                          </div>
+                        </div>
+                      </div>
+                    </a>
+
+                      <div class="swiper-slide tranding-slide">
+                        <div class="retangulo">
+                        <div class="tranding-slide-content">
+                          <h1 class="food-price">Português</h1>
+                          <div class="tranding-slide-content-bottom">
+                          </div>
+                          <div class="tranding-slide-img">
+                            <img class="imgcarrossel" src="{% static 'img\Bibliophile-rafiki.svg' %}" alt="Tranding">
+                        </div>
+                        </div>
+                      </div>
+                      </div>
+                      <div class="swiper-slide tranding-slide">
+                      <div class="retangulo">
+                      <div class="tranding-slide-content">
+                        <h1 class="food-price">Sociologia</h1>
+                        <div class="tranding-slide-content-bottom">
+                          <div class="tranding-slide-img">
+                              <img class="imgcarrossel" src="{% static 'img\Think different-bro.svg' %}" alt="Tranding"> 
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                      </div>
+                      <div class="swiper-slide tranding-slide">
+                    <div class="retangulo">
+                    <div class="tranding-slide-content">
+                      <h1 class="food-price">Sociologia</h1>
+                      <div class="tranding-slide-content-bottom">
+                        <div class="tranding-slide-img">
+                            <img class="imgcarrossel" src="{% static 'img\Think different-bro.svg' %}" alt="Tranding"> 
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                      </div>
+                      <div class="swiper-slide tranding-slide">
+                  <div class="retangulo">
+                  <div class="tranding-slide-content">
+                    <h1 class="food-price">Sociologia</h1>
+                    <div class="tranding-slide-content-bottom">
+                      <div class="tranding-slide-img">
+                          <img class="imgcarrossel" src="{% static 'img\Think different-bro.svg' %}" alt="Tranding"> 
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                      </div>
+                      <div class="swiper-slide tranding-slide">
+                <div class="retangulo">
+                <div class="tranding-slide-content">
+                  <h1 class="food-price">Sociologia</h1>
+                  <div class="tranding-slide-content-bottom">
+                    <div class="tranding-slide-img">
+                        <img class="imgcarrossel" src="{% static 'img\Think different-bro.svg' %}" alt="Tranding"> 
+                    </div>
+                  </div>
+                </div>
+              </div>
+                      </div>
+                      <div class="swiper-slide tranding-slide">
+              <div class="retangulo">
+              <div class="tranding-slide-content">
+                <h1 class="food-price">Sociologia</h1>
+                <div class="tranding-slide-content-bottom">
+                  <div class="tranding-slide-img">
+                      <img class="imgcarrossel" src="{% static 'img\Think different-bro.svg' %}" alt="Tranding"> 
+                  </div>
+                </div>
+              </div>
+            </div>
+                      </div>
+                      <div class="swiper-slide tranding-slide">
+            <div class="retangulo">
+            <div class="tranding-slide-content">
+              <h1 class="food-price">Sociologia</h1>
+              <div class="tranding-slide-content-bottom">
+                <div class="tranding-slide-img">
+                    <img class="imgcarrossel" src="{% static 'img\Think different-bro.svg' %}" alt="Tranding"> 
+                </div>
+              </div>
+            </div>
+          </div>
+                      </div>
+                      <div class="swiper-slide tranding-slide">
+          <div class="retangulo">
+          <div class="tranding-slide-content">
+            <h1 class="food-price">Sociologia</h1>
+            <div class="tranding-slide-content-bottom">
+              <div class="tranding-slide-img">
+                  <img class="imgcarrossel" src="{% static 'img\Think different-bro.svg' %}" alt="Tranding"> 
+              </div>
+            </div>
+          </div>
+        </div>
+                      </div>
+                      <div class="swiper-slide tranding-slide">
+        <div class="retangulo">
+        <div class="tranding-slide-content">
+          <h1 class="food-price">Sociologia</h1>
+          <div class="tranding-slide-content-bottom">
+            <div class="tranding-slide-img">
+                <img class="imgcarrossel" src="{% static 'img\Think different-bro.svg' %}" alt="Tranding"> 
+            </div>
+          </div>
+        </div>
+      </div>
+                      </div>
+                      <div class="swiper-slide tranding-slide">
+      <div class="retangulo">
+      <div class="tranding-slide-content">
+        <h1 class="food-price">Português</h1>
+        <div class="tranding-slide-content-bottom">
+        </div>
+        <div class="tranding-slide-img">
+          <img class="imgcarrossel" src="{% static 'img\Bibliophile-rafiki.svg' %}" alt="Tranding">
+      </div>
+      </div>
+    </div>
+                      </div>                        
                               <!-- Slide-end -->
                               <!-- Slide-start -->
                               <!-- Slide-end -->
