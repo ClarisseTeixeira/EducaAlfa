@@ -82,6 +82,7 @@ h1 {
 
 
 .flashcard {
+    perspective: 1000px;
     width: 300px;
     margin: 10px auto;
     min-height: 200px;
@@ -89,6 +90,8 @@ h1 {
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
 }
+
+
 
 .flashcard h3 {
     font-size: 24px;
@@ -146,30 +149,35 @@ h1 {
     height: 100%; 
 }
 
+
 .rmodal-container {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 2;
-    scroll-behavior: auto;
+    scroll-behavior: smooth;
+    overflow: auto;
 }
 
 .rmodal {
     width: 820px;
     background-color: #fff;
-    padding: 2em;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     min-height: 380px;
 }
+.content, .verso{
+    padding: 2em;
+}
+
 
 .rmodal h1{
     font-size: 36px;
     border: none;
     margin: auto;
     text-align: center;
-    width: auto;
+    width: 100%;
 }
 
 .rmodal hr{
@@ -182,10 +190,9 @@ h1 {
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    padding: 0 20px;
+    padding: 10px 20px ;
     box-sizing: border-box;
-    margin-top: 10px;
-    margin-bottom: 15px;
+    margin-bottom: 5px;
 }
 
 .bconcluida{
@@ -232,6 +239,16 @@ h1 {
     color: #fff;
     background-color: rgb(255, 51, 95);
 }
+
+
+.versofd{
+    text-decoration: none;
+    color: #000;
+    position: absolute;
+    top: 0;
+    margin: 6px;
+    right: 0;
+}
 @media (max-width: 1200px) {
     .row {
         flex-direction: column;
@@ -243,10 +260,15 @@ h1 {
     .mbsr {
         flex-direction: column-reverse;
     }
-
+    .rmodal-container {
+        width: 98%;
+    }
     .rmodal{
         width: 100%;
     }
+    
+    
+
     .h1revisao {
         text-align: center;
     }
@@ -256,6 +278,16 @@ h1 {
     }
 }
 
+
+
+@media (max-width:630px){
+
+    .bconcluida, .bnaolembrou{
+        width: 100%;
+        margin-bottom: 5px;
+    }
+
+}
 
 @media (max-width:570px){
     .borda{
@@ -267,8 +299,17 @@ h1 {
     .accordion-header, .accordion-button{
         width: 260px;
     }
+    .versofd{
+        margin: 2px !important;
+    }
+    .bantprox{
+        width: 80px;
+    }
+    .content {
+        padding: 1.5em;
+    }
+    
 }
-
 
 @media (max-width:350px){
     .borda{
@@ -278,7 +319,55 @@ h1 {
         width: 250px;
     }
     
+    .versofd{
+        margin: 10px !important;
+    }
+    
     .accordion-header, .accordion-button{
         width: 200px;
     }
+    .rmodal h1{
+        width: 80%;
+    }
+    
+    .bantprox{
+        width: 70px;
+    }
+}
+
+
+
+
+
+.flipper{
+	width: 100%;
+	height: 100%;
+	transition: transform 0.8s;
+	transform-style: preserve-3d;
+}
+.flipper{
+	position: relative;
+}
+.front, .back{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+.back{
+	transform: rotateY(180deg);
+}
+.back h1{
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.front, .back{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+  }
+  .flashcard:hover .flipper{
+	transform: rotateY(180deg);
 }

@@ -9,6 +9,6 @@ urlpatterns = [
     path('flashcard/editar/<int:id>/', flashcard_editar, name='flashcard_editar'),
     path('flashcard/<int:id>/', detalhes_flashcard, name='detalhes_flashcard'),
     path('calendario/', calendario, name='calendario'),
-    path('calendar', calendar, name='calendar'),
+    path('calendar/', calendar, name='calendar'),
 ]
  

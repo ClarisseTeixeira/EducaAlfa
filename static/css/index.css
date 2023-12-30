@@ -148,6 +148,31 @@ nav {
 
 }
 
+.hide-message {
+    display: none;
+}
+
+.messages {
+    width: 320px;
+    min-height: 60px;
+    z-index: 2;
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translate(-50%);
+    background-color: #ECEFF1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-left: 3px solid #001B48;
+}
+
+
+.messages p {
+    font-size: 20px;
+}
 
 @media (max-width: 991px) {
     .basenav {

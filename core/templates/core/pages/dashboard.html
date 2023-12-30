@@ -84,17 +84,17 @@
 
 
         <div class="tabelare">
-            <div class="d-flex p-3 titabelare">
+            <div class="d-flex titabelare">
                 <h3 style="margin: auto;">Próximas Revisões</h3>
                 <a class="lta" href="{% url 'calendario' %}">Veja mais &#8594;</a>
             </div>
 
             {% if revisao %}
-
+            <div class="tabelar">
             <table class="table table-borderless">
                 <tr class="ftr">
                     <th class="fth">Título</th>
-                    <th class="fth">Data</th>
+                    <th class="fth data">Data</th>
                 </tr>
 
 
@@ -103,7 +103,7 @@
                     <td class="ftd"><a
                             href="{% url 'detalhes_flashcard' id=revisao.flashcard.id %}">{{revisao.flashcard.titulo}}</a>
                     </td>
-                    <td class="ftd" id="pendentes">{{ revisao.data_agendada|date:"d/m/Y" }}</td>
+                    <td class="ftd data" id="pendentes">{{ revisao.data_agendada|date:"d/m/Y" }}</td>
                 </tr>
                 {% endfor %}
 
@@ -114,7 +114,7 @@
                             <td class="ftd"> <a
                                     href="{% url 'detalhes_flashcard' id=revisao.flashcard.id %}">{{revisao.flashcard.titulo}}</a>
                             </td>
-                            <td class="ftd" id="atribuídas">{{ revisao.data_agendada|date:"d/m/Y" }}</td>
+                            <td class="ftd data" id="atribuídas">{{ revisao.data_agendada|date:"d/m/Y" }}</td>
                         </tr>
                     {% endfor %}
 
@@ -130,6 +130,7 @@
                 {% endif %}               
                 
             </table>
+        </div>
 
 
             <div class="bcomecarev">

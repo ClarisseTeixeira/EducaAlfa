@@ -23,11 +23,11 @@ from .views.auth import *
 urlpatterns = [
     path('accounts/login/', user_login, name='login'),
     path('accounts/logout/', user_logout, name='logout'),
-    path('registro', registro, name='registro'),
+    path('registro/', registro, name='registro'),
     path('', index, name='index'),
-    path('dashboard', dashboard, name='dashboard'),
-    path('revisoes', revisoes, name='revisoes'),
-    path('arearestrita',arearestrita, name='arearestrita'),
+    path('dashboard/', dashboard, name='dashboard'),
+    path('revisoes/', revisoes, name='revisoes'),
+    path('arearestrita/',arearestrita, name='arearestrita'),
     path('profile/', profile, name='profile'),
 
 ]  

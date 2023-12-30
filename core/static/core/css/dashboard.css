@@ -25,7 +25,10 @@
     border-radius: 45px;
 
 }
-
+.grevisoes{
+    width:380px !important; 
+    height: 300px !important;
+}
 .headerdash {
     height: 70px;
     background-color: #fff;
@@ -37,7 +40,7 @@ body {
     background-color: #FCFDFD;
 }
 
-nav.menu-lateral {
+.menu-lateral {
     width: 70px;
     height: 95vh;
     background-color: #024577;
@@ -70,12 +73,17 @@ nav.menu-lateral {
     list-style-type: none;
 }
 
+
+
 .ativo {
     background-color: #FCFDFD;
     border-radius: 16px 0 0 16px;
-    width: 70px;
-    height: 45px;
-    padding: 10px 15px;
+    width: 70px; 
+    height: 45px; 
+    padding: 10px 0;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
 }
 
 .ativo svg {
@@ -224,10 +232,6 @@ ul .sair {
     max-width: 90%;
 }
 
-.maincentro {
-    padding-left: 90px;
-}
-
 .msgbv {
     width: 670px;
     height: 170px;
@@ -310,9 +314,7 @@ ul .sair {
     border: none;
 }
 
-.grevisao {
-    margin: auto;
-}
+
 
 .lado2 {
     margin-left: 30px;
@@ -346,7 +348,9 @@ ul .sair {
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.05));
     width: 420px;
 }
-
+.titabelare{
+    padding: 1em;
+}
 .ftd,
 .fth {
     width: 100px;
@@ -451,7 +455,7 @@ p img {
     display: none;
 }
 
-.pcontainer{
+.pcontainer {
     padding-top: 40px;
     width: 80%;
     margin: auto;
@@ -471,34 +475,42 @@ p img {
     .lado2 {
         margin-left: 0px;
     }
-    .titulof{
-        width: 80%;
+    .maincentro {
+        padding-left: 70px;
     }
-    .centro {
-        width: 100%;
-    }
-        
-     
+
+    
+
+
 }
+
 @media (max-width: 950px) {
-   .quebrar{
-    flex-direction: column;
-   }
-   .infos, .forms{
+    .quebrar {
+        flex-direction: column;
+    }
+
+    .infos,
+    .forms {
+
+        margin-top: 40px;
+    }
+
+    .imgperfil {
+        margin-right: 0px !important;
+    }
     
-    margin-top: 40px;
-   }
-   .imgperfil {
-    margin-right: 0px !important;
-}
     
+
 }
 
 
 @media (max-width: 800px) {
     .graficos {
         display: block !important;
+        max-width: 300px;
+        margin: auto;
     }
+    
 
     .msgbv {
         width: 100%;
@@ -508,7 +520,7 @@ p img {
     .fage {
         width: 100%;
     }
-    
+
     nav.menu-lateral {
         width: 50px;
         margin: 20px 0px 20px 10px;
@@ -516,7 +528,19 @@ p img {
     .maincentro {
         padding-left: 60px;
     }
+    .ativo {
+        width: 50px; 
+     }
 
+    
+    #mostrar-verso{
+        margin: 5px !important;
+        margin-right: 15px !important;
+    }
+    .titulof{
+        height: 90px;
+    }
+  
 }
 
 
@@ -544,15 +568,34 @@ p img {
 
     .tabelare {
         width: 90%;
+        overflow-x: auto;
     }
 
+    .modal-body {
+        min-height: 70vh !important;
+        overflow: scroll;
+    }
+    .modal-header h5{
+        font-size: 2em;
+        width: 90%;
+    }
+    .versof{
+        margin: 8px !important;
+    }
     .titabelare {
         flex-direction: column-reverse;
     }
 
-    .ftr {
-        display: block;
+    .ftd,
+    .fth {
+        width: 50px;
+        margin: 0px 10px;
+        font-size: 16px;
+        min-width: 80px;
+        white-space: nowrap;
+        overflow: hidden;
     }
+
 
     .bcomecarev {
         width: 130px;
@@ -591,10 +634,17 @@ p img {
         margin: auto;
         align-items: center;
     }
+
     .imgperfil {
         width: 290px !important;
         height: 290px !important;
-        
+
+    }
+    .titulof{
+        width: 80%;
+    }
+    .titabelare{
+        padding: 5px;
     }
 
 }
@@ -622,25 +672,39 @@ p img {
     }
 
     .fatri {
+        padding: 3px !important;
+        width: 140px;
+    }
+    .mainfatri{
         width: 140px;
     }
 
-    .tabelare {
-        width: 150px;
+    .tabelar {
+        width: 100%;
+        overflow-x: auto;
     }
 
+     .table {
+        width: 100%;
+        max-width: 100%;
+      }
+      .table td,
+      .table th {
+        width: 100%;
+        white-space: nowrap;
+      } 
+      
     .titabelare a {
         font-size: 12px;
+    } 
+    .titabelare h3{
+        font-size: 20px;
     }
+    
 
-    canvas#Chart {
-        width: 150px !important;
-        height: 250px !important;
-    }
+    
+    
 
-    .mainfatri {
-        align-items: normal;
-    }
 
     .flashcards {
         width: 90%;
@@ -680,35 +744,36 @@ p img {
     .fc-toolbar .fc-right {
         width: 125%;
     }
-    
+
     .imgperfil {
-    width: 200px !important;
-    height: 260px !important;
-}
+        width: 200px !important;
+        height: 260px !important;
+    }
+
 }
 
 .fc-toolbar .fc-center h2 {
     text-transform: capitalize;
 }
 
-.versof{
+.versof {
     text-decoration: none;
     color: #000;
     position: absolute;
     top: 0;
     margin: 20px;
     right: 0;
-
 }
 
-.modal-header{
+.modal-header {
     position: relative;
 }
 
 .modal-header h5 {
-    text-align: center; 
+    text-align: center;
 }
-#mostrar-verso{
+
+#mostrar-verso {
     font-size: 18px;
     text-decoration: none;
     color: #000;
@@ -716,4 +781,6 @@ p img {
     position: absolute;
     top: 0;
     right: 0;
+    display: flex;
+    align-items: center;
 }

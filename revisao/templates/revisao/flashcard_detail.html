@@ -28,7 +28,7 @@
 
   <div class="rmodal-container">
     <div class="rmodal">
-      <a href="#" class="versof">
+      <a href="#" class="versofd">
         <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-arrow-clockwise"
           viewBox="0 0 16 16">
           <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z" />
@@ -44,36 +44,37 @@
       <div class="content">{{ detalhes.content.html|safe }}</div>
       <div class="verso" style="display: none;">{{ detalhes.verso.html|safe }}</div>
 
-      <div class="bcpa">
-
-        <div>
-          {% if anterior_id %}
-          <a class="bantprox ant" href="{% url 'detalhes_flashcard' id=anterior_id %}"> Anterior</a>
-          {% else %}
-          <a class="bantprox ant" href="">Anterior</a>
-          {% endif %}
-        </div>
-
-
-        <div class="rconcluida">
-          {% if revisao.data_agendada <= data%} {% if revisao %} <form method="post" class="p-3">
-            {% csrf_token %}
-            <button class="bconcluida" type="submit" name="revisao_concluida">Concluir Revisão</button>
-            <button class="bnaolembrou" type="submit" name="nao_lembrou">Não lembro</button>
-
-            </form>
+      <div >
+        <div class="bcpa">
+          <div>
+            {% if anterior_id %}
+            <a class="bantprox ant" href="{% url 'detalhes_flashcard' id=anterior_id %}"> Anterior</a>
+            {% else %}
+            <a class="bantprox ant" href="">Anterior</a>
             {% endif %}
+          </div>
+
+
+          <div class="rconcluida">
+            {% if revisao.data_agendada <= data%} {% if revisao %} <form method="post" class="p-3">
+              {% csrf_token %}
+              <button class="bconcluida" type="submit" name="revisao_concluida">Concluir Revisão</button>
+              <button class="bnaolembrou" type="submit" name="nao_lembrou">Não lembro</button>
+
+              </form>
+              {% endif %}
+              {% endif %}
+          </div>
+
+          <div>
+            {% if proximo_id %}
+            <a class="bantprox prox" href="{% url 'detalhes_flashcard' id=proximo_id %}">Próximo</a>
+            {% else %}
+            <a class="bantprox prox" href="">Próximo</a>
             {% endif %}
-        </div>
+          </div>
 
-        <div>
-          {% if proximo_id %}
-          <a class="bantprox prox" href="{% url 'detalhes_flashcard' id=proximo_id %}">Próximo</a>
-          {% else %}
-          <a class="bantprox prox" href="">Próximo</a>
-          {% endif %}
         </div>
-
       </div>
     </div>
   </div>
@@ -86,19 +87,23 @@
         const bcpa = document.querySelector('.bcpa');
         const rmodalcontainer = document.querySelector('.rmodal-container');
         rmodalcontainer.style.height = '90%';
-        rmodalcontainer.style.overflowY = 'scroll';
         bcpa.style.position = 'relative';
 
 
       } else {
         const bcpa = document.querySelector('.bcpa');
-        bcpa.style.position = 'absolute';
-      }
-      const versofElements = document.querySelectorAll('.versof');
+        const content = document.querySelector('.content');
+        const verso = document.querySelector('.verso');
 
-      if (versofElements) {
-        versofElements.forEach(function (versof) {
-          versof.addEventListener('click', function (event) {
+        bcpa.style.position = 'absolute';
+        content.style.height = `${content.clientHeight}px`
+
+      }
+      const versofd = document.querySelectorAll('.versofd');
+
+      if (versofd) {
+        versofd.forEach(function (versofd) {
+          versofd.addEventListener('click', function (event) {
             event.preventDefault();
 
             const parentModal = this.closest('.rmodal');
@@ -111,9 +116,14 @@
                 if (verso.style.display === 'none') {
                   verso.style.display = 'block';
                   content.style.display = 'none';
+                  verso.style.minHeight = '270px';
+
+
                 } else {
                   verso.style.display = 'none';
                   content.style.display = 'block';
+                   
+
                 }
               }
             }
