@@ -387,169 +387,124 @@ p {
 
 @media (max-width: 800px) {
     .container-azul{
-        width: 480px;
+        width: 580px;
     }
-
     .container-branco{
-        width: 480px;
+        width: 580px;
     }
-    
-    
     #alternativa{
-        width: 400px;
+        width: 500px;
     }
-    
-
     .form-select{
         border-radius: 50px;
-        width: 440px;
-        padding: 10px;
+        width: 540px;
     }
-
-    .main {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .questao {
-        order: 1;
-    }
-
-    .filtro {
-        order: -1;
-    }
-
     .container-filtro {
-        width: 480px;
+        width: 580px;
         height: 330px;
-        margin-left: 0px;
-        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
-        position: relative;
-        margin-bottom: 40px;
     }
+}
 
-    .alternativas-container{
-        padding-left: 0%;
+@media (max-width: 700px) {
+    .container-azul{
+        width: 500px;
     }
-    
+    .container-branco{
+        width: 500px;
+    }
+    #alternativa{
+        width: 420px;
+    }
+    .form-select{
+        border-radius: 50px;
+        width: 460px;
+    }
+    .container-filtro {
+        width: 500px;
+        height: 330px;
+    }
 }
 
 @media (max-width: 600px) {
     .container-azul{
-        width: 300px;
-        border-radius: 30px;
-
+        width: 400px;
     }
-
     .container-branco{
-        width: 290px;
-        border-radius: 30px;
-
+        width: 390px;
     }
-    
-    
     #alternativa{
-        width: 250px;
+        width: 350px;
     }
-    
-
     .form-select{
-        border-radius: 50px;
-        width: 260px;
-        padding: 10px;
+        width: 360px;
+        margin-right: 0%;
     }
-
-    .main {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .questao {
-        order: 1;
-    }
-
-    .filtro {
-        order: -1;
-    }
-
     .container-filtro {
-        width: 300px;
-        height: 330px;
-        margin-left: 0px;
-        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
-        position: relative;
-        margin-bottom: 40px;
-        border-radius: 30px;
-    }
-    
-    .alternativas-container{
-        padding-left: 0%;
+        width: 400px;
     }
 }
 
-
-@media (max-width: 420px) {
+@media (max-width: 500px) {
     .container-azul{
-        width: 180px;
-        border-radius: 20px;
-
+        width: 320px;
     }
-
     .container-branco{
-        width: 170px;
-        border-radius: 20px;
-    }
-    
-    
+        width: 310px;
+    }   
     #alternativa{
-        width: 120px;
-        padding: 10px;
-        font-size: 10px;
-        text-align: left;
+        width: 270px;
     }
-    
-
     .form-select{
-        border-radius: 50px;
-        width: 150px;
-        padding: 10px;
+        width: 280px;
     }
-
-    .main {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .questao {
-        order: 1;
-    }
-
-    .filtro {
-        order: -1;
-    }
-
     .container-filtro {
+        width: 320px;
+    }
+
+    .questao_texto,.questao_enunciado, #alternativa{
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 400px) {
+    .container-azul{
+        width: 225px;
+    }
+    .container-branco{
+        width: 215px;
+    }   
+    #alternativa{
         width: 180px;
-        height: 360px;
-        margin-left: 0px;
-        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
-        position: relative;
-        margin-bottom: 40px;
-        border-radius: 30px;
+    }
+    .form-select{
+        width: 200px;
+    }
+    .container-filtro {
+        width: 225px;
     }
 
-    button{
-        width: 110px;
-        height: 50px;
+    .questao_texto,.questao_enunciado, #alternativa{
+        font-size: 12px;
     }
+}
 
-    .btn-responder{
-        width: 130px;
-        height: 50px;
+@media (max-width: 300px) {
+    .container-azul{
+        width: 200px;
     }
-
-    .alternativas-container{
-        padding-left: 0%;
+    .container-branco{
+        width: 190px;
+    }   
+    #alternativa{
+        width: 155px;
     }
-    
+    .form-select{
+        width: 175px;
+    }
+    .container-filtro {
+        width: 200px;
+    }
+    .questao_texto,.questao_enunciado, #alternativa{
+        font-size: 10px;
+    }
 }

@@ -66,8 +66,8 @@ h1{
     }
 
     .etapa{
-        width: 355px;
-        height: 306px;
+        width: 300px;
+        height: 270px;
         padding: 20px;
     }
 
@@ -91,13 +91,13 @@ h1{
     }
 
     .etapa{
-        width: 355px;
-        height: 306px;
+        width: 300px;
+        height: auto;
         padding: 20px;
     }
 
-    .etapaspomodoro .etapa{
-        margin-right: 0px
+    .etapaspomodoro .etapa:nth-last-child(2n){
+        margin-right: 0;
     }
 }
 
@@ -121,8 +121,13 @@ h1{
 
    .etapa{
         width: 355px;
-        height: 306px;
+        height: auto;
         padding: 20px;
+        margin-right: 0px;
+    }
+
+    .etapaspomodoro .etapa:nth-last-child(3n){
+        margin-right: 0;
     }
 }
 
@@ -135,7 +140,7 @@ h1{
         text-align: center;
     }
     .textpomodoro {
-        width: 280px;
+        width: 255px;
         margin: auto;
     }
 
@@ -145,8 +150,8 @@ h1{
     }
 
    .etapa{
-        width: 280px;
-        height: 260px;
+        width: 250px;
+        height: auto;
         padding: 20px;
     }
 }

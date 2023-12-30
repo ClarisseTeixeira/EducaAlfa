@@ -253,23 +253,23 @@ table{
     .num-erradas,
     .taxa-acerto,
     .num-questoes {
-        width: 150px;
-        height: 85px;
-        margin: 0px;
-        margin-bottom: 10px;
-    }
+        width: 70%;
+        height: 0%;
+        margin: 0;
+        margin-bottom: 3%;
+    }    
     
     .num-questoes {
         margin-bottom: 0px;
     }
 
     .font-dados{
-        font-size: 18px;
+        font-size: 30px;
     }
 
     .grafico{
-        width: 250px;
-        height: 250px;
+        width: 270px;
+        height: 270px;
         margin-right: 0px;
         margin-left:0px;
     }

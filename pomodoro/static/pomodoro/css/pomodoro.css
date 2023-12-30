@@ -308,3 +308,10 @@
 }
 
 
+@media screen and (max-width: 384px) {
+    .pomodoro, .descanso {
+        max-width: 225px;
+    }
+}
+
+
